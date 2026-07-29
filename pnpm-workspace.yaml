@@ -1,6 +1,7 @@
 packages:
   - 'packages/*'
 allowBuilds:
+  '@swc/core': true
   cpu-features: false
   nx: true
   protobufjs: false
