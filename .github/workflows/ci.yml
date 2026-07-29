@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          filter: tree:0
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      # Derives the SHAs for `nx affected` (sets NX_BASE and NX_HEAD).
+      - uses: nrwl/nx-set-shas@v5
+
+      - run: pnpm exec nx format:check
+
+      # Typecheck all packages to catch transitive errors not in the affected graph.
+      - run: pnpm exec nx run-many -t typecheck
+
+      - run: pnpm exec nx affected -t lint test build

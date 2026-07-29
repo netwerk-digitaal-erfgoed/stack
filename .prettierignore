@@ -1,0 +1,8 @@
+# Add files here to ignore them from prettier formatting
+/dist
+pnpm-lock.yaml
+/coverage
+/.nx/cache
+/.nx/workspace-data
+.nx/self-healing
+.nx/migrate-runs

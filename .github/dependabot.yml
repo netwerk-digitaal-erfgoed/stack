@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      lde:
+        patterns:
+          - '@lde/*'
+    ignore:
+      # Upgrade Nx manually with `nx migrate latest`
+      - dependency-name: '@nx/*'
+      - dependency-name: 'nx'
+      # SWC versions are pinned as Nx peer deps; upgrade together with Nx
+      - dependency-name: '@swc/core'
+      - dependency-name: '@swc-node/register'
+      # ESLint major versions are tied to Nx; upgrade together with Nx
+      - dependency-name: '@eslint/*'
+      - dependency-name: '@typescript-eslint/*'
+      - dependency-name: 'eslint'
+      # Vite/Vitest versions are managed through @nx/vitest; upgrade together with Nx
+      - dependency-name: 'vite'
+      - dependency-name: 'vitest'
+      - dependency-name: '@vitest/*'

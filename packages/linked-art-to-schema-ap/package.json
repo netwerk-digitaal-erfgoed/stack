@@ -1,0 +1,40 @@
+{
+  "name": "@ndes/linked-art-to-schema-ap",
+  "version": "0.0.1",
+  "description": "Projects Linked Art (CIDOC-CRM) collections into the SCHEMA-AP-NDE pivot, built on @lde/pipeline.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@ndes/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "@lde/dataset-registry-client": "^0.8.0",
+    "@lde/pipeline": "^0.30.4",
+    "@lde/pipeline-console-reporter": "^0.21.4",
+    "@lde/pipeline-shacl-validator": "^0.12.4",
+    "@lde/sparql-qlever": "^0.14.5",
+    "tslib": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "nx": {
+    "name": "linked-art-to-schema-ap"
+  }
+}
