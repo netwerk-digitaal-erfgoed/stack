@@ -21,11 +21,11 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@lde/dataset-registry-client": "^0.8.0",
-    "@lde/pipeline": "^0.30.4",
-    "@lde/pipeline-console-reporter": "^0.21.4",
-    "@lde/pipeline-shacl-validator": "^0.12.4",
-    "@lde/sparql-qlever": "^0.14.5",
+    "@lde/dataset-registry-client": "^0.9.1",
+    "@lde/pipeline": "^0.35.4",
+    "@lde/pipeline-console-reporter": "^0.26.4",
+    "@lde/pipeline-shacl-validator": "^0.18.4",
+    "@lde/sparql-qlever": "^0.15.3",
     "tslib": "^2.3.0"
   },
   "engines": {
