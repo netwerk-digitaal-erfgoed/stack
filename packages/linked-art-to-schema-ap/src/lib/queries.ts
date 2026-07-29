@@ -2,7 +2,7 @@
  * SPARQL queries that project Linked Art (CIDOC-CRM) into the SCHEMA-AP-NDE
  * pivot. The selector enumerates the objects to map; each CONSTRUCT maps one
  * target class. Keeping one CONSTRUCT per class (rather than one mega-query)
- * lets the pipeline run them as separate executors – the same structure the
+ * lets the pipeline run them as separate readers – the same structure the
  * EDM export pipeline uses.
  *
  * Per-class CONSTRUCTs use `UNION` (one branch per multi-valued property)
@@ -19,7 +19,7 @@ PREFIX schema: <https://schema.org/>
 
 /**
  * Selects the Linked Art objects to project. Each result IRI is injected into
- * the CONSTRUCT executors as a `VALUES ?this { ... }` clause, so the CONSTRUCTs
+ * the CONSTRUCT readers as a `VALUES ?this { ... }` clause, so the CONSTRUCTs
  * map one object at a time.
  */
 export const SELECT_HUMAN_MADE_OBJECTS = `${PREFIXES}

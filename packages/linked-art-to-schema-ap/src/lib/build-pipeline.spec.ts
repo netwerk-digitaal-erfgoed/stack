@@ -18,7 +18,7 @@ describe('buildPipeline', () => {
 });
 
 describe('mapping queries', () => {
-  it('selects Linked Art objects with the ?this variable the executors expect', () => {
+  it('selects Linked Art objects with the ?this variable the readers expect', () => {
     expect(SELECT_HUMAN_MADE_OBJECTS).toMatch(/SELECT\s+\?this/);
     expect(SELECT_HUMAN_MADE_OBJECTS).toContain('crm:E22_Human-Made_Object');
   });

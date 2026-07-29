@@ -4,7 +4,7 @@ import {
   FileWriter,
   ImportResolver,
   Pipeline,
-  SparqlConstructExecutor,
+  SparqlConstructReader,
   SparqlDistributionResolver,
   SparqlItemSelector,
   Stage,
@@ -90,8 +90,8 @@ export async function buildPipeline(
   const stage = new Stage({
     name: 'Linked Art to SCHEMA-AP-NDE',
     itemSelector: new SparqlItemSelector({ query: SELECT_HUMAN_MADE_OBJECTS }),
-    executors: MAPPING_QUERIES.map(
-      (query) => new SparqlConstructExecutor({ query }),
+    readers: MAPPING_QUERIES.map(
+      (query) => new SparqlConstructReader({ query }),
     ),
     validation: { validator, onInvalid: 'write' },
   });
