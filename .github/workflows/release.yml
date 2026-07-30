@@ -23,7 +23,6 @@ jobs:
           # Need full git history for nx release to work properly
           fetch-depth: 0
           filter: tree:0
-          token: ${{ secrets.PAT }}
 
       - uses: pnpm/action-setup@v6
 
@@ -45,9 +44,10 @@ jobs:
 
       - run: pnpm exec nx release --skip-publish
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }} # Needed for pushing release commits.
+          GITHUB_TOKEN: ${{ github.token }} # Needed for pushing release commits and creating releases.
 
+      # Authenticates to npm over OIDC through npm trusted publishing, so no
+      # long-lived token is needed.
       - run: pnpm exec nx release publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
