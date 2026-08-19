@@ -22,9 +22,9 @@
   ],
   "dependencies": {
     "@lde/dataset-registry-client": "^0.9.1",
-    "@lde/pipeline": "^0.35.6",
-    "@lde/pipeline-console-reporter": "^0.26.6",
-    "@lde/pipeline-shacl-validator": "^0.18.6",
+    "@lde/pipeline": "^0.36.0",
+    "@lde/pipeline-console-reporter": "^0.27.0",
+    "@lde/pipeline-shacl-validator": "^0.19.0",
     "@lde/sparql-qlever": "^0.15.3",
     "tslib": "^2.3.0"
   },
