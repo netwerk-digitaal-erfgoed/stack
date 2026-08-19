@@ -96,14 +96,14 @@ importers:
         specifier: ^0.9.1
         version: 0.9.1
       '@lde/pipeline':
-        specifier: ^0.35.6
-        version: 0.35.6
+        specifier: ^0.36.0
+        version: 0.36.0
       '@lde/pipeline-console-reporter':
-        specifier: ^0.26.6
-        version: 0.26.6(@lde/dataset@0.7.9)(@lde/pipeline@0.35.6)
+        specifier: ^0.27.0
+        version: 0.27.0(@lde/dataset@0.7.9)(@lde/pipeline@0.36.0)
       '@lde/pipeline-shacl-validator':
-        specifier: ^0.18.6
-        version: 0.18.6(@lde/dataset@0.7.9)(@lde/pipeline@0.35.6)
+        specifier: ^0.19.0
+        version: 0.19.0(@lde/dataset@0.7.9)(@lde/pipeline@0.36.0)
       '@lde/sparql-qlever':
         specifier: ^0.15.3
         version: 0.15.3
@@ -1751,20 +1751,20 @@ packages:
   '@lde/distribution-probe@0.2.7':
     resolution: {integrity: sha512-x3bBGEHJqHewbRGWsTR0Bc3usCVEyERFqmaA3YT++2H04qSXdrXUZXleiD/HocUmJOEb7PMCrFRAG3v6AP4l8A==}
 
-  '@lde/pipeline-console-reporter@0.26.6':
-    resolution: {integrity: sha512-7+qz0j+YKgPk2r6Kcx47Ar4bXVdlob+oS+EnwP4k1+YLSSGcBFTEOEMLrLp+Cl7+Il8Na7+4NaVye7DA++2DTw==}
+  '@lde/pipeline-console-reporter@0.27.0':
+    resolution: {integrity: sha512-GzfGJw0OcwPTWOTaQocfiKtc2YEQv+AdFR00pSfaxvG87pvtHzNCMt4pQJQyMudBXNIt/kdQOxZpZZ1O18FMSw==}
     peerDependencies:
       '@lde/dataset': ^0.7.9
-      '@lde/pipeline': ^0.35.6
+      '@lde/pipeline': ^0.36.0
 
-  '@lde/pipeline-shacl-validator@0.18.6':
-    resolution: {integrity: sha512-5RzTYph3LEXwc2LBkQN3Uii1+/ZgDWIXfdjyOIZCqRUYx1m4V+xwGO4+nGye6GZAF8EWfTWdOJBNw4/UEKimCg==}
+  '@lde/pipeline-shacl-validator@0.19.0':
+    resolution: {integrity: sha512-VZOWvTLMoKBhmvdsW9FEi0BXFZDhHy4vPa4jPLh52k4qvuv/gKn8HfX8GD/QSHT2CiBP45iwf/Gu+lnPIq+AHA==}
     peerDependencies:
       '@lde/dataset': ^0.7.9
-      '@lde/pipeline': ^0.35.6
+      '@lde/pipeline': ^0.36.0
 
-  '@lde/pipeline@0.35.6':
-    resolution: {integrity: sha512-f8f3v7Um2BIbB2RaZ9PGwmoEPFuVlqI9CKdlPKGqrBbkLCr5wU+0T+uk3Kime/Clktf/Jw1pm04h3Fuz2ESobw==}
+  '@lde/pipeline@0.36.0':
+    resolution: {integrity: sha512-uRJWjIAQFvbVNOIJw9RHydsLjmtrAL4k3JKMZqdEBz6pbucyFC8Zsgm0UkWsRSyR8NubP/6YyjUoyxCasw1WlA==}
 
   '@lde/sparql-importer@0.6.9':
     resolution: {integrity: sha512-+8FLjlhmxXGYdyDmGyOMdHGbHf/h+22eivVzc9OeGCM35Pm6blutkGwRf3eAGgeFERWzyIVAHNCJV/DpGBGppg==}
@@ -2807,8 +2807,8 @@ packages:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
 
-  ansi-regex@6.2.2:
-    resolution: {integrity: sha512-Bq3SmSpyFHaWjPk8If9yc6svM8c56dB5BAtW4Qbw5jHTwwXXcTLoRMkpDJp6VL0XzlWaCHTXrkFURMYmD0sLqg==}
+  ansi-regex@6.3.0:
+    resolution: {integrity: sha512-WpDfL7NO6j7tH88IDBNVdUJxDh9nmCteAVW9dsep846XdwF4naCBK+/tGLX3KJgcpgMRXCFlTM2hKGoK9FsdrQ==}
     engines: {node: '>=12'}
 
   ansi-styles@4.3.0:
@@ -4806,8 +4806,8 @@ packages:
   rdfxml-streaming-parser@2.4.0:
     resolution: {integrity: sha512-f+tdI1wxOiPzMbFWRtOwinwPsqac0WIN80668yFKcVdFCSTGOWTM70ucQGUSdDZZo7pce/UvZgV0C3LDj0P7tg==}
 
-  rdfxml-streaming-parser@3.2.0:
-    resolution: {integrity: sha512-SgQGK0EkbXd0jQ1PZk7dEpfDxf4CZpezkO6cTuGWesa9twdWaaW5elMoNBcbMT+2tOZC1EYZjs0JaXx0HnifcQ==}
+  rdfxml-streaming-parser@3.3.0:
+    resolution: {integrity: sha512-ym3RO0T4K4NOF23BpsvrNyhIdevuZvY/1kYV5gQJ6z3s0m6Ui9ZH1QZIA/VyNEWHG0x1nTg1QzN/0i4KMVk3EA==}
 
   readable-from-web@1.0.0:
     resolution: {integrity: sha512-tei03fQhxqLEklpIvocFUR9hO42hiyYvdhwoNHAjJztPAQ8QS1NqF2AhLwzGxIGidPBJ4MCqB48wn7OAFCfhsQ==}
@@ -8405,7 +8405,7 @@ snapshots:
     dependencies:
       '@comunica/bus-rdf-parse': 5.3.0
       '@comunica/context-entries': 5.3.0
-      rdfxml-streaming-parser: 3.2.0
+      rdfxml-streaming-parser: 3.3.0
     transitivePeerDependencies:
       - encoding
 
@@ -9339,20 +9339,20 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@lde/pipeline-console-reporter@0.26.6(@lde/dataset@0.7.9)(@lde/pipeline@0.35.6)':
+  '@lde/pipeline-console-reporter@0.27.0(@lde/dataset@0.7.9)(@lde/pipeline@0.36.0)':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/pipeline': 0.35.6
+      '@lde/pipeline': 0.36.0
       chalk: 5.6.2
       log-symbols: 7.0.1
       ora: 9.4.1
       pretty-ms: 9.3.0
       tslib: 2.8.1
 
-  '@lde/pipeline-shacl-validator@0.18.6(@lde/dataset@0.7.9)(@lde/pipeline@0.35.6)':
+  '@lde/pipeline-shacl-validator@0.19.0(@lde/dataset@0.7.9)(@lde/pipeline@0.36.0)':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/pipeline': 0.35.6
+      '@lde/pipeline': 0.36.0
       '@rdfjs/types': 2.0.1
       rdf-dereference: 5.0.0
       rdf-ext: 2.6.0
@@ -9361,7 +9361,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@lde/pipeline@0.35.6':
+  '@lde/pipeline@0.36.0':
     dependencies:
       '@lde/dataset': 0.7.9
       '@lde/dataset-registry-client': 0.9.1
@@ -9736,7 +9736,7 @@ snapshots:
       '@rdfjs/serializer-ntriples': 2.0.1
       '@rdfjs/serializer-turtle': 1.1.5
       '@rdfjs/sink-map': 2.0.1
-      rdfxml-streaming-parser: 3.2.0
+      rdfxml-streaming-parser: 3.3.0
 
   '@rdfjs/io@1.2.0':
     dependencies:
@@ -10153,7 +10153,7 @@ snapshots:
 
   '@types/http-link-header@1.0.7':
     dependencies:
-      '@types/node': 26.2.0
+      '@types/node': 18.19.130
 
   '@types/imurmurhash@0.1.4': {}
 
@@ -10641,7 +10641,7 @@ snapshots:
 
   ansi-regex@5.0.1: {}
 
-  ansi-regex@6.2.2: {}
+  ansi-regex@6.3.0: {}
 
   ansi-styles@4.3.0:
     dependencies:
@@ -12955,7 +12955,7 @@ snapshots:
       relative-to-absolute-iri: 1.0.8
       validate-iri: 1.0.1
 
-  rdfxml-streaming-parser@3.2.0:
+  rdfxml-streaming-parser@3.3.0:
     dependencies:
       '@rubensworks/saxes': 6.0.1
       '@types/readable-stream': 4.0.24
@@ -13371,7 +13371,7 @@ snapshots:
 
   strip-ansi@7.2.0:
     dependencies:
-      ansi-regex: 6.2.2
+      ansi-regex: 6.3.0
 
   strip-bom@3.0.0: {}
 
