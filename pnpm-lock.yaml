@@ -96,17 +96,17 @@ importers:
         specifier: ^0.9.3
         version: 0.9.3
       '@lde/pipeline':
-        specifier: ^0.36.3
-        version: 0.36.3
+        specifier: ^0.36.4
+        version: 0.36.4
       '@lde/pipeline-console-reporter':
-        specifier: ^0.27.3
-        version: 0.27.3(@lde/dataset@0.7.9)(@lde/pipeline@0.36.3)
+        specifier: ^0.27.4
+        version: 0.27.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)
       '@lde/pipeline-shacl-validator':
-        specifier: ^0.19.3
-        version: 0.19.3(@lde/dataset@0.7.9)(@lde/pipeline@0.36.3)
+        specifier: ^0.19.4
+        version: 0.19.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)
       '@lde/sparql-qlever':
-        specifier: ^0.15.5
-        version: 0.15.5
+        specifier: ^0.16.0
+        version: 0.16.0
       tslib:
         specifier: ^2.3.0
         version: 2.8.1
@@ -1745,8 +1745,8 @@ packages:
   '@lde/distribution-downloader@0.6.8':
     resolution: {integrity: sha512-mEuFTPcWXRPSuaY1GsOZobOwMUzR3pWQANnEUJunnhwa9HQ7jQpyPtoZhPx5j3Z7XsS+i47QkZ5mw8pob4BoNg==}
 
-  '@lde/distribution-health@0.2.11':
-    resolution: {integrity: sha512-qmUTtd49eCr0c0AEswY7sm/la5FYi82roKfd++RfwpgZdVdSxdmrQuaW5Wp0y1D/i7+VOLO7EeogCkTU6fEILQ==}
+  '@lde/distribution-health@0.2.12':
+    resolution: {integrity: sha512-Nm/W1Z+TUct7UpVAtikcBmPl9pAa1B4b2cAEqlGBPAw5xAO9HSEJsX0YfHoW7pcdl9PWsIc35ue4rAFUjTfKmQ==}
 
   '@lde/distribution-probe@0.2.9':
     resolution: {integrity: sha512-AyOeL2+XdD6RaGjYmL7wNJPAxIPq1knCejpnyw8S0V80iox4jpQOjwdmtziwvP+r/GVtbAfHI6VUA8RvF6v+nA==}
@@ -1755,38 +1755,38 @@ packages:
     resolution: {integrity: sha512-+bGT3qPu2oVByVVpyxAW44AKPEIsgfM4ZuNbRG4yYt/md3A8PcJxDwQIpqKZuNeCw2PRltXdsvbmgv3aggR0Sg==}
     engines: {node: '>=24'}
 
-  '@lde/pipeline-console-reporter@0.27.3':
-    resolution: {integrity: sha512-BcodSTvhoriIpt3NKHBfPCJdSdZ6glSz7U3cHLnsLAKkSJ7SRv4sFEQIh2NcCwMNzUDu8ZVslKXPx0c/r+7l6w==}
+  '@lde/pipeline-console-reporter@0.27.4':
+    resolution: {integrity: sha512-/xNYV1ayIxEuCVkhezcwXqT7HyaCdOFT8AtuTdwP1AftC1hkm8atQrFotshpYTgOPTCrjtiq4R/qoTss3wJF6Q==}
     peerDependencies:
       '@lde/dataset': ^0.7.9
-      '@lde/pipeline': ^0.36.3
+      '@lde/pipeline': ^0.36.4
 
-  '@lde/pipeline-shacl-validator@0.19.3':
-    resolution: {integrity: sha512-Ss0wPIXU9yMdxbb8VI2Bu2fVfaerhyxrr3QjOmzSosn2Gb0DRu4K5qJbz7GvuVwe19ubj6eSNGTI6NMb2DRCcA==}
+  '@lde/pipeline-shacl-validator@0.19.4':
+    resolution: {integrity: sha512-pmlKE5LFquFDWPIryTe9rO+ljlKz91l8Vlrd9L4LxcmTJsGmfB9PFn0zhiCL1ancFkFiAFJUBIRcLzpM9LHDBw==}
     peerDependencies:
       '@lde/dataset': ^0.7.9
-      '@lde/pipeline': ^0.36.3
+      '@lde/pipeline': ^0.36.4
 
-  '@lde/pipeline@0.36.3':
-    resolution: {integrity: sha512-9SikbIpzUm8U+XtHYLRJOQA4Xble1G+ZxqWeOGqAw8btcGN5A0ZEwesEU175l2xop2inhAFuys+75uJVmWn0GA==}
+  '@lde/pipeline@0.36.4':
+    resolution: {integrity: sha512-DAC+HoROXTfRfPASeBugH837h47Uf8caWPNym6vao4bKJOtP2TILSh6Az/8AM4EoGHX2EoTqb3A4vrgwrXVisQ==}
 
-  '@lde/sparql-importer@0.6.9':
-    resolution: {integrity: sha512-+8FLjlhmxXGYdyDmGyOMdHGbHf/h+22eivVzc9OeGCM35Pm6blutkGwRf3eAGgeFERWzyIVAHNCJV/DpGBGppg==}
+  '@lde/sparql-importer@0.6.10':
+    resolution: {integrity: sha512-5mEUgWVKSSr1C5yIgZ7f6xDs9aQ3WDOSgHO1cpX1T8mutur7zhO6z3DGp46zEfS/BMG2RH/PH8/0r5T/mtXPQw==}
 
-  '@lde/sparql-qlever@0.15.5':
-    resolution: {integrity: sha512-YaqW4uTLYuz2u6LOAXxBomYEsd+FM419clbfE++lVTKFv2XbXsgFargOBQ/OcYYmU97vR67nW/MgtrdEpH7QZg==}
+  '@lde/sparql-qlever@0.16.0':
+    resolution: {integrity: sha512-XExNMdXT+895SP6WExzLXryO7rc1xrj607yhtxi98ooCoWh+Hj0jhQB4uQ1pTnIg9ET2NIoHefb6jgQ/u5Absg==}
 
   '@lde/sparql-server@0.4.14':
     resolution: {integrity: sha512-DfEHDlEh6FpcaJoq4K8KuqFcqezCrWzzfCuDLuOu7+Z4DHgGNnoTmur7e6RMGAnUdaDjvi+INcww+nCLvA+4eQ==}
 
-  '@lde/task-runner-docker@0.2.16':
-    resolution: {integrity: sha512-6asqRFrv6rvmlxAoYybJqW8r/bg64pKlkf8hXH4SNMPxNLNAluxrOLyXRd64GVKJ0aIpvFDkSWp1qmhhYHkiuA==}
+  '@lde/task-runner-docker@0.3.0':
+    resolution: {integrity: sha512-M3V1BqB0Iu/s7PFwZ24YEtdkyzOz/9NbH613unhblxm7kN1IBYKWmj6vGXtK2/tgkobAQEv3cYcYHh9XscxD4A==}
 
-  '@lde/task-runner-native@0.2.16':
-    resolution: {integrity: sha512-Ym+PsNq7ibEz/0/E5Pezkwn0uq8fOmfB9/YBEuLXXpPRxnpIqhVc/ATasJDfvfOx6lJFZZ508osGVndpJuizUg==}
+  '@lde/task-runner-native@0.2.18':
+    resolution: {integrity: sha512-MvxasKdMwN4++PpsaWynnjhyAJgLkXUF1YDyUzAN6SzPwpKGNZDTKGVKZJXI7Bfg3Bd5b3tyclplhg7Dgvx1Iw==}
 
-  '@lde/task-runner@0.2.13':
-    resolution: {integrity: sha512-aiRospdWb09eHYA6c+Dq9D9sPUSIRy8FuumILX9zgy/ycGPtM3co51cbGFR7KE2wjIhrrbuO9qQwoV6nPLOC0g==}
+  '@lde/task-runner@0.2.14':
+    resolution: {integrity: sha512-2+ITkGFgpBXmHmzgcB+bls+KkXoLe3/xZU32nIndXi9EXKOooL7yO7L2WR97hCMl/SQdbfmvelsQdD5YjmeshQ==}
 
   '@lde/wait-for-sparql@0.2.17':
     resolution: {integrity: sha512-eX+QlavyoZeTTJKrs+estpOmaOZRbghCYUDt/ZFH1ATZlkd1Ly/OYWzvVUQS4FN0auJgB3Qq87+A5xzbqPMoug==}
@@ -2380,17 +2380,17 @@ packages:
   '@tpluscode/rdf-ns-builders@5.0.0':
     resolution: {integrity: sha512-rtMFbArdief+s0z2A3TOb/gNe5O5xn9LDiEpilCf6lGYCUIfyqoOvZY80fS/eILwcF2Mj6cUQN1WBQ+1neJmaw==}
 
-  '@traqula/algebra-sparql-1-1@1.2.1':
-    resolution: {integrity: sha512-i65jF9i51vfKgQjAcg5myBSHDLoB0HCYU58tW2ydhJC3RiUwHzh/PKB1RWQxz78nYXxTjy21+2icoDy5BBqBcg==}
+  '@traqula/algebra-sparql-1-1@1.2.2':
+    resolution: {integrity: sha512-LlE7sx+N8PBPjNTGNNH0vila1KVOTM4bB8ovBjCs3etoAAjm4yjr5my1Gt+Oy6jiCKMAHsFJalyXwrHdPENytg==}
 
-  '@traqula/algebra-sparql-1-2@1.2.1':
-    resolution: {integrity: sha512-srkCTSLldixhGiNfcOAWjW0U5O86nsJ3LVDbOR19agCwwG6+xH9vfBO1BXU5I7fBRrOOwUvtIlF7KSLmMKMEag==}
+  '@traqula/algebra-sparql-1-2@1.2.2':
+    resolution: {integrity: sha512-545YNfvCn/N1LiBBxnEHi6eMyDCD0x8+cLkm314ABzhCVDVBAxUJSyqUTAaazZ97KgmXW86LtPfxgGqIgwbiyA==}
 
-  '@traqula/algebra-transformations-1-1@1.2.1':
-    resolution: {integrity: sha512-tqsokMOsbjpL7gvLUHuP/iGkoiWRayPD/ogSzlaUBKI97uHCRvMTXGLYfy48UdtHHuo2KV5XRCK2lbbaLfrxVA==}
+  '@traqula/algebra-transformations-1-1@1.2.2':
+    resolution: {integrity: sha512-ffjkcQBUnunFbUSNBW+B455ncNlZwOgzdZvVyLjfjLFunk2Obfk3tJ7eR0i8RhyhClcwVAFie/zecj/8jhVvUQ==}
 
-  '@traqula/algebra-transformations-1-2@1.2.1':
-    resolution: {integrity: sha512-V5/OIjcSKs3mQxYf2/gzLtV0aV3jjw8gZccCrLvKtq8v/kJU85jD1+AMEi/rn8Ig5HzOhfMv9JQ6MiftH2HCkA==}
+  '@traqula/algebra-transformations-1-2@1.2.2':
+    resolution: {integrity: sha512-4wrtI+9GSAZkPmwdKxBSIwerTmRumYELr/Dc3greRv/MRqmmmlAvjrgHN9+vz84inI78DGoX4iGUo6GIIKEIsA==}
 
   '@traqula/chevrotain@1.1.0':
     resolution: {integrity: sha512-VpcoQKb2ZnsOQPlPO2mE9hfR0Aidp7drwTCtaXfpdRHGkXeQ5Nv4rnxmxwUoEDRzu6b/3z4n8oTd+sYhe4fAaA==}
@@ -2480,8 +2480,14 @@ packages:
   '@types/node@18.19.130':
     resolution: {integrity: sha512-GRaXQx6jGfL8sKfaIDD6OupbIHBr9jv7Jnaml9tB7l4v068PAOXqfcujMMo5PhbIs6ggR1XODELqahT2R8v0fg==}
 
+  '@types/node@24.13.3':
+    resolution: {integrity: sha512-Dh8vAsV36ig5wa9OX4pXvMc9D3Veibfw2wix0CUwYODLD8nkj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==}
+
   '@types/node@26.4.0':
     resolution: {integrity: sha512-faiGnoIrLH/V8cibOMEAZ8pMw6oXqSukl29ra4mN8GdaB2ZewzeaLj+INpV5N+Z1eKWzY+IzaIZH2EIR6YZRNQ==}
+
+  '@types/node@26.4.1':
+    resolution: {integrity: sha512-k97ENvZWtvA6yqz5/FS6a7duDgOPEeOQOc2iKS/nY6mX6qJUKtLnWzQS+Xj6tXweyj6ZcTAK2Qecetnvi9nCLA==}
 
   '@types/node@8.10.66':
     resolution: {integrity: sha512-tktOkFUA4kXx2hhhrB8bIFb5TbwzS4uOhKEmwiD+NoiL0qtP2OQ9mFldbgD4dV1djrlBYP6eBuQZiWjuHUpqFw==}
@@ -3592,8 +3598,8 @@ packages:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
     engines: {node: ^12.20 || >= 14.13}
 
-  fetch-sparql-endpoint@7.1.1:
-    resolution: {integrity: sha512-OslECjEPhhTg2uXJpuKqucOFLkIaK2TkbUjW+fWgHKLsH4kTZ/J7UKid2w6f3dF0MOEqF0gEO5kiUh3pq3uhfA==}
+  fetch-sparql-endpoint@7.2.0:
+    resolution: {integrity: sha512-8J0RuZveKb8ikpAj8Y95S/UfFKeMRtgNNBJKGa+QJfSK2NWcR+QqgUZ77TR2saVvDpOyp89OsV0mIz96V0k1sg==}
     hasBin: true
 
   figures@3.2.0:
@@ -4064,6 +4070,10 @@ packages:
     resolution: {integrity: sha512-BfgNJ/t9jjK7Lun9XRCJM6YeNqDk8B6/lg+KS8rzhXAOtS0FvoClSmtLvF24V1M2CDYRy2LcEBt0ilxqSX93WA==}
     hasBin: true
 
+  jsonld-context-parser@3.1.1:
+    resolution: {integrity: sha512-Tv3fZBo3t83Em3TB9s8+B2GoXiXTl8R0wzBekIZDSzmu6O/BaXZp2enr/YZ+5AIl5NBEYX/FTbwgFoXehQDqyA==}
+    hasBin: true
+
   jsonld-streaming-parser@4.0.1:
     resolution: {integrity: sha512-6M4y9YGgADk3nXJebbRrxEdMVBJ9bnz+peAvjTXUievopqaE8sg/qml/I6Sp1ln7rpOKffsNZWSre6B7N76szw==}
 
@@ -4393,8 +4403,8 @@ packages:
     resolution: {integrity: sha512-SQknS0ua90rN+3RHuk8BeIqeYyqIH/+ecViZxX08jR4j6MugqWRjtONl3uANG/crWXnOM2WIqBJtjIhVYFha+w==}
     engines: {node: '>=12.0'}
 
-  n3@2.6.4:
-    resolution: {integrity: sha512-CsZsQz2x16SkRbAp9eTg9d26fmq30B2ewW7lYDfRFAOjVoE+PwT+eBlUZQqJlgpCe97xSS1X2CZ8hmomIjnTHg==}
+  n3@2.7.11:
+    resolution: {integrity: sha512-XnRb9UJn66nYc9sktzRfkfb4t+hWX2Yj/i2GUMPf9bf5GMpkrNR3zEqwP0RgXVCf0I0JeEvWsQaKN9ztyuJy4g==}
     engines: {node: '>=12.0'}
 
   nan@2.28.0:
@@ -4545,8 +4555,8 @@ packages:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
 
-  p-retry@8.0.0:
-    resolution: {integrity: sha512-kFVqH1HxOHp8LupNsOys7bSV09VYTRLxarH/mokO4Rqhk6wGi70E0jh4VzvVGXfEVNggHoHLAMWsQqHyU1Ey9A==}
+  p-retry@8.0.1:
+    resolution: {integrity: sha512-NAigyu8hfvJe7MsS18mnc4is0MZtau3QMdBklaJKK23oBQb6occO3UPM3vHmTckW8KhfyjMZaUOqdTFEYliHgg==}
     engines: {node: '>=22'}
 
   pako@0.2.9:
@@ -5295,15 +5305,18 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
 
-  undici@6.28.0:
-    resolution: {integrity: sha512-LIY910g9TI13YS95lrMFrs8Rm/u/irgHeTWoKCoteeJ04CUJ92eEfj0rVn+7VKMPBpUPiUoBKfhNyLI23EE/KA==}
+  undici@6.28.1:
+    resolution: {integrity: sha512-zWpdTVD54H48CIybL0rWQ3ukpb9d23wM7eH5RtfdmeP70cWHNjtfo7P4vZX+5CoDcO53J4Pu5uXp7lNfjc6DRA==}
     engines: {node: '>=18.17'}
 
-  undici@8.10.0:
-    resolution: {integrity: sha512-HvltHd7avK13QIw/oLe4qoOLyoVSoafqJ2jYOrtMRBkbYT31eiBQ8O0ehRKZiEZCMEyLFQNIADpgCWC5fALvYQ==}
+  undici@8.10.2:
+    resolution: {integrity: sha512-/y4/bH9YNU5hi9NIrpOuvGXFcxrj3CMrV+/AYpowAYTpHn8gX/XPFjNy766FPoYY0miQhdW977JFWKGNhBdwyQ==}
     engines: {node: '>=22.19.0'}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
@@ -7320,7 +7333,7 @@ snapshots:
       '@comunica/types': 5.3.0
       '@types/http-cache-semantics': 4.2.0
       http-cache-semantics: 4.2.0
-      undici: 8.10.0
+      undici: 8.10.2
     transitivePeerDependencies:
       - encoding
 
@@ -7990,7 +8003,7 @@ snapshots:
       '@comunica/context-entries': 5.3.0
       '@comunica/core': 5.3.0
       '@comunica/types': 5.3.0
-      '@traqula/algebra-sparql-1-2': 1.2.1
+      '@traqula/algebra-sparql-1-2': 1.2.2
       '@traqula/parser-sparql-1-2': 1.2.1
       '@traqula/rules-sparql-1-2': 1.2.1
     transitivePeerDependencies:
@@ -8377,7 +8390,7 @@ snapshots:
       '@comunica/bus-rdf-parse': 5.3.0
       '@comunica/context-entries': 5.3.0
       '@comunica/types': 5.3.0
-      n3: 2.6.4
+      n3: 2.7.11
     transitivePeerDependencies:
       - encoding
 
@@ -8445,7 +8458,7 @@ snapshots:
     dependencies:
       '@comunica/bus-rdf-serialize': 5.3.0
       '@comunica/context-entries': 5.3.0
-      n3: 2.6.4
+      n3: 2.7.11
     transitivePeerDependencies:
       - encoding
 
@@ -9056,7 +9069,7 @@ snapshots:
   '@comunica/utils-algebra@5.3.0':
     dependencies:
       '@rdfjs/types': 2.0.1
-      '@traqula/algebra-transformations-1-2': 1.2.1
+      '@traqula/algebra-transformations-1-2': 1.2.2
       '@traqula/core': 1.2.0
       rdf-terms: 2.0.0
 
@@ -9153,7 +9166,7 @@ snapshots:
   '@digitalbazaar/http-client@4.4.0':
     dependencies:
       ky: 1.14.3
-      undici: 6.28.0
+      undici: 6.28.1
 
   '@emnapi/core@1.10.0':
     dependencies:
@@ -9311,10 +9324,10 @@ snapshots:
       filenamify-url: 4.0.0
       tslib: 2.8.1
 
-  '@lde/distribution-health@0.2.11':
+  '@lde/distribution-health@0.2.12':
     dependencies:
       '@lde/distribution-probe': 0.2.9
-      '@lde/sparql-importer': 0.6.9
+      '@lde/sparql-importer': 0.6.10
       tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
@@ -9332,20 +9345,20 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@lde/pipeline-console-reporter@0.27.3(@lde/dataset@0.7.9)(@lde/pipeline@0.36.3)':
+  '@lde/pipeline-console-reporter@0.27.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/pipeline': 0.36.3
+      '@lde/pipeline': 0.36.4
       chalk: 5.6.2
       log-symbols: 7.0.1
       ora: 9.4.1
       pretty-ms: 9.3.1
       tslib: 2.8.1
 
-  '@lde/pipeline-shacl-validator@0.19.3(@lde/dataset@0.7.9)(@lde/pipeline@0.36.3)':
+  '@lde/pipeline-shacl-validator@0.19.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/pipeline': 0.36.3
+      '@lde/pipeline': 0.36.4
       '@rdfjs/types': 2.0.1
       rdf-dereference: 5.0.0
       rdf-ext: 2.6.0
@@ -9354,13 +9367,13 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@lde/pipeline@0.36.3':
+  '@lde/pipeline@0.36.4':
     dependencies:
       '@lde/dataset': 0.7.9
       '@lde/dataset-registry-client': 0.9.3
-      '@lde/distribution-health': 0.2.11
+      '@lde/distribution-health': 0.2.12
       '@lde/distribution-probe': 0.2.9
-      '@lde/sparql-importer': 0.6.9
+      '@lde/sparql-importer': 0.6.10
       '@lde/sparql-server': 0.4.14
       '@rdfjs/namespace': 2.0.1
       '@rdfjs/types': 2.0.1
@@ -9368,32 +9381,32 @@ snapshots:
       '@traqula/generator-sparql-1-1': 1.2.1
       '@traqula/parser-sparql-1-1': 1.2.1
       '@traqula/rules-sparql-1-1': 1.2.1
-      fetch-sparql-endpoint: 7.1.1
+      fetch-sparql-endpoint: 7.2.0
       filenamify-url: 4.0.0
       is-network-error: 1.3.2
-      n3: 2.6.4
-      p-retry: 8.0.0
+      n3: 2.7.11
+      p-retry: 8.0.1
       rdf-string: 2.0.1
       tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
-  '@lde/sparql-importer@0.6.9':
+  '@lde/sparql-importer@0.6.10':
     dependencies:
       '@lde/dataset': 0.7.9
       '@lde/distribution-downloader': 0.6.8
-      '@lde/task-runner': 0.2.13
+      '@lde/task-runner': 0.2.14
       tslib: 2.8.1
 
-  '@lde/sparql-qlever@0.15.5':
+  '@lde/sparql-qlever@0.16.0':
     dependencies:
       '@lde/dataset': 0.7.9
       '@lde/distribution-downloader': 0.6.8
-      '@lde/sparql-importer': 0.6.9
+      '@lde/sparql-importer': 0.6.10
       '@lde/sparql-server': 0.4.14
-      '@lde/task-runner': 0.2.13
-      '@lde/task-runner-docker': 0.2.16
-      '@lde/task-runner-native': 0.2.16
+      '@lde/task-runner': 0.2.14
+      '@lde/task-runner-docker': 0.3.0
+      '@lde/task-runner-native': 0.2.18
       '@lde/wait-for-sparql': 0.2.17
       rdf-parse: 5.0.0
       rdf-serialize: 5.1.0
@@ -9407,27 +9420,27 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@lde/task-runner-docker@0.2.16':
+  '@lde/task-runner-docker@0.3.0':
     dependencies:
-      '@lde/task-runner': 0.2.13
+      '@lde/task-runner': 0.2.14
       dockerode: 5.0.1
       tslib: 2.8.1
     transitivePeerDependencies:
       - supports-color
 
-  '@lde/task-runner-native@0.2.16':
+  '@lde/task-runner-native@0.2.18':
     dependencies:
-      '@lde/task-runner': 0.2.13
+      '@lde/task-runner': 0.2.14
       tslib: 2.8.1
 
-  '@lde/task-runner@0.2.13':
+  '@lde/task-runner@0.2.14':
     dependencies:
       tslib: 2.8.1
 
   '@lde/wait-for-sparql@0.2.17':
     dependencies:
-      fetch-sparql-endpoint: 7.1.1
-      p-retry: 8.0.0
+      fetch-sparql-endpoint: 7.2.0
+      p-retry: 8.0.1
       tslib: 2.8.1
 
   '@napi-rs/wasm-runtime@0.2.4':
@@ -9758,7 +9771,7 @@ snapshots:
       '@rdfjs/data-model': 2.1.2
       '@rdfjs/sink': 2.0.1
       duplex-to: 2.0.0
-      n3: 2.6.4
+      n3: 2.7.11
       readable-stream: 4.7.0
 
   '@rdfjs/prefix-map@0.1.2':
@@ -9829,11 +9842,11 @@ snapshots:
 
   '@rdfjs/types@1.1.2':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@rdfjs/types@2.0.1':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@rolldown/binding-android-arm64@1.0.3':
     optional: true
@@ -10018,20 +10031,20 @@ snapshots:
       '@types/rdfjs__namespace': 2.0.10
       '@zazuko/prefixes': 2.6.1
 
-  '@traqula/algebra-sparql-1-1@1.2.1':
+  '@traqula/algebra-sparql-1-1@1.2.2':
     dependencies:
-      '@traqula/algebra-transformations-1-1': 1.2.1
+      '@traqula/algebra-transformations-1-1': 1.2.2
       '@traqula/core': 1.2.0
       '@traqula/rules-sparql-1-1': 1.2.1
 
-  '@traqula/algebra-sparql-1-2@1.2.1':
+  '@traqula/algebra-sparql-1-2@1.2.2':
     dependencies:
-      '@traqula/algebra-sparql-1-1': 1.2.1
-      '@traqula/algebra-transformations-1-1': 1.2.1
-      '@traqula/algebra-transformations-1-2': 1.2.1
+      '@traqula/algebra-sparql-1-1': 1.2.2
+      '@traqula/algebra-transformations-1-1': 1.2.2
+      '@traqula/algebra-transformations-1-2': 1.2.2
       '@traqula/core': 1.2.0
 
-  '@traqula/algebra-transformations-1-1@1.2.1':
+  '@traqula/algebra-transformations-1-1@1.2.2':
     dependencies:
       '@traqula/core': 1.2.0
       '@traqula/rules-sparql-1-1': 1.2.1
@@ -10040,9 +10053,9 @@ snapshots:
       rdf-isomorphic: 2.0.1
       rdf-string: 2.0.1
 
-  '@traqula/algebra-transformations-1-2@1.2.1':
+  '@traqula/algebra-transformations-1-2@1.2.2':
     dependencies:
-      '@traqula/algebra-transformations-1-1': 1.2.1
+      '@traqula/algebra-transformations-1-1': 1.2.2
       '@traqula/rules-sparql-1-2': 1.2.1
       rdf-string: 2.0.1
 
@@ -10107,7 +10120,7 @@ snapshots:
 
   '@types/concat-stream@1.6.1':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@types/deep-eql@4.0.2': {}
 
@@ -10121,13 +10134,13 @@ snapshots:
 
   '@types/form-data@0.0.33':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@types/http-cache-semantics@4.2.0': {}
 
   '@types/http-link-header@1.0.7':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@types/imurmurhash@0.1.4': {}
 
@@ -10138,7 +10151,7 @@ snapshots:
   '@types/n3@1.26.3':
     dependencies:
       '@rdfjs/types': 2.0.1
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@types/node@10.17.60': {}
 
@@ -10146,7 +10159,15 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  '@types/node@24.13.3':
+    dependencies:
+      undici-types: 7.18.2
+
   '@types/node@26.4.0':
+    dependencies:
+      undici-types: 8.3.0
+
+  '@types/node@26.4.1':
     dependencies:
       undici-types: 8.3.0
 
@@ -10162,12 +10183,12 @@ snapshots:
 
   '@types/readable-stream@2.3.15':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
       safe-buffer: 5.1.2
 
   '@types/readable-stream@4.0.24':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
 
   '@types/semver@7.8.0': {}
 
@@ -10962,7 +10983,7 @@ snapshots:
       '@types/minimist': 1.2.5
       '@types/node': 18.19.130
       '@types/semver': 7.8.0
-      jsonld-context-parser: 3.1.0
+      jsonld-context-parser: 3.1.1
       minimist: 1.2.8
       rdf-data-factory: 2.0.2
       rdf-object: 3.0.0
@@ -11437,14 +11458,14 @@ snapshots:
       node-domexception: 1.0.0
       web-streams-polyfill: 3.3.3
 
-  fetch-sparql-endpoint@7.1.1:
+  fetch-sparql-endpoint@7.2.0:
     dependencies:
       '@traqula/parser-sparql-1-2': 1.2.1
       '@traqula/rules-sparql-1-2': 1.2.1
       '@types/n3': 1.26.3
       '@types/readable-stream': 4.0.24
       is-stream: 2.0.1
-      n3: 2.6.4
+      n3: 2.7.11
       rdf-string: 2.0.1
       readable-from-web: 1.0.0
       sparqljson-parse: 3.3.0
@@ -11906,6 +11927,13 @@ snapshots:
       http-link-header: 1.1.4
       relative-to-absolute-iri: 1.0.8
 
+  jsonld-context-parser@3.1.1:
+    dependencies:
+      '@types/http-link-header': 1.0.7
+      '@types/node': 24.13.3
+      http-link-header: 1.1.4
+      relative-to-absolute-iri: 1.0.8
+
   jsonld-streaming-parser@4.0.1:
     dependencies:
       '@bergos/jsonparse': 1.4.2
@@ -11915,7 +11943,7 @@ snapshots:
       buffer: 6.0.3
       canonicalize: 1.0.8
       http-link-header: 1.1.4
-      jsonld-context-parser: 3.1.0
+      jsonld-context-parser: 3.1.1
       rdf-data-factory: 1.1.3
       readable-stream: 4.7.0
 
@@ -11927,7 +11955,7 @@ snapshots:
       buffer: 6.0.3
       canonicalize: 1.0.8
       http-link-header: 1.1.4
-      jsonld-context-parser: 3.1.0
+      jsonld-context-parser: 3.1.1
       rdf-data-factory: 2.0.2
       readable-stream: 4.7.0
 
@@ -11936,7 +11964,7 @@ snapshots:
       '@rdfjs/types': 2.0.1
       '@types/readable-stream': 4.0.24
       buffer: 6.0.3
-      jsonld-context-parser: 3.1.0
+      jsonld-context-parser: 3.1.1
       readable-stream: 4.7.0
 
   jsonld@9.0.0:
@@ -12238,7 +12266,7 @@ snapshots:
       buffer: 6.0.3
       readable-stream: 4.7.0
 
-  n3@2.6.4:
+  n3@2.7.11:
     dependencies:
       buffer: 6.0.3
       readable-stream: 4.7.0
@@ -12526,7 +12554,7 @@ snapshots:
     dependencies:
       p-limit: 3.1.0
 
-  p-retry@8.0.0:
+  p-retry@8.0.1:
     dependencies:
       is-network-error: 1.3.2
 
@@ -12655,7 +12683,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.2
-      '@types/node': 26.4.0
+      '@types/node': 26.4.1
       long: 5.3.2
 
   proxy-addr@2.0.7:
@@ -12791,7 +12819,7 @@ snapshots:
 
   rdf-object@3.0.0:
     dependencies:
-      jsonld-context-parser: 3.1.0
+      jsonld-context-parser: 3.1.1
       rdf-data-factory: 2.0.2
       rdf-string: 2.0.1
       streamify-array: 1.0.1
@@ -13132,12 +13160,12 @@ snapshots:
   shaclc-parse@2.0.0:
     dependencies:
       '@rdfjs/types': 2.0.1
-      n3: 2.6.4
+      n3: 2.7.11
 
   shaclc-write@1.6.3:
     dependencies:
       '@jeswr/prefixcc': 1.2.1
-      n3: 2.6.4
+      n3: 2.7.11
       rdf-string-ttl: 2.0.1
     transitivePeerDependencies:
       - encoding
@@ -13529,11 +13557,13 @@ snapshots:
 
   undici-types@5.26.5: {}
 
+  undici-types@7.18.2: {}
+
   undici-types@8.3.0: {}
 
-  undici@6.28.0: {}
+  undici@6.28.1: {}
 
-  undici@8.10.0: {}
+  undici@8.10.2: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
