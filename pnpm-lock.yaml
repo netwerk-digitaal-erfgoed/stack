@@ -96,17 +96,17 @@ importers:
         specifier: ^0.9.3
         version: 0.9.3
       '@lde/pipeline':
-        specifier: ^0.36.4
-        version: 0.36.4
+        specifier: ^0.36.6
+        version: 0.36.6
       '@lde/pipeline-console-reporter':
-        specifier: ^0.27.4
-        version: 0.27.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)
+        specifier: ^0.27.6
+        version: 0.27.6(@lde/dataset@0.7.9)(@lde/pipeline@0.36.6)
       '@lde/pipeline-shacl-validator':
-        specifier: ^0.19.4
-        version: 0.19.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)
+        specifier: ^0.19.6
+        version: 0.19.6(@lde/dataset@0.7.9)(@lde/pipeline@0.36.6)
       '@lde/sparql-qlever':
-        specifier: ^0.16.0
-        version: 0.16.0
+        specifier: ^0.16.1
+        version: 0.16.1
       tslib:
         specifier: ^2.3.0
         version: 2.8.1
@@ -669,6 +669,10 @@ packages:
 
   '@colors/colors@1.6.0':
     resolution: {integrity: sha512-Ir+AOibqzrIsL6ajt3Rz3LskB7OiMVHqltZmspbW/TJuTVuyOMirVqAkjfY6JISiLHgyNqicAC8AyHHGzNd/dA==}
+    engines: {node: '>=0.1.90'}
+
+  '@colors/colors@1.6.1':
+    resolution: {integrity: sha512-dTmUJzXSuayBK+hZydEaXd2mhx61qWQwkwaBBY6LyEOVx/L9aQU5ac8eFNEsd9nrD1+zb9zvDCphLSe8g1F4Qw==}
     engines: {node: '>=0.1.90'}
 
   '@commitlint/cli@21.2.2':
@@ -1600,8 +1604,8 @@ packages:
     resolution: {integrity: sha512-y20e+e6dFYkOUUJLVUZTsJRuTiXZaUQ32WD+R/ux/HBybbTx4ge7cNINcua0pU8+SNkKuRbOF12mBmzuzM8n5w==}
     engines: {node: '>= 14.17.0'}
 
-  '@dabh/diagnostics@2.0.8':
-    resolution: {integrity: sha512-R4MSXTVnuMzGD7bzHdW2ZhhdPC/igELENcq5IjEverBvq5hn1SXCWcsi6eSsdWP0/Ur+SItRRjAktmdoX/8R/Q==}
+  '@dabh/diagnostics@2.0.9':
+    resolution: {integrity: sha512-R6siwR65Hm+3yfgP7o8DKhNvputQAwfoz9zTc3kyDudnomj2/BcLmD+uGQQPICjuFUp8ounPBU+jmKsocwVVAg==}
 
   '@digitalbazaar/http-client@4.4.0':
     resolution: {integrity: sha512-ODhCGmElUPmR3IR+KZmBNkRAFyjJ01rxvk2E+/qQ2h2EGPJH5k6bz3N24ympGc5+i4YCGk/ipIpmkwc0+iSmRg==}
@@ -1742,11 +1746,11 @@ packages:
   '@lde/dataset@0.7.9':
     resolution: {integrity: sha512-AJskGqjSavG8tIcZmk1WNarWGhq+vywBunyVvqcn+dVyr53mIBwrPMoLLhpWXVETj1XATiUGTNn94lHO3fsjlA==}
 
-  '@lde/distribution-downloader@0.6.8':
-    resolution: {integrity: sha512-mEuFTPcWXRPSuaY1GsOZobOwMUzR3pWQANnEUJunnhwa9HQ7jQpyPtoZhPx5j3Z7XsS+i47QkZ5mw8pob4BoNg==}
+  '@lde/distribution-downloader@0.6.9':
+    resolution: {integrity: sha512-kbJobxLjgO66KZibG9G75h0wo0hyYE4a2RdQ2hIVGMmJmIyMnJ5fMFLmZ/w80gwwx+2jYxPUyPX5E/9UU8+jag==}
 
-  '@lde/distribution-health@0.2.12':
-    resolution: {integrity: sha512-Nm/W1Z+TUct7UpVAtikcBmPl9pAa1B4b2cAEqlGBPAw5xAO9HSEJsX0YfHoW7pcdl9PWsIc35ue4rAFUjTfKmQ==}
+  '@lde/distribution-health@0.2.13':
+    resolution: {integrity: sha512-Ya3PjOVQEEDUjfi3RBtzq8rRZwr3jmuQC1fOOFjqFVshBvwYc5u70Pd7Pu9/BF1TxUeJHTbComXxmF6APfNVmw==}
 
   '@lde/distribution-probe@0.2.9':
     resolution: {integrity: sha512-AyOeL2+XdD6RaGjYmL7wNJPAxIPq1knCejpnyw8S0V80iox4jpQOjwdmtziwvP+r/GVtbAfHI6VUA8RvF6v+nA==}
@@ -1755,26 +1759,26 @@ packages:
     resolution: {integrity: sha512-+bGT3qPu2oVByVVpyxAW44AKPEIsgfM4ZuNbRG4yYt/md3A8PcJxDwQIpqKZuNeCw2PRltXdsvbmgv3aggR0Sg==}
     engines: {node: '>=24'}
 
-  '@lde/pipeline-console-reporter@0.27.4':
-    resolution: {integrity: sha512-/xNYV1ayIxEuCVkhezcwXqT7HyaCdOFT8AtuTdwP1AftC1hkm8atQrFotshpYTgOPTCrjtiq4R/qoTss3wJF6Q==}
+  '@lde/pipeline-console-reporter@0.27.6':
+    resolution: {integrity: sha512-ZYjTGyhy+HM0lUj5tSqeT6LYSJ32tPb3OaPDpIIBkcDZhg06aKTu8aakAtwvJC4UhatHM5dl05ybKbdhd6ZGCA==}
     peerDependencies:
       '@lde/dataset': ^0.7.9
-      '@lde/pipeline': ^0.36.4
+      '@lde/pipeline': ^0.36.6
 
-  '@lde/pipeline-shacl-validator@0.19.4':
-    resolution: {integrity: sha512-pmlKE5LFquFDWPIryTe9rO+ljlKz91l8Vlrd9L4LxcmTJsGmfB9PFn0zhiCL1ancFkFiAFJUBIRcLzpM9LHDBw==}
+  '@lde/pipeline-shacl-validator@0.19.6':
+    resolution: {integrity: sha512-htW+WZpPzdYBd3kNyw3bo4FiDmOtqiKwq7vixVT7lrnEXb99Al0Kbkla2CT6ngxnZyq/UKCvKcqgMaP8xSySUA==}
     peerDependencies:
       '@lde/dataset': ^0.7.9
-      '@lde/pipeline': ^0.36.4
+      '@lde/pipeline': ^0.36.6
 
-  '@lde/pipeline@0.36.4':
-    resolution: {integrity: sha512-DAC+HoROXTfRfPASeBugH837h47Uf8caWPNym6vao4bKJOtP2TILSh6Az/8AM4EoGHX2EoTqb3A4vrgwrXVisQ==}
+  '@lde/pipeline@0.36.6':
+    resolution: {integrity: sha512-w02mTLKISwkOIsFvmdxgErlAVB7iPfRP4/tRplOGsv4M7Xs30z2p5RbnvmlXecqi1vMs3Pa1R14xR9XVYtUZzg==}
 
-  '@lde/sparql-importer@0.6.10':
-    resolution: {integrity: sha512-5mEUgWVKSSr1C5yIgZ7f6xDs9aQ3WDOSgHO1cpX1T8mutur7zhO6z3DGp46zEfS/BMG2RH/PH8/0r5T/mtXPQw==}
+  '@lde/sparql-importer@0.6.11':
+    resolution: {integrity: sha512-zPbzXChDi/gbqfM8JnT1nY0VCTreKm+06rdkAtNBvFSn2923QE37MXG87vKv/rA/IfBCwt9a34O4TES4YBkqJw==}
 
-  '@lde/sparql-qlever@0.16.0':
-    resolution: {integrity: sha512-XExNMdXT+895SP6WExzLXryO7rc1xrj607yhtxi98ooCoWh+Hj0jhQB4uQ1pTnIg9ET2NIoHefb6jgQ/u5Absg==}
+  '@lde/sparql-qlever@0.16.1':
+    resolution: {integrity: sha512-ytqlufPfIO4L7Poqsvqnn00jMzbWqfECGCZndpC1z8ISjQBbbSgdE6kTu/EutBIzxAVGEGFetqJxUQG0AF5zsg==}
 
   '@lde/sparql-server@0.4.14':
     resolution: {integrity: sha512-DfEHDlEh6FpcaJoq4K8KuqFcqezCrWzzfCuDLuOu7+Z4DHgGNnoTmur7e6RMGAnUdaDjvi+INcww+nCLvA+4eQ==}
@@ -2380,17 +2384,17 @@ packages:
   '@tpluscode/rdf-ns-builders@5.0.0':
     resolution: {integrity: sha512-rtMFbArdief+s0z2A3TOb/gNe5O5xn9LDiEpilCf6lGYCUIfyqoOvZY80fS/eILwcF2Mj6cUQN1WBQ+1neJmaw==}
 
-  '@traqula/algebra-sparql-1-1@1.2.2':
-    resolution: {integrity: sha512-LlE7sx+N8PBPjNTGNNH0vila1KVOTM4bB8ovBjCs3etoAAjm4yjr5my1Gt+Oy6jiCKMAHsFJalyXwrHdPENytg==}
+  '@traqula/algebra-sparql-1-1@1.3.0':
+    resolution: {integrity: sha512-azsfS7rRlqUzkPruzVhRwh6UZTnoKLxdU4CQ53UqhGq6R/xcdiDC4zNKjnlyhj9lrDziAszjrpVr0kebyM6YKg==}
 
-  '@traqula/algebra-sparql-1-2@1.2.2':
-    resolution: {integrity: sha512-545YNfvCn/N1LiBBxnEHi6eMyDCD0x8+cLkm314ABzhCVDVBAxUJSyqUTAaazZ97KgmXW86LtPfxgGqIgwbiyA==}
+  '@traqula/algebra-sparql-1-2@1.3.0':
+    resolution: {integrity: sha512-uvcrLTVX21aaxmV8Y8QPAVtuzasS6rIahLUqI9n/FHg0c4ruVImzElq3Js/srgWwdfbLlM4iK6T8iBssVY9zQQ==}
 
-  '@traqula/algebra-transformations-1-1@1.2.2':
-    resolution: {integrity: sha512-ffjkcQBUnunFbUSNBW+B455ncNlZwOgzdZvVyLjfjLFunk2Obfk3tJ7eR0i8RhyhClcwVAFie/zecj/8jhVvUQ==}
+  '@traqula/algebra-transformations-1-1@1.3.0':
+    resolution: {integrity: sha512-XQ+Lck4RVIE7S+pR1/09eKPVCgBdUNALqJPx3gAfEJOPvk91sRevevXw9CJO2sLx49vMKjfScP+5vHvuy/D89g==}
 
-  '@traqula/algebra-transformations-1-2@1.2.2':
-    resolution: {integrity: sha512-4wrtI+9GSAZkPmwdKxBSIwerTmRumYELr/Dc3greRv/MRqmmmlAvjrgHN9+vz84inI78DGoX4iGUo6GIIKEIsA==}
+  '@traqula/algebra-transformations-1-2@1.3.0':
+    resolution: {integrity: sha512-L+JcA7Dk+s77ciKDlVr4jx7VF49XE1YBGDaqlV8DvIlNY52fxpbI1nsFekyPQd8xDqOyMz8o2YLbAMpEfI9c5A==}
 
   '@traqula/chevrotain@1.1.0':
     resolution: {integrity: sha512-VpcoQKb2ZnsOQPlPO2mE9hfR0Aidp7drwTCtaXfpdRHGkXeQ5Nv4rnxmxwUoEDRzu6b/3z4n8oTd+sYhe4fAaA==}
@@ -2400,24 +2404,40 @@ packages:
     resolution: {integrity: sha512-4NEYjNKD31u1DMbccRNXBnpEQsoeVrTTrJfxbDU11/5zHQdcyrXYlJ7Dq2t3hlZgStMbVJrZbZJsr6p+lZBeZA==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
+  '@traqula/core@1.3.0':
+    resolution: {integrity: sha512-xVp6sblElVsZeeXIQQ8KNRiUFqobNT/IfgWNymlUlICi69aLJWydSWsKcH+TnS5Sz7LW2BoFpoQiIcErXaXPfQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
   '@traqula/generator-sparql-1-1@1.2.1':
     resolution: {integrity: sha512-pgmQ1gDUAtqsZlN3rhg9lQpDzOoq1QmKwn+Iy6szxK1eVfHx0MkLkOVQTPYDfo8jeYq2+uFTE0gCooBDSJznJA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  '@traqula/generator-sparql-1-1@1.3.0':
+    resolution: {integrity: sha512-SgwWbZxVzEeDI2ZzoYCX1sXRfsfoz+Qw1ydo3dXFkDSTuiS1UXsv8+m1hYeBs9L0holuXH5m8k8KBVpGSF8Hng==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@traqula/parser-sparql-1-1@1.2.1':
     resolution: {integrity: sha512-z6t9pzGpScFqBnJcGAbCdh24EnxDpZjirobpJ1Y73Q17T1/qtb6L8T9DaEysX2e7i3O6qnbbiaOdLDKKte4PuA==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@traqula/parser-sparql-1-2@1.2.1':
-    resolution: {integrity: sha512-tYt9gFY75fqd17nXQN3cS0viauaNykFXWbM0SWCQvNWrFPwvRk/eUxt7yvTM9IpujK2205FYO7uPTSZOjUTSVQ==}
+  '@traqula/parser-sparql-1-1@1.3.0':
+    resolution: {integrity: sha512-0OH8H1e3C77W6O4kzpL8NheegjjetMerZJvxSWJFTpjs4X/9IhstA1GOJzDe4YtxyQe0MhqRuzLSWyQA435l6w==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  '@traqula/parser-sparql-1-2@1.3.0':
+    resolution: {integrity: sha512-DuWxkjA2yaotgruYxAYodC0DnpPhgB5oaRdLvae/wX1Q6dlJakesVi1veDC+IzLaGMa6jYwfqFN9VydWjHLxqg==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@traqula/rules-sparql-1-1@1.2.1':
     resolution: {integrity: sha512-rSf/Lck9taQgz5r/6Hds4uBDiL8UVbF05aT8Tv7no9NvqAbGfRA01nyzYTVU+p+JLMnbjfZWaS1ZPOSBnh00zg==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@traqula/rules-sparql-1-2@1.2.1':
-    resolution: {integrity: sha512-4RlakXIDca0shH1rRJyZyjHooTSJVK6kWgoX1hKj8x0NHTQaIBV0JDTnHlQh5u9TsF9uMcuKwqUoutIqkBxEIA==}
+  '@traqula/rules-sparql-1-1@1.3.0':
+    resolution: {integrity: sha512-gH33RiH7enfowRVGG95IalM+icTQxVZ/bD0WeTK/235PpjzSiUK0jTd/N3CpNc1BJOUZf6I/VHrqnMPjNf51Mg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  '@traqula/rules-sparql-1-2@1.3.0':
+    resolution: {integrity: sha512-99msP9fLH7Q3pxE4qsELFFQK14batpdC4IRyqWB6FMqcqZ80fl2eFcfg5e5mPzJ9dj7K5+kMpt9lKYvFmIXwxw==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@ts-jison/common@0.4.1-alpha.3':
@@ -2474,17 +2494,23 @@ packages:
   '@types/n3@1.26.3':
     resolution: {integrity: sha512-uKEIHcOArBNmzCKDSrSgkEAC/v1h0yZWwldHI5kRnn0mMhvVHAgEpQMovowy03hV6iPpWPnq7BU6S+zg/ssXSw==}
 
+  '@types/n3@1.26.4':
+    resolution: {integrity: sha512-PFEJWfs9mL7yLgjHpmVI/BfpZZPrsaDkUN8YiQXJoz8MkBsCYXys0DSo0r20y3+zqQupbUqxAYb8fFe8kbCbTQ==}
+
   '@types/node@10.17.60':
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
 
   '@types/node@18.19.130':
     resolution: {integrity: sha512-GRaXQx6jGfL8sKfaIDD6OupbIHBr9jv7Jnaml9tB7l4v068PAOXqfcujMMo5PhbIs6ggR1XODELqahT2R8v0fg==}
 
-  '@types/node@24.13.3':
-    resolution: {integrity: sha512-Dh8vAsV36ig5wa9OX4pXvMc9D3Veibfw2wix0CUwYODLD8nkj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==}
+  '@types/node@24.13.4':
+    resolution: {integrity: sha512-YJ7EqCstVTzIr0fMr7qul/977en+pQHrfmuKIo6Zr9i75Be21dr3MovcfvGtyvi2HAUrRerWps5sMO9I7WaxDw==}
 
   '@types/node@26.4.1':
     resolution: {integrity: sha512-k97ENvZWtvA6yqz5/FS6a7duDgOPEeOQOc2iKS/nY6mX6qJUKtLnWzQS+Xj6tXweyj6ZcTAK2Qecetnvi9nCLA==}
+
+  '@types/node@26.5.1':
+    resolution: {integrity: sha512-CzNm2FezW4VR/LjG6yUdiEgLE/rAQ9Slj5gCu/C2VrdcW7I0ahNZ8DRbHT7zOZ6r3ONgd/bsQIeSaoDGrd1C6g==}
 
   '@types/node@8.10.66':
     resolution: {integrity: sha512-tktOkFUA4kXx2hhhrB8bIFb5TbwzS4uOhKEmwiD+NoiL0qtP2OQ9mFldbgD4dV1djrlBYP6eBuQZiWjuHUpqFw==}
@@ -2850,8 +2876,8 @@ packages:
   asynciterator@3.10.0:
     resolution: {integrity: sha512-eDOBoUf2m+4ht0ETVn2SCfuBIZZ6UWyyQbP++LRPKoK7PmrCQq37pJ6vRvyef4o1Pn+CwWnzMlkXxGdh/krVIw==}
 
-  asyncjoin@1.2.4:
-    resolution: {integrity: sha512-7/1g5uV2/iTDQteJ/pxqZq6qkO5406V+vNyOCYtHJ+mo6bmvvQHHrZgd7AtU/rx+cnz08NPWlwk8daW61thnlA==}
+  asyncjoin@1.2.5:
+    resolution: {integrity: sha512-zOiIPVKNo1S1YvpCUkGTn4VehJEiinG2WUNsr85fhrna/UlqJrbdfZ9RQfvCkehUU2zDXj+QX3PWSd9oq3+Plg==}
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -3076,6 +3102,10 @@ packages:
   chalk@5.6.2:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  chalk@6.0.0:
+    resolution: {integrity: sha512-2uNTXIuTTxk7ciZgAU1BQcgnchcG0xXnrs6jzkQfj9SsRa9M2s5zE8WT96hS6KmG4MzWHSrvH43DF1m4XRkrFg==}
+    engines: {node: '>=22'}
 
   chownr@1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
@@ -4400,8 +4430,8 @@ packages:
     resolution: {integrity: sha512-SQknS0ua90rN+3RHuk8BeIqeYyqIH/+ecViZxX08jR4j6MugqWRjtONl3uANG/crWXnOM2WIqBJtjIhVYFha+w==}
     engines: {node: '>=12.0'}
 
-  n3@2.7.11:
-    resolution: {integrity: sha512-XnRb9UJn66nYc9sktzRfkfb4t+hWX2Yj/i2GUMPf9bf5GMpkrNR3zEqwP0RgXVCf0I0JeEvWsQaKN9ztyuJy4g==}
+  n3@2.7.12:
+    resolution: {integrity: sha512-Hy6dfGg9yniLQpSBirvH2E2yO3EG7dSmA3aefRbtO411oqtzG8roD3h1kTc/N065bivCOPfTFIjf0KlwW7KlnQ==}
     engines: {node: '>=12.0'}
 
   nan@2.28.0:
@@ -5311,6 +5341,9 @@ packages:
 
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
+
+  undici-types@8.9.0:
+    resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
   undici@6.28.1:
     resolution: {integrity: sha512-zWpdTVD54H48CIybL0rWQ3ukpb9d23wM7eH5RtfdmeP70cWHNjtfo7P4vZX+5CoDcO53J4Pu5uXp7lNfjc6DRA==}
@@ -6326,6 +6359,8 @@ snapshots:
       buffer: 6.0.3
 
   '@colors/colors@1.6.0': {}
+
+  '@colors/colors@1.6.1': {}
 
   '@commitlint/cli@21.2.2(@types/node@26.4.1)(conventional-commits-parser@7.1.2)(typescript@6.0.3)':
     dependencies:
@@ -8004,9 +8039,9 @@ snapshots:
       '@comunica/context-entries': 5.3.0
       '@comunica/core': 5.3.0
       '@comunica/types': 5.3.0
-      '@traqula/algebra-sparql-1-2': 1.2.2
-      '@traqula/parser-sparql-1-2': 1.2.1
-      '@traqula/rules-sparql-1-2': 1.2.1
+      '@traqula/algebra-sparql-1-2': 1.3.0
+      '@traqula/parser-sparql-1-2': 1.3.0
+      '@traqula/rules-sparql-1-2': 1.3.0
     transitivePeerDependencies:
       - encoding
 
@@ -8066,7 +8101,7 @@ snapshots:
       '@comunica/utils-bindings-index': 5.3.0
       '@comunica/utils-iterator': 5.0.0
       asynciterator: 3.10.0
-      asyncjoin: 1.2.4
+      asyncjoin: 1.2.5
       rdf-string: 2.0.1
     transitivePeerDependencies:
       - encoding
@@ -8150,7 +8185,7 @@ snapshots:
       '@comunica/bus-rdf-join': 5.3.0
       '@comunica/core': 5.3.0
       '@comunica/mediatortype-join-coefficients': 5.3.0
-      asyncjoin: 1.2.4
+      asyncjoin: 1.2.5
     transitivePeerDependencies:
       - encoding
 
@@ -8183,7 +8218,7 @@ snapshots:
       '@comunica/bus-rdf-join': 5.3.0
       '@comunica/core': 5.3.0
       '@comunica/mediatortype-join-coefficients': 5.3.0
-      asyncjoin: 1.2.4
+      asyncjoin: 1.2.5
     transitivePeerDependencies:
       - encoding
 
@@ -8236,7 +8271,7 @@ snapshots:
       '@comunica/bus-rdf-join': 5.3.0
       '@comunica/core': 5.3.0
       '@comunica/mediatortype-join-coefficients': 5.3.0
-      asyncjoin: 1.2.4
+      asyncjoin: 1.2.5
     transitivePeerDependencies:
       - encoding
 
@@ -8391,7 +8426,7 @@ snapshots:
       '@comunica/bus-rdf-parse': 5.3.0
       '@comunica/context-entries': 5.3.0
       '@comunica/types': 5.3.0
-      n3: 2.7.11
+      n3: 2.7.12
     transitivePeerDependencies:
       - encoding
 
@@ -8459,7 +8494,7 @@ snapshots:
     dependencies:
       '@comunica/bus-rdf-serialize': 5.3.0
       '@comunica/context-entries': 5.3.0
-      n3: 2.7.11
+      n3: 2.7.12
     transitivePeerDependencies:
       - encoding
 
@@ -9070,8 +9105,8 @@ snapshots:
   '@comunica/utils-algebra@5.3.0':
     dependencies:
       '@rdfjs/types': 2.0.1
-      '@traqula/algebra-transformations-1-2': 1.2.2
-      '@traqula/core': 1.2.0
+      '@traqula/algebra-transformations-1-2': 1.3.0
+      '@traqula/core': 1.3.0
       rdf-terms: 2.0.0
 
   '@comunica/utils-bindings-factory@5.3.0':
@@ -9158,7 +9193,7 @@ snapshots:
       tough-cookie: 5.1.2
       tunnel-agent: 0.6.0
 
-  '@dabh/diagnostics@2.0.8':
+  '@dabh/diagnostics@2.0.9':
     dependencies:
       '@so-ric/colorspace': 1.1.6
       enabled: 2.0.0
@@ -9319,16 +9354,16 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@lde/distribution-downloader@0.6.8':
+  '@lde/distribution-downloader@0.6.9':
     dependencies:
       '@lde/dataset': 0.7.9
       filenamify-url: 4.0.0
       tslib: 2.8.1
 
-  '@lde/distribution-health@0.2.12':
+  '@lde/distribution-health@0.2.13':
     dependencies:
       '@lde/distribution-probe': 0.2.9
-      '@lde/sparql-importer': 0.6.10
+      '@lde/sparql-importer': 0.6.11
       tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
@@ -9346,20 +9381,20 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@lde/pipeline-console-reporter@0.27.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)':
+  '@lde/pipeline-console-reporter@0.27.6(@lde/dataset@0.7.9)(@lde/pipeline@0.36.6)':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/pipeline': 0.36.4
-      chalk: 5.6.2
+      '@lde/pipeline': 0.36.6
+      chalk: 6.0.0
       log-symbols: 7.0.1
       ora: 9.4.1
       pretty-ms: 9.3.1
       tslib: 2.8.1
 
-  '@lde/pipeline-shacl-validator@0.19.4(@lde/dataset@0.7.9)(@lde/pipeline@0.36.4)':
+  '@lde/pipeline-shacl-validator@0.19.6(@lde/dataset@0.7.9)(@lde/pipeline@0.36.6)':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/pipeline': 0.36.4
+      '@lde/pipeline': 0.36.6
       '@rdfjs/types': 2.0.1
       rdf-dereference: 5.0.0
       rdf-ext: 2.6.0
@@ -9368,42 +9403,42 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@lde/pipeline@0.36.4':
+  '@lde/pipeline@0.36.6':
     dependencies:
       '@lde/dataset': 0.7.9
       '@lde/dataset-registry-client': 0.9.3
-      '@lde/distribution-health': 0.2.12
+      '@lde/distribution-health': 0.2.13
       '@lde/distribution-probe': 0.2.9
-      '@lde/sparql-importer': 0.6.10
+      '@lde/sparql-importer': 0.6.11
       '@lde/sparql-server': 0.4.14
       '@rdfjs/namespace': 2.0.1
       '@rdfjs/types': 2.0.1
       '@tpluscode/rdf-ns-builders': 5.0.0
-      '@traqula/generator-sparql-1-1': 1.2.1
-      '@traqula/parser-sparql-1-1': 1.2.1
-      '@traqula/rules-sparql-1-1': 1.2.1
+      '@traqula/generator-sparql-1-1': 1.3.0
+      '@traqula/parser-sparql-1-1': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
       fetch-sparql-endpoint: 7.2.0
       filenamify-url: 4.0.0
       is-network-error: 1.3.2
-      n3: 2.7.11
+      n3: 2.7.12
       p-retry: 8.0.1
       rdf-string: 2.0.1
       tslib: 2.8.1
     transitivePeerDependencies:
       - encoding
 
-  '@lde/sparql-importer@0.6.10':
+  '@lde/sparql-importer@0.6.11':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/distribution-downloader': 0.6.8
+      '@lde/distribution-downloader': 0.6.9
       '@lde/task-runner': 0.2.14
       tslib: 2.8.1
 
-  '@lde/sparql-qlever@0.16.0':
+  '@lde/sparql-qlever@0.16.1':
     dependencies:
       '@lde/dataset': 0.7.9
-      '@lde/distribution-downloader': 0.6.8
-      '@lde/sparql-importer': 0.6.10
+      '@lde/distribution-downloader': 0.6.9
+      '@lde/sparql-importer': 0.6.11
       '@lde/sparql-server': 0.4.14
       '@lde/task-runner': 0.2.14
       '@lde/task-runner-docker': 0.3.0
@@ -9772,7 +9807,7 @@ snapshots:
       '@rdfjs/data-model': 2.1.2
       '@rdfjs/sink': 2.0.1
       duplex-to: 2.0.0
-      n3: 2.7.11
+      n3: 2.7.12
       readable-stream: 4.7.0
 
   '@rdfjs/prefix-map@0.1.2':
@@ -9843,11 +9878,11 @@ snapshots:
 
   '@rdfjs/types@1.1.2':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
 
   '@rdfjs/types@2.0.1':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
 
   '@rolldown/binding-android-arm64@1.0.3':
     optional: true
@@ -10032,32 +10067,32 @@ snapshots:
       '@types/rdfjs__namespace': 2.0.10
       '@zazuko/prefixes': 2.6.1
 
-  '@traqula/algebra-sparql-1-1@1.2.2':
+  '@traqula/algebra-sparql-1-1@1.3.0':
     dependencies:
-      '@traqula/algebra-transformations-1-1': 1.2.2
-      '@traqula/core': 1.2.0
-      '@traqula/rules-sparql-1-1': 1.2.1
+      '@traqula/algebra-transformations-1-1': 1.3.0
+      '@traqula/core': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
 
-  '@traqula/algebra-sparql-1-2@1.2.2':
+  '@traqula/algebra-sparql-1-2@1.3.0':
     dependencies:
-      '@traqula/algebra-sparql-1-1': 1.2.2
-      '@traqula/algebra-transformations-1-1': 1.2.2
-      '@traqula/algebra-transformations-1-2': 1.2.2
-      '@traqula/core': 1.2.0
+      '@traqula/algebra-sparql-1-1': 1.3.0
+      '@traqula/algebra-transformations-1-1': 1.3.0
+      '@traqula/algebra-transformations-1-2': 1.3.0
+      '@traqula/core': 1.3.0
 
-  '@traqula/algebra-transformations-1-1@1.2.2':
+  '@traqula/algebra-transformations-1-1@1.3.0':
     dependencies:
-      '@traqula/core': 1.2.0
-      '@traqula/rules-sparql-1-1': 1.2.1
+      '@traqula/core': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
       fast-deep-equal: 3.1.3
       rdf-data-factory: 2.0.2
       rdf-isomorphic: 2.0.1
       rdf-string: 2.0.1
 
-  '@traqula/algebra-transformations-1-2@1.2.2':
+  '@traqula/algebra-transformations-1-2@1.3.0':
     dependencies:
-      '@traqula/algebra-transformations-1-1': 1.2.2
-      '@traqula/rules-sparql-1-2': 1.2.1
+      '@traqula/algebra-transformations-1-1': 1.3.0
+      '@traqula/rules-sparql-1-2': 1.3.0
       rdf-string: 2.0.1
 
   '@traqula/chevrotain@1.1.0': {}
@@ -10066,22 +10101,36 @@ snapshots:
     dependencies:
       '@traqula/chevrotain': 1.1.0
 
+  '@traqula/core@1.3.0':
+    dependencies:
+      '@traqula/chevrotain': 1.1.0
+
   '@traqula/generator-sparql-1-1@1.2.1':
     dependencies:
       '@traqula/core': 1.2.0
-      '@traqula/rules-sparql-1-1': 1.2.1
+      '@traqula/rules-sparql-1-1': 1.3.0
+
+  '@traqula/generator-sparql-1-1@1.3.0':
+    dependencies:
+      '@traqula/core': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
 
   '@traqula/parser-sparql-1-1@1.2.1':
     dependencies:
       '@traqula/core': 1.2.0
-      '@traqula/rules-sparql-1-1': 1.2.1
+      '@traqula/rules-sparql-1-1': 1.3.0
 
-  '@traqula/parser-sparql-1-2@1.2.1':
+  '@traqula/parser-sparql-1-1@1.3.0':
     dependencies:
-      '@traqula/core': 1.2.0
-      '@traqula/parser-sparql-1-1': 1.2.1
-      '@traqula/rules-sparql-1-1': 1.2.1
-      '@traqula/rules-sparql-1-2': 1.2.1
+      '@traqula/core': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
+
+  '@traqula/parser-sparql-1-2@1.3.0':
+    dependencies:
+      '@traqula/core': 1.3.0
+      '@traqula/parser-sparql-1-1': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
+      '@traqula/rules-sparql-1-2': 1.3.0
       rdf-data-factory: 2.0.2
 
   '@traqula/rules-sparql-1-1@1.2.1':
@@ -10089,10 +10138,15 @@ snapshots:
       '@traqula/chevrotain': 1.1.0
       '@traqula/core': 1.2.0
 
-  '@traqula/rules-sparql-1-2@1.2.1':
+  '@traqula/rules-sparql-1-1@1.3.0':
     dependencies:
-      '@traqula/core': 1.2.0
-      '@traqula/rules-sparql-1-1': 1.2.1
+      '@traqula/chevrotain': 1.1.0
+      '@traqula/core': 1.3.0
+
+  '@traqula/rules-sparql-1-2@1.3.0':
+    dependencies:
+      '@traqula/core': 1.3.0
+      '@traqula/rules-sparql-1-1': 1.3.0
 
   '@ts-jison/common@0.4.1-alpha.3': {}
 
@@ -10121,7 +10175,7 @@ snapshots:
 
   '@types/concat-stream@1.6.1':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
 
   '@types/deep-eql@4.0.2': {}
 
@@ -10135,13 +10189,13 @@ snapshots:
 
   '@types/form-data@0.0.33':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
 
   '@types/http-cache-semantics@4.2.0': {}
 
   '@types/http-link-header@1.0.7':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 18.19.130
 
   '@types/imurmurhash@0.1.4': {}
 
@@ -10152,7 +10206,12 @@ snapshots:
   '@types/n3@1.26.3':
     dependencies:
       '@rdfjs/types': 2.0.1
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
+
+  '@types/n3@1.26.4':
+    dependencies:
+      '@rdfjs/types': 2.0.1
+      '@types/node': 26.5.1
 
   '@types/node@10.17.60': {}
 
@@ -10160,13 +10219,17 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@24.13.3':
+  '@types/node@24.13.4':
     dependencies:
       undici-types: 7.18.2
 
   '@types/node@26.4.1':
     dependencies:
       undici-types: 8.3.0
+
+  '@types/node@26.5.1':
+    dependencies:
+      undici-types: 8.9.0
 
   '@types/node@8.10.66': {}
 
@@ -10180,12 +10243,12 @@ snapshots:
 
   '@types/readable-stream@2.3.15':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
       safe-buffer: 5.1.2
 
   '@types/readable-stream@4.0.24':
     dependencies:
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
 
   '@types/semver@7.8.0': {}
 
@@ -10670,7 +10733,7 @@ snapshots:
     dependencies:
       tiny-set-immediate: 1.0.2
 
-  asyncjoin@1.2.4:
+  asyncjoin@1.2.5:
     dependencies:
       asynciterator: 3.10.0
 
@@ -10905,6 +10968,8 @@ snapshots:
       supports-color: 7.2.0
 
   chalk@5.6.2: {}
+
+  chalk@6.0.0: {}
 
   chownr@1.1.4: {}
 
@@ -11457,12 +11522,12 @@ snapshots:
 
   fetch-sparql-endpoint@7.2.0:
     dependencies:
-      '@traqula/parser-sparql-1-2': 1.2.1
-      '@traqula/rules-sparql-1-2': 1.2.1
-      '@types/n3': 1.26.3
+      '@traqula/parser-sparql-1-2': 1.3.0
+      '@traqula/rules-sparql-1-2': 1.3.0
+      '@types/n3': 1.26.4
       '@types/readable-stream': 4.0.24
       is-stream: 2.0.1
-      n3: 2.7.11
+      n3: 2.7.12
       rdf-string: 2.0.1
       readable-from-web: 1.0.0
       sparqljson-parse: 3.3.0
@@ -11927,7 +11992,7 @@ snapshots:
   jsonld-context-parser@3.1.1:
     dependencies:
       '@types/http-link-header': 1.0.7
-      '@types/node': 24.13.3
+      '@types/node': 24.13.4
       http-link-header: 1.1.4
       relative-to-absolute-iri: 1.0.8
 
@@ -12263,7 +12328,7 @@ snapshots:
       buffer: 6.0.3
       readable-stream: 4.7.0
 
-  n3@2.7.11:
+  n3@2.7.12:
     dependencies:
       buffer: 6.0.3
       readable-stream: 4.7.0
@@ -12680,7 +12745,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.2
-      '@types/node': 26.4.1
+      '@types/node': 26.5.1
       long: 5.3.2
 
   proxy-addr@2.0.7:
@@ -13157,12 +13222,12 @@ snapshots:
   shaclc-parse@2.0.0:
     dependencies:
       '@rdfjs/types': 2.0.1
-      n3: 2.7.11
+      n3: 2.7.12
 
   shaclc-write@1.6.3:
     dependencies:
       '@jeswr/prefixcc': 1.2.1
-      n3: 2.7.11
+      n3: 2.7.12
       rdf-string-ttl: 2.0.1
     transitivePeerDependencies:
       - encoding
@@ -13560,6 +13625,8 @@ snapshots:
 
   undici-types@8.3.0: {}
 
+  undici-types@8.9.0: {}
+
   undici@6.28.1: {}
 
   undici@8.10.2: {}
@@ -13749,8 +13816,8 @@ snapshots:
 
   winston@3.19.0:
     dependencies:
-      '@colors/colors': 1.6.0
-      '@dabh/diagnostics': 2.0.8
+      '@colors/colors': 1.6.1
+      '@dabh/diagnostics': 2.0.9
       async: 3.2.6
       is-stream: 2.0.1
       logform: 2.7.0
