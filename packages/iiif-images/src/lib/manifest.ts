@@ -1,3 +1,4 @@
+import { isImageService as isKnownImageService } from '@iiif/parser/image-3';
 import { convertPresentation2 } from '@iiif/parser/presentation-2';
 
 /**
@@ -81,15 +82,15 @@ function serviceBase(id: string): string {
 }
 
 /**
- * By `type` in Presentation 3, by `profile` where an older service has no
- * specific one – the profile of an Image API service names its compliance level,
- * and Limb Gallery’s is the Stanford URL from Image API 1.1, which the Presentation
- * 2 upgrade does not recognise as an image service.
+ * The parser’s test, plus the two forms it misses: a `type` with no `profile`, and
+ * a profile merely naming a compliance level. Limb Gallery’s is the `https` form
+ * of the Stanford URL from Image API 1.1, which the parser’s list does not include.
  */
 function isImageService(service: unknown): boolean {
   const type = fieldOf(service, 'type') ?? fieldOf(service, '@type');
   const profile = fieldOf(service, 'profile');
   return (
+    isKnownImageService(service as never) ||
     (typeof type === 'string' && type.startsWith('ImageService')) ||
     (typeof profile === 'string' && /level[012]/.test(profile))
   );

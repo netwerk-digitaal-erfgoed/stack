@@ -22,6 +22,7 @@ import {
 } from '../schema.js';
 import { imageFactFrom, type ImageFact } from './image-service.js';
 import { listsCanvases, selectImageService } from './manifest.js';
+import { isPublicWebUrl } from './public-url.js';
 
 export interface IiifImagesOptions {
   /**
@@ -106,6 +107,7 @@ export function iiifImages(
           return selectImageService(document);
         },
         signal,
+        report,
       ),
     store: sqliteFactStore<string>({
       path: options.storePath,
@@ -130,12 +132,13 @@ export function iiifImages(
           return fact;
         },
         signal,
+        report,
       ),
     store: sqliteFactStore<ImageFact>({
       path: options.storePath,
       table: 'images',
     }),
-    limits,
+    limits: { ...limits, ttlMs: IMAGE_TTL_MS },
     report,
   });
 
@@ -190,6 +193,12 @@ const INTEGER = factory.namedNode('http://www.w3.org/2001/XMLSchema#integer');
 const IIIF_PRESENTATION_CONTEXT = 'iiif.io/api/presentation';
 /** A manifest’s selection can change, so it is reconsidered after 30 days. */
 const MANIFEST_TTL_MS = 30 * 24 * 3_600_000;
+/**
+ * An image’s dimensions do not change, but what its server offers does: an upgrade
+ * can change the size URLs, type and profile stored with them. So these facts are
+ * reconsidered too, only rarely.
+ */
+const IMAGE_TTL_MS = 180 * 24 * 3_600_000;
 /** Answers meaning this document is not ours to have, now or on a retry. */
 const ABSENT_STATUSES = new Set([401, 403, 404, 410]);
 
@@ -334,9 +343,19 @@ async function fetchFacts<Fact>(
   urlOf: (key: string) => string,
   derive: (document: unknown, key: string) => Fact | undefined,
   signal: AbortSignal,
+  report: (failure: ResolutionFailure) => void,
 ): Promise<Array<readonly [string, Fact]>> {
   const facts: Array<readonly [string, Fact]> = [];
   for (const key of keys) {
+    // Publisher data decides these URLs, and this runs inside the cluster.
+    if (!isPublicWebUrl(urlOf(key))) {
+      report({
+        key,
+        reason: 'refused to fetch a URL that is not a public web address',
+        degradedToStore: false,
+      });
+      continue;
+    }
     // Only `*/*`: LDmaX answers 404 to any JSON media type in `Accept`, IIIF’s own
     // included, even with `*/*` as a fallback beside it.
     const response = await fetch(urlOf(key), {
