@@ -6,3 +6,8 @@ allowBuilds:
   nx: true
   protobufjs: false
   ssh2: false
+minimumReleaseAgeExclude:
+  - '@lde/host-limiter@0.2.1'
+  - '@lde/resolver@0.2.1'
+  - '@lde/search@0.34.0'
+  - '@lde/text-normalization@0.3.0'
