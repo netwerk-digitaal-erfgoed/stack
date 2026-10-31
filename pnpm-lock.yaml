@@ -90,6 +90,31 @@ importers:
         specifier: ~4.1.0
         version: 4.1.8(@types/node@26.6.6)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.0))
 
+  packages/iiif-images:
+    dependencies:
+      '@iiif/parser':
+        specifier: ^4.0.5
+        version: 4.0.6
+      '@lde/resolver':
+        specifier: ^0.2.0
+        version: 0.2.1
+      '@rdfjs/types':
+        specifier: ^2.0.1
+        version: 2.0.1
+      rdf-data-factory:
+        specifier: ^2.1.0
+        version: 2.1.0
+      tslib:
+        specifier: ^2.3.0
+        version: 2.9.1
+    devDependencies:
+      '@lde/pipeline':
+        specifier: ^0.36.7
+        version: 0.36.9
+      '@lde/search':
+        specifier: ^0.34.0
+        version: 0.34.0(vitest@4.1.8)
+
   packages/linked-art-to-schema-ap:
     dependencies:
       '@lde/dataset-registry-client':
@@ -1711,6 +1736,11 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
+  '@iiif/parser@4.0.6':
+    resolution: {integrity: sha512-kTagopHUCupiMYZK3+KJLwfPT6zd2MuyjikV51Wq6ZWQnAXqWL19sujDZ9E/F9RBRUVxLosE6SkKTQ3T90Nj1Q==}
+    engines: {node: '>=22'}
+    hasBin: true
+
   '@jest/diff-sequences@30.0.1':
     resolution: {integrity: sha512-n5H8QLDJ47QqbCNn5SuFjCRDrOLEZ0h8vAHCK5RL9Ls7Xa8AQLa/YxAc9UjFqoEDM48muwtBGjtMY5cr0PLDCw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
@@ -1746,17 +1776,36 @@ packages:
   '@lde/dataset-registry-client@0.11.0':
     resolution: {integrity: sha512-YjTD2+eRVlyLQZyVz0thaaFWUVoeXN0bAWjMXPnIdFnka+i+qXr4d5KSetsqEVx4xgYJ9+0nMYOFeHnfgGu0sg==}
 
+  '@lde/dataset-registry-client@0.9.5':
+    resolution: {integrity: sha512-iY9lFo0xVQM6tSnqsdJJNLH6tnq/3ueJVCyjzB8+3ciwjKRU5nGEbb7dh6ZJA6/pjg2pIXv0KtpADjiiP3nhLQ==}
+
+  '@lde/dataset@0.7.10':
+    resolution: {integrity: sha512-SwSyQ4OOo2oEBAVD4UUnb5CznwnukOjIMre1nuJLBd1bdTKPuThOTRSTaJpkdLLdM7a2K2qZcNqQbVOtR8TpLw==}
+
   '@lde/dataset@0.9.0':
     resolution: {integrity: sha512-vHyuM13O69hfe18ZWAwEof4pec93ozOo6ZZnCrKZTUNfNVSOsfQ/LLo17g14TRnrIq3lcY3ifCwKvGDyjF04dg==}
+
+  '@lde/distribution-downloader@0.6.10':
+    resolution: {integrity: sha512-cappifTHImccXvG06d9PKMplxsoNc4hmWowSkZab5Z7VdhFf+TYSF4RRFq3QuibhgoP76Lr2SkmjigN8NGph0g==}
 
   '@lde/distribution-downloader@0.8.0':
     resolution: {integrity: sha512-3KEHXWU+xhO1r7x0EdkQQOrtUgoUZU9aONi4ReUl02gtO/m4iRTyyf7mB+xn7UBR08CQkyB4bu4jQR0KDI27+A==}
 
+  '@lde/distribution-health@0.2.15':
+    resolution: {integrity: sha512-2uUoqg+Me+5s/veYdNSMdLl4sb0VGQPGPDkauW+uogeqOGijguZLjnYxME5rFdKUNSKNJGL1g3Vn5BB/F/RGDg==}
+
   '@lde/distribution-health@0.5.1':
     resolution: {integrity: sha512-kOegwFCiRVjML80KemXCKIIwMZ1qaM2lCVKfBBEx5ZNPUfYHZutRoaXF2yEqQ++pfutvuW6pKmqmOp7K3jINqg==}
 
+  '@lde/distribution-probe@0.2.10':
+    resolution: {integrity: sha512-ZmFikFmUFbp8hku1i81eylXTi4rIvUdo7CF/8CYi87x6ZKKCTlMyXwDuFm/G9c1lUm2A0fdk34YIPWd6k78LoQ==}
+
   '@lde/distribution-probe@0.4.1':
     resolution: {integrity: sha512-aYFHiCiQgwWrpCAFyjHbyJFaVCNLoml1Yo5kz25awyxdRIyxI/LArgQvuZXEs52rcbXHfEGodtKfrc/XB0vC4Q==}
+
+  '@lde/host-limiter@0.0.2':
+    resolution: {integrity: sha512-0J0Zi2/r6BbvS0oiD7CUoGW2HFULla4bRqv8HVc75BTb77O5zDCqeXnA5ErRJ5P5LMSYlsIGDjxVaTuJgisb6Q==}
+    engines: {node: '>=24'}
 
   '@lde/host-limiter@0.2.1':
     resolution: {integrity: sha512-ja5TnOO7GBYDp3CEPXx+pYg+VjXZen+5w0WFdLHCKKea+jHc5ytxm6URqOyPoYBLECKMBs8vrKqM2SmjYu7bMw==}
@@ -1774,14 +1823,35 @@ packages:
       '@lde/dataset': ^0.9.0
       '@lde/pipeline': ^0.40.1
 
+  '@lde/pipeline@0.36.9':
+    resolution: {integrity: sha512-n+QhxMWz/MMqUMU7JUDS06DPOI0gMK8ls3ggIYHfrZrxkvBA+wJI2f4Rke7US7kZickywn3ij5f6hvVbCz4TQQ==}
+
   '@lde/pipeline@0.40.1':
     resolution: {integrity: sha512-CA2TBMl33rZ6B+e+s9cZZ2lwTwqgQeR7NFnh8x3EJQGHNHxqwzbyEQ3imrh+9lJsoFWplLQiASAGo7F/7lYokw==}
+
+  '@lde/resolver@0.2.1':
+    resolution: {integrity: sha512-UkhLoZ+sSoKzBO28hJ319OjfWgwmj7qoyPdfwV9D6C1PApHvNPBjxOn2hOxQZV26M+iGs7HMq/YGEoIGcAmxHQ==}
+    engines: {node: '>=24'}
+
+  '@lde/search@0.34.0':
+    resolution: {integrity: sha512-goaw3IEB5QZQst09ZxI8lCLKl4EN27fIvqncXgUNvJVGFpv8gjXP5UxvENVjuzuI05AWure5D7OCXIVPTVS5Pw==}
+    peerDependencies:
+      vitest: '>=4.0.0'
+    peerDependenciesMeta:
+      vitest:
+        optional: true
+
+  '@lde/sparql-importer@0.6.13':
+    resolution: {integrity: sha512-1X1TPkeAnzKtbn+kIIijeDkhzJ/kO/w2FY63Towi+sLsRrJX/+hbrFmBSy7LdpZ9ecjISzCqaR1DL/70PalUwA==}
 
   '@lde/sparql-importer@0.9.0':
     resolution: {integrity: sha512-Dsi8brpmZL1DZnIvN/8OMiAXvQfZW9J+otvacFRvk8NgzOp0twkhzF/Q0NI2As/yDrbUoCUuAIP3T/0NrCiv4g==}
 
   '@lde/sparql-qlever@0.19.0':
     resolution: {integrity: sha512-xKvN1e4DHk15EVui5E99Krn3TINjwRYFCXO35gl7dOYZeukvwfgDQLDkbHthg4tBOGaoYlkiRy8eR0yjCmLiRw==}
+
+  '@lde/sparql-server@0.4.14':
+    resolution: {integrity: sha512-DfEHDlEh6FpcaJoq4K8KuqFcqezCrWzzfCuDLuOu7+Z4DHgGNnoTmur7e6RMGAnUdaDjvi+INcww+nCLvA+4eQ==}
 
   '@lde/sparql-server@0.6.0':
     resolution: {integrity: sha512-9Er5G/IxKi5VvHjLmfzMrY3gaOZr5f1R3C+6cJTetOe8kK+08r2KDhy3Rj3K9YPGH/nuNLTm5aZvmnJNyUObPg==}
@@ -1795,8 +1865,14 @@ packages:
   '@lde/task-runner-native@0.4.0':
     resolution: {integrity: sha512-ql5SH47VxiCjZ26zbd5tuNfTwQSBmMJoTl2TrH6cwCB2XY2a1VdW4Ven4SX8fFWqiCuIvTchhAA3Wf5hV2im7w==}
 
+  '@lde/task-runner@0.2.16':
+    resolution: {integrity: sha512-0qMRUWv4NMJUunEurkUZjZA03PH3gadY5gRDElMCq5e+Z3pfP8E/LhuVJme99YdrN8CrcbTsF0/XQ0sHR1buCw==}
+
   '@lde/task-runner@0.4.0':
     resolution: {integrity: sha512-Za4TIEXzFFMITOStpZeY4MztBwez+i+i7v9Ts4JyET4sXkzQqxWo+OS6BTdxdxaab9BWiytqZ+ZCiuKspERxug==}
+
+  '@lde/text-normalization@0.3.0':
+    resolution: {integrity: sha512-IjMxeWyjEfPBf52GQD5HQchsehb2lzxc5FU/glkhBJ/vviYjvIUAQQWatpZ2RCwA2GEwTwcM+s/IQwfGL73Nhg==}
 
   '@lde/wait-for-sparql@0.4.0':
     resolution: {integrity: sha512-gqXoMkfXYapaqyie96XZl97o6RGHCr5NxWnOrTBhQQWCfLsWAH7ONR+C2pXmhNhwOJ/KafSKkkE/aME8lJoSIw==}
@@ -3894,6 +3970,10 @@ packages:
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
+
+  inflection@3.0.2:
+    resolution: {integrity: sha512-+Bg3+kg+J6JUWn8J6bzFmOWkTQ6L/NHfDRSYU+EVvuKHDxUDHAXgqixHfVlzuBQaPOTac8hn43aPhMNk6rMe3g==}
+    engines: {node: '>=18.0.0'}
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -9304,6 +9384,8 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
+  '@iiif/parser@4.0.6': {}
+
   '@jest/diff-sequences@30.0.1': {}
 
   '@jeswr/prefixcc@1.2.1':
@@ -9350,8 +9432,27 @@ snapshots:
       ldkit: 2.10.1
       tslib: 2.9.1
 
+  '@lde/dataset-registry-client@0.9.5':
+    dependencies:
+      '@lde/dataset': 0.7.10
+      '@traqula/generator-sparql-1-1': 1.4.0
+      '@traqula/parser-sparql-1-1': 1.4.0
+      '@traqula/rules-sparql-1-1': 1.4.0
+      ldkit: 2.10.1
+      tslib: 2.9.1
+
+  '@lde/dataset@0.7.10':
+    dependencies:
+      tslib: 2.9.1
+
   '@lde/dataset@0.9.0':
     dependencies:
+      tslib: 2.9.1
+
+  '@lde/distribution-downloader@0.6.10':
+    dependencies:
+      '@lde/dataset': 0.7.10
+      filenamify-url: 4.0.0
       tslib: 2.9.1
 
   '@lde/distribution-downloader@0.8.0':
@@ -9360,10 +9461,27 @@ snapshots:
       filenamify-url: 4.0.0
       tslib: 2.9.1
 
+  '@lde/distribution-health@0.2.15':
+    dependencies:
+      '@lde/distribution-probe': 0.2.10
+      '@lde/sparql-importer': 0.6.13
+      tslib: 2.9.1
+    transitivePeerDependencies:
+      - encoding
+
   '@lde/distribution-health@0.5.1':
     dependencies:
       '@lde/distribution-probe': 0.4.1
       '@lde/sparql-importer': 0.9.0
+      tslib: 2.9.1
+    transitivePeerDependencies:
+      - encoding
+
+  '@lde/distribution-probe@0.2.10':
+    dependencies:
+      '@lde/dataset': 0.7.10
+      '@lde/host-limiter': 0.0.2
+      rdf-parse: 5.0.0
       tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
@@ -9377,6 +9495,10 @@ snapshots:
       tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
+
+  '@lde/host-limiter@0.0.2':
+    dependencies:
+      tslib: 2.9.1
 
   '@lde/host-limiter@0.2.1':
     dependencies:
@@ -9400,6 +9522,30 @@ snapshots:
       rdf-dereference: 5.0.0
       rdf-ext: 2.6.0
       shacl-engine: 1.1.3
+      tslib: 2.9.1
+    transitivePeerDependencies:
+      - encoding
+
+  '@lde/pipeline@0.36.9':
+    dependencies:
+      '@lde/dataset': 0.7.10
+      '@lde/dataset-registry-client': 0.9.5
+      '@lde/distribution-health': 0.2.15
+      '@lde/distribution-probe': 0.2.10
+      '@lde/sparql-importer': 0.6.13
+      '@lde/sparql-server': 0.4.14
+      '@rdfjs/namespace': 2.0.1
+      '@rdfjs/types': 2.0.1
+      '@tpluscode/rdf-ns-builders': 5.1.0
+      '@traqula/generator-sparql-1-1': 1.4.0
+      '@traqula/parser-sparql-1-1': 1.4.0
+      '@traqula/rules-sparql-1-1': 1.4.0
+      fetch-sparql-endpoint: 7.3.0
+      filenamify-url: 4.0.0
+      is-network-error: 1.3.2
+      n3: 2.13.12
+      p-retry: 8.0.1
+      rdf-string: 2.0.1
       tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
@@ -9428,6 +9574,28 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
+  '@lde/resolver@0.2.1':
+    dependencies:
+      '@lde/host-limiter': 0.2.1
+      tslib: 2.9.1
+
+  '@lde/search@0.34.0(vitest@4.1.8)':
+    dependencies:
+      '@lde/text-normalization': 0.3.0
+      '@rdfjs/types': 2.0.1
+      inflection: 3.0.2
+      jsonld: 9.0.0
+      tslib: 2.9.1
+    optionalDependencies:
+      vitest: 4.1.8(@types/node@26.6.6)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+
+  '@lde/sparql-importer@0.6.13':
+    dependencies:
+      '@lde/dataset': 0.7.10
+      '@lde/distribution-downloader': 0.6.10
+      '@lde/task-runner': 0.2.16
+      tslib: 2.9.1
+
   '@lde/sparql-importer@0.9.0':
     dependencies:
       '@lde/dataset': 0.9.0
@@ -9455,6 +9623,10 @@ snapshots:
       - encoding
       - supports-color
 
+  '@lde/sparql-server@0.4.14':
+    dependencies:
+      tslib: 2.9.1
+
   '@lde/sparql-server@0.6.0':
     dependencies:
       tslib: 2.9.1
@@ -9477,7 +9649,15 @@ snapshots:
       '@lde/task-runner': 0.4.0
       tslib: 2.9.1
 
+  '@lde/task-runner@0.2.16':
+    dependencies:
+      tslib: 2.9.1
+
   '@lde/task-runner@0.4.0':
+    dependencies:
+      tslib: 2.9.1
+
+  '@lde/text-normalization@0.3.0':
     dependencies:
       tslib: 2.9.1
 
@@ -10603,6 +10783,15 @@ snapshots:
       magic-string: 0.30.21
     optionalDependencies:
       vite: 8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.0)
+
+  '@vitest/mocker@4.1.8(vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))':
+    dependencies:
+      '@vitest/spy': 4.1.8
+      estree-walker: 3.0.3
+      magic-string: 0.30.21
+    optionalDependencies:
+      vite: 8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)
+    optional: true
 
   '@vitest/pretty-format@4.1.8':
     dependencies:
@@ -11836,6 +12025,8 @@ snapshots:
       resolve-from: 4.0.0
 
   imurmurhash@0.1.4: {}
+
+  inflection@3.0.2: {}
 
   inherits@2.0.4: {}
 
@@ -13736,6 +13927,20 @@ snapshots:
       jiti: 2.7.0
       yaml: 2.9.0
 
+  vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1):
+    dependencies:
+      lightningcss: 1.32.0
+      picomatch: 4.0.4
+      postcss: 8.5.15
+      rolldown: 1.0.3
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 26.6.6
+      fsevents: 2.3.3
+      jiti: 2.7.0
+      yaml: 2.9.1
+    optional: true
+
   vitest@4.1.8(@types/node@26.6.6)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.8
@@ -13763,6 +13968,35 @@ snapshots:
       '@vitest/coverage-v8': 4.1.8(vitest@4.1.8)
     transitivePeerDependencies:
       - msw
+
+  vitest@4.1.8(@types/node@26.6.6)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)):
+    dependencies:
+      '@vitest/expect': 4.1.8
+      '@vitest/mocker': 4.1.8(vite@8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
+      '@vitest/pretty-format': 4.1.8
+      '@vitest/runner': 4.1.8
+      '@vitest/snapshot': 4.1.8
+      '@vitest/spy': 4.1.8
+      '@vitest/utils': 4.1.8
+      es-module-lexer: 2.1.0
+      expect-type: 1.3.0
+      magic-string: 0.30.21
+      obug: 2.1.2
+      pathe: 2.0.3
+      picomatch: 4.0.4
+      std-env: 4.1.0
+      tinybench: 2.9.0
+      tinyexec: 1.2.4
+      tinyglobby: 0.2.17
+      tinyrainbow: 3.1.0
+      vite: 8.0.16(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 26.6.6
+      '@vitest/coverage-v8': 4.1.8(vitest@4.1.8)
+    transitivePeerDependencies:
+      - msw
+    optional: true
 
   wcwidth@1.0.1:
     dependencies:

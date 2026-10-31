@@ -12,6 +12,7 @@ This is an [Nx](https://nx.dev) monorepo using pnpm workspaces:
 | Project                         | Path                               | Notes                                                        |
 | ------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
 | `@ndes/linked-art-to-schema-ap` | `packages/linked-art-to-schema-ap` | projects Linked Art (CIDOC-CRM) into the SCHEMA-AP-NDE pivot |
+| `@ndes/iiif-images`             | `packages/iiif-images`             | enriches works with their representative IIIF image’s sizes  |
 
 ## Develop
 
