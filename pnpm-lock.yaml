@@ -96,8 +96,8 @@ importers:
         specifier: ^4.0.5
         version: 4.0.5
       '@lde/resolver':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.2.1
+        version: 0.2.1
       '@rdfjs/types':
         specifier: ^2.0.1
         version: 2.0.1
@@ -1798,8 +1798,8 @@ packages:
     resolution: {integrity: sha512-+bGT3qPu2oVByVVpyxAW44AKPEIsgfM4ZuNbRG4yYt/md3A8PcJxDwQIpqKZuNeCw2PRltXdsvbmgv3aggR0Sg==}
     engines: {node: '>=24'}
 
-  '@lde/host-limiter@0.2.0':
-    resolution: {integrity: sha512-yfDtIOjaORUc06r5n28SehBfzmxywQa/fbJxjeMJloOqqyCreCUd8kjkqS+66Jpz9Z+GewxQ6QJmkUklOalN+w==}
+  '@lde/host-limiter@0.2.1':
+    resolution: {integrity: sha512-ja5TnOO7GBYDp3CEPXx+pYg+VjXZen+5w0WFdLHCKKea+jHc5ytxm6URqOyPoYBLECKMBs8vrKqM2SmjYu7bMw==}
     engines: {node: '>=24'}
 
   '@lde/pipeline-console-reporter@0.27.7':
@@ -1817,8 +1817,8 @@ packages:
   '@lde/pipeline@0.36.7':
     resolution: {integrity: sha512-mBp0DOfCi8SME8Vz4T8Dg6/nN18pU/iB1UX69+KGXaauxZAZxIzf6JWA77+lh4tU6+dTnPmYjMe0oumc4RJepA==}
 
-  '@lde/resolver@0.2.0':
-    resolution: {integrity: sha512-BHjtEohzs0Bpj96xem3pN+dX60lqPrQ7Ac5C6B5hCIfo5sthD/kzjByDvSXO/DXB55WjdI0ttGjnu+7p84z2WQ==}
+  '@lde/resolver@0.2.1':
+    resolution: {integrity: sha512-UkhLoZ+sSoKzBO28hJ319OjfWgwmj7qoyPdfwV9D6C1PApHvNPBjxOn2hOxQZV26M+iGs7HMq/YGEoIGcAmxHQ==}
     engines: {node: '>=24'}
 
   '@lde/search@0.34.0':
@@ -9483,7 +9483,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@lde/host-limiter@0.2.0':
+  '@lde/host-limiter@0.2.1':
     dependencies:
       tslib: 2.8.1
 
@@ -9533,9 +9533,9 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@lde/resolver@0.2.0':
+  '@lde/resolver@0.2.1':
     dependencies:
-      '@lde/host-limiter': 0.2.0
+      '@lde/host-limiter': 0.2.1
       tslib: 2.8.1
 
   '@lde/search@0.34.0(vitest@4.1.8)':
@@ -10730,7 +10730,7 @@ snapshots:
       obug: 2.1.2
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.0))
+      vitest: 4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))
 
   '@vitest/expect@4.1.8':
     dependencies:
@@ -10756,7 +10756,6 @@ snapshots:
       magic-string: 0.30.21
     optionalDependencies:
       vite: 8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1)
-    optional: true
 
   '@vitest/pretty-format@4.1.8':
     dependencies:
@@ -13913,7 +13912,6 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.7.0
       yaml: 2.9.1
-    optional: true
 
   vitest@4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
@@ -13970,7 +13968,6 @@ snapshots:
       '@vitest/coverage-v8': 4.1.8(vitest@4.1.8)
     transitivePeerDependencies:
       - msw
-    optional: true
 
   wcwidth@1.0.1:
     dependencies:

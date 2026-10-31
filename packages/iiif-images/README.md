@@ -104,6 +104,5 @@ again.
   or `PIPELINE_VERSION` is bumped, so set `fetchesPerRun` high enough to cover it in
   one run.
 - **Limits:** manifest requests are grouped per dataset, because manifest URLs often
-  sit on a redirector such as `n2t.net`, and `info.json` requests per host. Both
-  limits currently apply per batch rather than per run
-  ([ldelements/lde#981](https://github.com/ldelements/lde/issues/981)).
+  sit on a redirector such as `n2t.net`, and `info.json` requests per host. Datasets
+  on one server are limited separately, with only the overall limit across them.
