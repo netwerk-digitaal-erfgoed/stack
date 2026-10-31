@@ -91,12 +91,18 @@ again.
 ## Behaviour
 
 - **Selection:** the first painted image in the manifest that has an image service.
-- **Freshness:** `info.json` facts never expire, because an image identifier’s
-  dimensions do not change. Manifest facts are refetched after 30 days, because
-  which image represents a work can.
+- **Freshness:** manifest facts are refetched after 30 days, because which image
+  represents a work can change. `info.json` facts are refetched after 180 days: an
+  image’s dimensions do not change, but its server’s size URLs and profile can.
+- **Safety:** a manifest or service URL that is not `http(s)`, or that names a private
+  address or cluster-internal host, is reported and not fetched. This looks at the URL
+  only, so it does not catch redirects or DNS pointing inwards. Run the indexer under
+  an egress policy as well.
 - **Failures:** a failed fetch is reported and retried on a later run, and the work
   is indexed without an image. A 401, 403, 404 or 410 counts as having no such
-  document and is rechecked after a week.
+  document and is rechecked after a week, so a brief 401 or 403 can replace a stored
+  fact for that long. A 200 that is not a usable document counts as a failure, so it
+  is retried every run and five in a row stop that dataset’s manifests for the run.
 - **Budget:** `fetchesPerRun` covers all datasets together. What it defers is not
   reported, and those works are indexed without an image until a later run.
 - **Later runs:** retries, deferred works and refreshes all need the dataset to be

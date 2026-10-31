@@ -79,10 +79,38 @@ describe('selectImageService', () => {
   it('finds nothing in a Presentation 2 manifest the upgrade rejects', () => {
     expect(
       selectImageService({
+        '@context': 'http://iiif.io/api/presentation/2/context.json',
+        '@id': 'https://example.org/manifest',
         '@type': 'sc:Manifest',
-        sequences: [{ canvases: [{ images: [null] }] }],
+        sequences: [
+          {
+            '@type': 'sc:Sequence',
+            canvases: [
+              {
+                '@id': 'https://example.org/canvas',
+                '@type': 'sc:Canvas',
+                images: [null],
+              },
+            ],
+          },
+        ],
       }),
     ).toBeUndefined();
+  });
+
+  it('recognises an untyped service by the array form of its profile', () => {
+    expect(
+      selectImageService(
+        manifestPainting({
+          type: 'Image',
+          service: {
+            '@id': 'https://example.org/iiif/a',
+            '@context': 'http://iiif.io/api/image/2/context.json',
+            profile: ['http://iiif.io/api/image/2/level2.json', {}],
+          },
+        }),
+      ),
+    ).toBe('https://example.org/iiif/a');
   });
 
   it('skips a painted image without a service', () => {

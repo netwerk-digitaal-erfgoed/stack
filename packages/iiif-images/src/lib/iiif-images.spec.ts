@@ -270,6 +270,30 @@ describe('iiifImages', () => {
     expect(document.representativeImage).toBeUndefined();
   });
 
+  it('refuses a service URL naming a private address, and reports it', async () => {
+    const internal = 'http://169.254.169.254/latest';
+    const fetchMock = serve({ [MANIFEST]: manifestPainting(internal) });
+    const report = vi.fn();
+
+    const [document] = await run(enrichment({ report }), workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledWith(MANIFEST, expect.anything());
+    expect(report).toHaveBeenCalledWith(
+      expect.objectContaining({ key: internal }),
+    );
+  });
+
+  it('refuses a manifest IRI naming a cluster-internal host', async () => {
+    const internal = 'http://search-api.default.svc/manifest';
+    const fetchMock = serve({});
+
+    await run(enrichment(), workWithManifest(WORK, internal));
+
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it('indexes the work without an image and reports when a fetch keeps failing', async () => {
     serve({ [MANIFEST]: 503 });
     const report = vi.fn();

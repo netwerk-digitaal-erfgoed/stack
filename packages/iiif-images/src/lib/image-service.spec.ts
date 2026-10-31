@@ -124,6 +124,30 @@ describe('imageFactFrom', () => {
     expect(fact?.service.type).toBe('ImageService1');
   });
 
+  it('recognises Image API 1.0 by its profile where it states no context', () => {
+    const fact = imageFactFrom(SERVICE, {
+      profile:
+        'http://library.stanford.edu/iiif/image-api/compliance.html#level1',
+      width: 800,
+      height: 600,
+    });
+
+    expect(fact?.sizes).toEqual([]);
+    expect(fact?.service.type).toBe('ImageService1');
+  });
+
+  it('does not publish `iiif:Image` as the kind of service', () => {
+    const fact = imageFactFrom(SERVICE, {
+      '@context': 'http://iiif.io/api/image/2/context.json',
+      '@type': 'iiif:Image',
+      profile: ['http://iiif.io/api/image/2/level2.json'],
+      width: 800,
+      height: 600,
+    });
+
+    expect(fact?.service.type).toBe('ImageService2');
+  });
+
   it('leaves out a synthesised rung that rounds to no height', () => {
     const fact = imageFactFrom(SERVICE, {
       type: 'ImageService3',

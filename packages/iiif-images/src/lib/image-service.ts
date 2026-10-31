@@ -140,15 +140,21 @@ function isWithinMaximums(
 }
 
 function serviceTypeOf(document: Record<string, unknown>): string {
+  // Only this family: Image API 2 documents commonly say `@type: iiif:Image`, which
+  // names what they describe and not the kind of service.
   const type = document.type ?? document['@type'];
-  if (typeof type === 'string') {
+  if (typeof type === 'string' && type.startsWith('ImageService')) {
     return type;
   }
   const context = JSON.stringify(document['@context'] ?? '');
   if (context.includes('image/3')) {
     return 'ImageService3';
   }
-  return /image-api\/1|image\/1/.test(context)
+  if (context.includes('image/2')) {
+    return 'ImageService2';
+  }
+  // A 1.0 document may state no context, so the profile has to answer as well.
+  return /image-api|api\/image\/1/.test(`${context} ${profileOf(document)}`)
     ? 'ImageService1'
     : 'ImageService2';
 }
