@@ -90,6 +90,31 @@ importers:
         specifier: ~4.1.0
         version: 4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.0))
 
+  packages/iiif-images:
+    dependencies:
+      '@iiif/parser':
+        specifier: ^4.0.5
+        version: 4.0.5
+      '@lde/resolver':
+        specifier: ^0.2.0
+        version: 0.2.0
+      '@rdfjs/types':
+        specifier: ^2.0.1
+        version: 2.0.1
+      rdf-data-factory:
+        specifier: ^2.1.0
+        version: 2.1.0
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
+    devDependencies:
+      '@lde/pipeline':
+        specifier: ^0.36.7
+        version: 0.36.7
+      '@lde/search':
+        specifier: ^0.34.0
+        version: 0.34.0(vitest@4.1.8)
+
   packages/linked-art-to-schema-ap:
     dependencies:
       '@lde/dataset-registry-client':
@@ -1717,6 +1742,11 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
+  '@iiif/parser@4.0.5':
+    resolution: {integrity: sha512-zTbiLNoZnFngUYEyE485YoC+7+GFpa4H9Ks+6bJkvrg0u2cUgj2pUap+eU7XqwAtd0+fCQQQm9lpKTd1AU9EKg==}
+    engines: {node: '>=22'}
+    hasBin: true
+
   '@jest/diff-sequences@30.0.1':
     resolution: {integrity: sha512-n5H8QLDJ47QqbCNn5SuFjCRDrOLEZ0h8vAHCK5RL9Ls7Xa8AQLa/YxAc9UjFqoEDM48muwtBGjtMY5cr0PLDCw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
@@ -1768,6 +1798,10 @@ packages:
     resolution: {integrity: sha512-+bGT3qPu2oVByVVpyxAW44AKPEIsgfM4ZuNbRG4yYt/md3A8PcJxDwQIpqKZuNeCw2PRltXdsvbmgv3aggR0Sg==}
     engines: {node: '>=24'}
 
+  '@lde/host-limiter@0.2.0':
+    resolution: {integrity: sha512-yfDtIOjaORUc06r5n28SehBfzmxywQa/fbJxjeMJloOqqyCreCUd8kjkqS+66Jpz9Z+GewxQ6QJmkUklOalN+w==}
+    engines: {node: '>=24'}
+
   '@lde/pipeline-console-reporter@0.27.7':
     resolution: {integrity: sha512-5woOow0cGkGMSZ+vxFkcHt+4fCQ+uPwEAv1OI9N+52eSaChnaFV2Er4VNmpbTToXLdIzuXcekEqH5NrIis4sfA==}
     peerDependencies:
@@ -1782,6 +1816,18 @@ packages:
 
   '@lde/pipeline@0.36.7':
     resolution: {integrity: sha512-mBp0DOfCi8SME8Vz4T8Dg6/nN18pU/iB1UX69+KGXaauxZAZxIzf6JWA77+lh4tU6+dTnPmYjMe0oumc4RJepA==}
+
+  '@lde/resolver@0.2.0':
+    resolution: {integrity: sha512-BHjtEohzs0Bpj96xem3pN+dX60lqPrQ7Ac5C6B5hCIfo5sthD/kzjByDvSXO/DXB55WjdI0ttGjnu+7p84z2WQ==}
+    engines: {node: '>=24'}
+
+  '@lde/search@0.34.0':
+    resolution: {integrity: sha512-goaw3IEB5QZQst09ZxI8lCLKl4EN27fIvqncXgUNvJVGFpv8gjXP5UxvENVjuzuI05AWure5D7OCXIVPTVS5Pw==}
+    peerDependencies:
+      vitest: '>=4.0.0'
+    peerDependenciesMeta:
+      vitest:
+        optional: true
 
   '@lde/sparql-importer@0.6.12':
     resolution: {integrity: sha512-Sh7obGoRYux6jFwaY61qrfgcMJoYRfvQQM5U2VupkRmuwew6DR5ffhi98a2lZm5Lxaq9HpRyFNe+FmcfN7r1+g==}
@@ -1800,6 +1846,9 @@ packages:
 
   '@lde/task-runner@0.2.15':
     resolution: {integrity: sha512-bnYB8W+JalcYEHZmUqBS/QrEt1eUaA3Zy8HgtXdSDVdVp26DFy1ULqSNEuo+6qNhECc1EFrfMPxxTRBhXuoG9Q==}
+
+  '@lde/text-normalization@0.3.0':
+    resolution: {integrity: sha512-IjMxeWyjEfPBf52GQD5HQchsehb2lzxc5FU/glkhBJ/vviYjvIUAQQWatpZ2RCwA2GEwTwcM+s/IQwfGL73Nhg==}
 
   '@lde/wait-for-sparql@0.2.17':
     resolution: {integrity: sha512-eX+QlavyoZeTTJKrs+estpOmaOZRbghCYUDt/ZFH1ATZlkd1Ly/OYWzvVUQS4FN0auJgB3Qq87+A5xzbqPMoug==}
@@ -3924,6 +3973,10 @@ packages:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
 
+  inflection@3.0.2:
+    resolution: {integrity: sha512-+Bg3+kg+J6JUWn8J6bzFmOWkTQ6L/NHfDRSYU+EVvuKHDxUDHAXgqixHfVlzuBQaPOTac8hn43aPhMNk6rMe3g==}
+    engines: {node: '>=18.0.0'}
+
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
@@ -4790,9 +4843,6 @@ packages:
 
   rdf-data-factory@1.1.3:
     resolution: {integrity: sha512-ny6CI7m2bq4lfQQmDYvcb2l1F9KtGwz9chipX4oWu2aAtVoXjb7k3d8J1EsgAsEbMXnBipB/iuRen5H2fwRWWQ==}
-
-  rdf-data-factory@2.0.2:
-    resolution: {integrity: sha512-WzPoYHwQYWvIP9k+7IBLY1b4nIDitzAK4mA37WumAF/Cjvu/KOtYJH9IPZnUTWNSd5K2+pq4vrcE9WZC4sRHhg==}
 
   rdf-data-factory@2.1.0:
     resolution: {integrity: sha512-q81ZuJvrNLHD4x6qPnNKRKYn1VqYkxZ9zFI8I4JwIfAxlfduNNstmO8i0dRIZemORQDbuVEDoKCo4aOwINmUqQ==}
@@ -9354,6 +9404,8 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
+  '@iiif/parser@4.0.5': {}
+
   '@jest/diff-sequences@30.0.1': {}
 
   '@jeswr/prefixcc@1.2.1':
@@ -9431,6 +9483,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@lde/host-limiter@0.2.0':
+    dependencies:
+      tslib: 2.8.1
+
   '@lde/pipeline-console-reporter@0.27.7(@lde/dataset@0.7.9)(@lde/pipeline@0.36.7)':
     dependencies:
       '@lde/dataset': 0.7.9
@@ -9477,6 +9533,21 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
+  '@lde/resolver@0.2.0':
+    dependencies:
+      '@lde/host-limiter': 0.2.0
+      tslib: 2.8.1
+
+  '@lde/search@0.34.0(vitest@4.1.8)':
+    dependencies:
+      '@lde/text-normalization': 0.3.0
+      '@rdfjs/types': 2.0.1
+      inflection: 3.0.2
+      jsonld: 9.0.0
+      tslib: 2.8.1
+    optionalDependencies:
+      vitest: 4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))
+
   '@lde/sparql-importer@0.6.12':
     dependencies:
       '@lde/dataset': 0.7.9
@@ -9520,6 +9591,10 @@ snapshots:
       tslib: 2.8.1
 
   '@lde/task-runner@0.2.15':
+    dependencies:
+      tslib: 2.8.1
+
+  '@lde/text-normalization@0.3.0':
     dependencies:
       tslib: 2.8.1
 
@@ -10673,6 +10748,15 @@ snapshots:
       magic-string: 0.30.21
     optionalDependencies:
       vite: 8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.0)
+
+  '@vitest/mocker@4.1.8(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))':
+    dependencies:
+      '@vitest/spy': 4.1.8
+      estree-walker: 3.0.3
+      magic-string: 0.30.21
+    optionalDependencies:
+      vite: 8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1)
+    optional: true
 
   '@vitest/pretty-format@4.1.8':
     dependencies:
@@ -11911,6 +11995,8 @@ snapshots:
 
   imurmurhash@0.1.4: {}
 
+  inflection@3.0.2: {}
+
   inherits@2.0.4: {}
 
   ini@6.0.0: {}
@@ -12156,7 +12242,7 @@ snapshots:
       commander: 13.1.0
       jsonld-context-parser: 3.1.0
       n3: 1.26.0
-      rdf-data-factory: 2.0.2
+      rdf-data-factory: 2.1.0
       rdf-literal: 2.0.0
       rdf-string: 2.0.1
       readable-from-web: 1.0.0
@@ -12865,10 +12951,6 @@ snapshots:
   rdf-data-factory@1.1.3:
     dependencies:
       '@rdfjs/types': 1.1.2
-
-  rdf-data-factory@2.0.2:
-    dependencies:
-      '@rdfjs/types': 2.0.1
 
   rdf-data-factory@2.1.0:
     dependencies:
@@ -13819,6 +13901,20 @@ snapshots:
       jiti: 2.7.0
       yaml: 2.9.0
 
+  vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1):
+    dependencies:
+      lightningcss: 1.32.0
+      picomatch: 4.0.4
+      postcss: 8.5.15
+      rolldown: 1.0.3
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 26.6.3
+      fsevents: 2.3.3
+      jiti: 2.7.0
+      yaml: 2.9.1
+    optional: true
+
   vitest@4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.8
@@ -13846,6 +13942,35 @@ snapshots:
       '@vitest/coverage-v8': 4.1.8(vitest@4.1.8)
     transitivePeerDependencies:
       - msw
+
+  vitest@4.1.8(@types/node@26.6.3)(@vitest/coverage-v8@4.1.8)(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1)):
+    dependencies:
+      '@vitest/expect': 4.1.8
+      '@vitest/mocker': 4.1.8(vite@8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))
+      '@vitest/pretty-format': 4.1.8
+      '@vitest/runner': 4.1.8
+      '@vitest/snapshot': 4.1.8
+      '@vitest/spy': 4.1.8
+      '@vitest/utils': 4.1.8
+      es-module-lexer: 2.1.0
+      expect-type: 1.3.0
+      magic-string: 0.30.21
+      obug: 2.1.2
+      pathe: 2.0.3
+      picomatch: 4.0.4
+      std-env: 4.1.0
+      tinybench: 2.9.0
+      tinyexec: 1.2.4
+      tinyglobby: 0.2.17
+      tinyrainbow: 3.1.0
+      vite: 8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 26.6.3
+      '@vitest/coverage-v8': 4.1.8(vitest@4.1.8)
+    transitivePeerDependencies:
+      - msw
+    optional: true
 
   wcwidth@1.0.1:
     dependencies:
