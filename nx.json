@@ -88,5 +88,8 @@
       "minimal": true
     }
   },
-  "analytics": false
+  "analytics": false,
+  "affected": {
+    "legacy": true
+  }
 }
