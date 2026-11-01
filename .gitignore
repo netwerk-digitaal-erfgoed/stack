@@ -47,3 +47,4 @@ Thumbs.db
 .nx/self-healing
 vitest.config.*.timestamp*
 .nx/migrate-runs
+.vitest
