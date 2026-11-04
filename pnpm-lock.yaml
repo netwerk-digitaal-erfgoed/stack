@@ -72,8 +72,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2(prettier@3.9.9)
       tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
+        specifier: ^2.9.1
+        version: 2.9.1
       typescript:
         specifier: ~6.0.3
         version: 6.0.3
@@ -108,8 +108,8 @@ importers:
         specifier: ^0.19.0
         version: 0.19.0
       tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
+        specifier: ^2.9.1
+        version: 2.9.1
 
 packages:
 
@@ -5279,6 +5279,9 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
+  tslib@2.9.1:
+    resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
+
   tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
 
@@ -9218,28 +9221,28 @@ snapshots:
   '@emnapi/core@1.10.0':
     dependencies:
       '@emnapi/wasi-threads': 1.2.1
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/core@1.4.5':
     dependencies:
       '@emnapi/wasi-threads': 1.0.4
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/runtime@1.10.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/runtime@1.4.5':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/wasi-threads@1.0.4':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/wasi-threads@1.2.1':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@eslint-community/eslint-utils@4.10.1(eslint@10.8.0(jiti@2.7.0))':
     dependencies:
@@ -9359,23 +9362,23 @@ snapshots:
       '@traqula/parser-sparql-1-1': 1.4.0
       '@traqula/rules-sparql-1-1': 1.4.0
       ldkit: 2.10.1
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/dataset@0.9.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/distribution-downloader@0.8.0':
     dependencies:
       '@lde/dataset': 0.9.0
       filenamify-url: 4.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/distribution-health@0.5.1':
     dependencies:
       '@lde/distribution-probe': 0.4.1
       '@lde/sparql-importer': 0.9.0
-      tslib: 2.8.1
+      tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
 
@@ -9385,13 +9388,13 @@ snapshots:
       '@lde/host-limiter': 0.2.1
       jsonld-context-parser: 2.4.0
       rdf-parse: 5.0.0
-      tslib: 2.8.1
+      tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
 
   '@lde/host-limiter@0.2.1':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/pipeline-console-reporter@0.31.1(@lde/dataset@0.9.0)(@lde/pipeline@0.40.1)':
     dependencies:
@@ -9401,7 +9404,7 @@ snapshots:
       log-symbols: 7.0.1
       ora: 9.4.1
       pretty-ms: 9.3.1
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/pipeline-shacl-validator@0.23.1(@lde/dataset@0.9.0)(@lde/pipeline@0.40.1)':
     dependencies:
@@ -9411,7 +9414,7 @@ snapshots:
       rdf-dereference: 5.0.0
       rdf-ext: 2.6.0
       shacl-engine: 1.1.3
-      tslib: 2.8.1
+      tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
 
@@ -9435,7 +9438,7 @@ snapshots:
       n3: 2.13.12
       p-retry: 8.0.1
       rdf-string: 2.0.1
-      tslib: 2.8.1
+      tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
 
@@ -9444,7 +9447,7 @@ snapshots:
       '@lde/dataset': 0.9.0
       '@lde/distribution-downloader': 0.8.0
       '@lde/task-runner': 0.4.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/sparql-qlever@0.19.0':
     dependencies:
@@ -9460,7 +9463,7 @@ snapshots:
       jsonld-context-parser: 3.1.1
       rdf-parse: 5.0.0
       rdf-serialize: 5.1.0
-      tslib: 2.8.1
+      tslib: 2.9.1
       yauzl: 3.4.0
     transitivePeerDependencies:
       - encoding
@@ -9468,35 +9471,35 @@ snapshots:
 
   '@lde/sparql-server@0.6.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/task-runner-docker@0.5.0':
     dependencies:
       '@lde/task-runner': 0.4.0
       dockerode: 5.0.1
-      tslib: 2.8.1
+      tslib: 2.9.1
     transitivePeerDependencies:
       - supports-color
 
   '@lde/task-runner-http@0.2.0':
     dependencies:
       '@lde/task-runner': 0.4.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/task-runner-native@0.4.0':
     dependencies:
       '@lde/task-runner': 0.4.0
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/task-runner@0.4.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@lde/wait-for-sparql@0.4.0':
     dependencies:
       fetch-sparql-endpoint: 7.3.0
       p-retry: 8.0.1
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@napi-rs/wasm-runtime@0.2.4':
     dependencies:
@@ -9530,7 +9533,7 @@ snapshots:
       minimatch: 10.2.5
       nx: 23.1.1(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23))
       semver: 7.8.5
-      tslib: 2.8.1
+      tslib: 2.9.1
       yargs-parser: 21.1.1
 
   '@nx/eslint-plugin@23.1.1(@babel/traverse@7.29.7)(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23))(@typescript-eslint/parser@8.72.1(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3))(eslint-config-prettier@10.1.8(eslint@10.8.0(jiti@2.7.0)))(eslint@10.8.0(jiti@2.7.0))(nx@23.1.1(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23)))(typescript@6.0.3)(verdaccio@6.10.4(typanion@3.14.0))':
@@ -9545,7 +9548,7 @@ snapshots:
       jsonc-eslint-parser: 2.4.2
       picocolors: 1.1.1
       semver: 7.8.5
-      tslib: 2.8.1
+      tslib: 2.9.1
     optionalDependencies:
       '@typescript-eslint/parser': 8.72.1(eslint@10.8.0(jiti@2.7.0))(typescript@6.0.3)
       eslint-config-prettier: 10.1.8(eslint@10.8.0(jiti@2.7.0))
@@ -9566,7 +9569,7 @@ snapshots:
       '@nx/js': 23.1.1(@babel/traverse@7.29.7)(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23))(nx@23.1.1(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23)))(verdaccio@6.10.4(typanion@3.14.0))
       eslint: 10.8.0(jiti@2.7.0)
       semver: 7.8.5
-      tslib: 2.8.1
+      tslib: 2.9.1
       typescript: 6.0.3
     optionalDependencies:
       '@zkochan/js-yaml': 0.0.7
@@ -9609,7 +9612,7 @@ snapshots:
       semver: 7.8.5
       source-map-support: 0.5.19
       tinyglobby: 0.2.17
-      tslib: 2.8.1
+      tslib: 2.9.1
     optionalDependencies:
       verdaccio: 6.10.4(typanion@3.14.0)
     transitivePeerDependencies:
@@ -9655,7 +9658,7 @@ snapshots:
       '@nx/js': 23.1.1(@babel/traverse@7.29.7)(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23))(nx@23.1.1(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23)))(verdaccio@6.10.4(typanion@3.14.0))
       '@phenomnomnominal/tsquery': 6.2.0(typescript@6.0.3)
       semver: 7.8.5
-      tslib: 2.8.1
+      tslib: 2.9.1
     optionalDependencies:
       '@nx/eslint': 23.1.1(@babel/traverse@7.29.7)(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23))(@zkochan/js-yaml@0.0.7)(eslint@10.8.0(jiti@2.7.0))(nx@23.1.1(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23)))(verdaccio@6.10.4(typanion@3.14.0))
       vite: 8.0.16(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.0)
@@ -9679,7 +9682,7 @@ snapshots:
       nx: 23.1.1(@swc-node/register@1.11.1(@swc/core@1.15.8(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.8(@swc/helpers@0.5.23))
       picomatch: 4.0.4
       semver: 7.8.5
-      tslib: 2.8.1
+      tslib: 2.9.1
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - '@swc-node/register'
@@ -10021,7 +10024,7 @@ snapshots:
       debug: 4.4.3(supports-color@7.2.0)
       oxc-resolver: 11.20.0
       pirates: 4.0.7
-      tslib: 2.8.1
+      tslib: 2.9.1
       typescript: 6.0.3
     transitivePeerDependencies:
       - '@swc/types'
@@ -10030,7 +10033,7 @@ snapshots:
   '@swc-node/sourcemap-support@0.6.1':
     dependencies:
       source-map-support: 0.5.21
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@swc/core-darwin-arm64@1.15.8':
     optional: true
@@ -10083,7 +10086,7 @@ snapshots:
 
   '@swc/helpers@0.5.23':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@swc/types@0.1.26':
     dependencies:
@@ -10172,12 +10175,12 @@ snapshots:
 
   '@tybys/wasm-util@0.10.2':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@types/chai@5.2.3':
     dependencies:
@@ -13583,6 +13586,8 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.8.1: {}
+
+  tslib@2.9.1: {}
 
   tunnel-agent@0.6.0:
     dependencies:
