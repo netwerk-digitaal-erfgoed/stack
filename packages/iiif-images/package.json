@@ -40,10 +40,10 @@
   },
   "devDependencies": {
     "@lde/pipeline": "^0.36.7",
-    "@lde/search": "^0.34.0"
+    "@lde/search": "^0.36.3"
   },
   "peerDependencies": {
-    "@lde/search": "^0.34.0"
+    "@lde/search": ">=0.36.0"
   },
   "engines": {
     "node": ">=24"

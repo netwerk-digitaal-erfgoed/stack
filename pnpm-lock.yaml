@@ -115,8 +115,8 @@ importers:
         specifier: ^0.36.7
         version: 0.36.9
       '@lde/search':
-        specifier: ^0.34.0
-        version: 0.34.0(vitest@5.1.0)
+        specifier: ^0.36.3
+        version: 0.36.3(vitest@5.1.0)
 
   packages/linked-art-to-schema-ap:
     dependencies:
@@ -1855,8 +1855,8 @@ packages:
     resolution: {integrity: sha512-UkhLoZ+sSoKzBO28hJ319OjfWgwmj7qoyPdfwV9D6C1PApHvNPBjxOn2hOxQZV26M+iGs7HMq/YGEoIGcAmxHQ==}
     engines: {node: '>=24'}
 
-  '@lde/search@0.34.0':
-    resolution: {integrity: sha512-goaw3IEB5QZQst09ZxI8lCLKl4EN27fIvqncXgUNvJVGFpv8gjXP5UxvENVjuzuI05AWure5D7OCXIVPTVS5Pw==}
+  '@lde/search@0.36.3':
+    resolution: {integrity: sha512-2oyiTA8kdAeuUX7v8H8QUByIBrPy1QbJ7HGXz+9Q38HjC9RtTKsjkBX4dyGD6elgKti7HwUFw2YP2BjgJ1G4UA==}
     peerDependencies:
       vitest: '>=4.0.0'
     peerDependenciesMeta:
@@ -9473,7 +9473,7 @@ snapshots:
       '@lde/host-limiter': 0.2.1
       tslib: 2.9.1
 
-  '@lde/search@0.34.0(vitest@5.1.0)':
+  '@lde/search@0.36.3(vitest@5.1.0)':
     dependencies:
       '@lde/text-normalization': 0.3.0
       '@rdfjs/types': 2.0.1
