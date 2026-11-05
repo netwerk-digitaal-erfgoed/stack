@@ -42,6 +42,16 @@ pnpm exec nx g @nx/js:lib packages/<name> --importPath=@ndes/<name>
 Name mapping packages `<source>-to-<target>`, for example
 `linked-art-to-schema-ap`.
 
+The generator writes no `repository`, and npm rejects a provenance-signed publish
+without one. Add it to the new `package.json`, as the other packages have it:
+
+```json
+"repository": {
+  "url": "git+https://github.com/netwerk-digitaal-erfgoed/stack.git",
+  "directory": "packages/<name>"
+},
+```
+
 ## Release
 
 Packages are versioned and published to npm on every push to `main` by
