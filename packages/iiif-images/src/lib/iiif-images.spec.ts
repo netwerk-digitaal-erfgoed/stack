@@ -18,6 +18,7 @@ const factory = new DataFactory();
 const WORK = 'https://example.org/work/1';
 const MANIFEST = 'https://n2t.net/ark:/1/manifest.json';
 const SERVICE = 'https://images.example.org/iiif/3/image';
+const IMAGE = `${SERVICE}/full/max/0/default.jpg`;
 const MANIFEST_FORMAT =
   'application/ld+json;profile="http://iiif.io/api/presentation/3/context.json"';
 const CONTEXT: IiifImagesContext = {
@@ -76,29 +77,40 @@ function workWithManifest(work = WORK, manifest = MANIFEST): Quad[] {
 }
 
 function manifestPainting(service = SERVICE) {
+  return manifestOf(imageWithService(service));
+}
+
+function imageWithService(service = SERVICE) {
   return {
-    type: 'Manifest',
-    items: [
-      {
-        type: 'Canvas',
-        items: [
-          {
-            type: 'AnnotationPage',
-            items: [
-              {
-                type: 'Annotation',
-                body: {
-                  type: 'Image',
-                  service: [{ id: service, type: 'ImageService3' }],
-                },
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    id: IMAGE,
+    type: 'Image',
+    service: [{ id: service, type: 'ImageService3' }],
   };
 }
+
+/** A manifest painting one canvas per body. */
+function manifestOf(...bodies: unknown[]) {
+  return {
+    type: 'Manifest',
+    items: bodies.map((body) => ({
+      type: 'Canvas',
+      items: [
+        {
+          type: 'AnnotationPage',
+          items: [{ type: 'Annotation', body }],
+        },
+      ],
+    })),
+  };
+}
+
+/** A plain image file, as Drapo paints them. */
+const UNSIZED_IMAGE = {
+  id: 'https://images.example.org/static.jpg',
+  type: 'Image',
+  format: 'image/jpeg',
+};
+const STATIC_IMAGE = { ...UNSIZED_IMAGE, width: 1466, height: 2000 };
 
 const INFO = {
   type: 'ImageService3',
@@ -109,6 +121,7 @@ const INFO = {
 };
 
 const ENRICHED_IMAGE = {
+  url: IMAGE,
   width: 1335,
   height: 2750,
   sizes: [
@@ -197,6 +210,77 @@ describe('iiifImages', () => {
     const [document] = await run(enrichment(), workWithManifest());
 
     expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+  });
+
+  it('gives a static image its size from the manifest, with no sizes and no service', async () => {
+    const fetchMock = serve({ [MANIFEST]: manifestOf(STATIC_IMAGE) });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual({
+      url: STATIC_IMAGE.id,
+      width: 1466,
+      height: 2000,
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('passes over a static image that states no size for the next image', async () => {
+    serve({
+      [MANIFEST]: manifestOf(UNSIZED_IMAGE, imageWithService()),
+      [`${SERVICE}/info.json`]: INFO,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+  });
+
+  it('falls back on the size the manifest states when the image service is gone', async () => {
+    serve({
+      [MANIFEST]: manifestOf({
+        ...imageWithService(),
+        width: 1335,
+        height: 2750,
+      }),
+      [`${SERVICE}/info.json`]: 404,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual({
+      url: IMAGE,
+      width: 1335,
+      height: 2750,
+    });
+  });
+
+  it('passes over an image whose id is not an absolute web address', async () => {
+    serve({
+      [MANIFEST]: manifestOf(
+        { ...STATIC_IMAGE, id: 'images/1.jpg' },
+        STATIC_IMAGE,
+      ),
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toMatchObject({
+      url: STATIC_IMAGE.id,
+    });
+  });
+
+  it('stores a manifest whose only image states no size as an absence', async () => {
+    const fetchMock = serve({ [MANIFEST]: manifestOf(UNSIZED_IMAGE) });
+    const report = vi.fn();
+    const enrich = enrichment({ report });
+
+    await run(enrich, workWithManifest());
+    const [document] = await run(enrich, workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    expect(report).not.toHaveBeenCalled();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it('accepts only */*, because LDmaX answers a JSON media type with a 404', async () => {

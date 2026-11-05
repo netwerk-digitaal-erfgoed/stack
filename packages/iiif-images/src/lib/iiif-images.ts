@@ -1,7 +1,8 @@
 import {
-  imageServices,
+  images,
   readImageService,
   type ImageService,
+  type PaintedImage,
 } from '@lde/iiif-image';
 import {
   fetchPublic,
@@ -12,6 +13,7 @@ import {
   createResolver,
   sqliteFactStore,
   urlHost,
+  type Resolution,
   type ResolutionFailure,
   type Resolver,
 } from '@lde/resolver';
@@ -74,9 +76,10 @@ export interface IiifImages {
 }
 
 /**
- * Enrich works with the image that represents them: its dimensions and a ladder
- * of precomputed sizes, resolved from the work’s IIIF Presentation manifest and
- * the selected image’s `info.json`.
+ * Enrich works with the image that represents them: its URL and dimensions, and
+ * for an image with an image service, a ladder of precomputed sizes, resolved
+ * from the work’s IIIF Presentation manifest and the selected image’s
+ * `info.json`. A static image is read from the manifest alone.
  *
  * A work with no manifest, or whose resolution has not succeeded, gets no
  * `representativeImage`; consumers then fall back to the `thumbnailUrl` already
@@ -94,7 +97,7 @@ export function iiifImages(
     options.report ??
     ((failure) => console.warn(`${failure.key}: ${failure.reason}`));
 
-  const manifests: Resolver<ManifestReference, string> = createResolver({
+  const manifests: Resolver<ManifestReference, PaintedImage> = createResolver({
     key: (reference) => reference.url,
     // Not the manifest’s own host: many are on n2t.net, which only redirects, so
     // its limits and failure cut-off would land on the wrong server and lump
@@ -107,8 +110,7 @@ export function iiifImages(
         (url) => url,
         (document) => {
           try {
-            const [service] = imageServices(document);
-            return service;
+            return firstUsable(images(document));
           } catch (error) {
             // A document that says it is a collection, or a manifest too broken
             // to read, has no image to offer: a fact about that document. Anything
@@ -123,14 +125,16 @@ export function iiifImages(
         signal,
         report,
       ),
-    store: sqliteFactStore<string>({
+    store: sqliteFactStore<PaintedImage>({
       path: options.storePath,
       table: 'manifests',
     }),
+    // 2: the selected image rather than its service’s URL, and static images too.
+    version: '2',
     limits: { ...limits, ttlMs: MANIFEST_TTL_MS },
     report,
   });
-  const images: Resolver<string, ImageService> = createResolver({
+  const services: Resolver<string, ImageService> = createResolver({
     key: (service) => service,
     host: urlHost,
     fetch: (services, { signal }) =>
@@ -175,27 +179,29 @@ export function iiifImages(
             const selected = await manifests.resolveAll(
               [...manifestOfWork.values()].map((url) => ({ url, dataset })),
             );
-            const serviceOfWork = new Map<string, string>();
+            const imageOfWork = new Map<string, PaintedImage>();
             for (const [work, manifest] of manifestOfWork) {
               const resolution = selected.get(manifest);
               if (resolution?.outcome === 'resolved') {
-                serviceOfWork.set(work, resolution.fact);
+                imageOfWork.set(work, resolution.fact);
               }
             }
-            const resolved = await images.resolveAll([
-              ...serviceOfWork.values(),
-            ]);
-            for (const [work, service] of serviceOfWork) {
-              const resolution = resolved.get(service);
-              if (resolution?.outcome === 'resolved') {
-                yield* mint(factory.namedNode(work), resolution.fact, aliases);
+            const resolved = await services.resolveAll(
+              [...imageOfWork.values()].flatMap(({ service }) =>
+                service === undefined ? [] : [service],
+              ),
+            );
+            for (const [work, image] of imageOfWork) {
+              const representative = representativeOf(image, resolved);
+              if (representative !== undefined) {
+                yield* mint(factory.namedNode(work), representative, aliases);
               }
             }
           };
     },
     async check() {
       await manifests.check();
-      await images.check();
+      await services.check();
     },
   };
 }
@@ -225,6 +231,71 @@ const ABSENT_STATUSES = new Set([401, 403, 404, 410]);
 interface ManifestReference {
   readonly url: string;
   readonly dataset: string;
+}
+
+/** What is minted for a work. A static image has no sizes and no service. */
+interface RepresentativeImage {
+  readonly url: string;
+  readonly width: number;
+  readonly height: number;
+  readonly sizes: ImageService['sizes'];
+  readonly service?: string;
+}
+
+/**
+ * The first image that can represent the work: one with an image service, whose
+ * `info.json` states its dimensions, or a static image whose manifest states
+ * them. Without a size to state, a static image adds nothing to the
+ * `thumbnailUrl` consumers already have. Its URL is minted as an IRI, so an image
+ * whose `id` is not an absolute web address is passed over.
+ */
+function firstUsable(
+  painted: Iterable<PaintedImage>,
+): PaintedImage | undefined {
+  for (const image of painted) {
+    const url = webAddress(image.url);
+    if (
+      url !== undefined &&
+      (image.service !== undefined || staticOf(image) !== undefined)
+    ) {
+      return { ...image, url };
+    }
+  }
+  return undefined;
+}
+
+/**
+ * The image to mint, or `undefined` while its image service is not resolved.
+ * An image service found to be gone leaves the size the manifest states, if any.
+ */
+function representativeOf(
+  image: PaintedImage,
+  resolved: ReadonlyMap<string, Resolution<ImageService>>,
+): RepresentativeImage | undefined {
+  const resolution =
+    image.service === undefined ? undefined : resolved.get(image.service);
+  if (resolution?.outcome === 'resolved') {
+    return { ...resolution.fact, url: image.url, service: resolution.fact.url };
+  }
+  return image.service === undefined || resolution?.outcome === 'absent'
+    ? staticOf(image)
+    : undefined;
+}
+
+/** The image as the manifest states it, without sizes or a service. */
+function staticOf(image: PaintedImage): RepresentativeImage | undefined {
+  return image.width === undefined || image.height === undefined
+    ? undefined
+    : { url: image.url, width: image.width, height: image.height, sizes: [] };
+}
+
+/** The URL, normalised, if it is an absolute `http(s)` one. */
+function webAddress(url: string): string | undefined {
+  if (!URL.canParse(url)) {
+    return undefined;
+  }
+  const { protocol, href } = new URL(url);
+  return protocol === 'http:' || protocol === 'https:' ? href : undefined;
 }
 
 /** The IR aliases one root type’s enrichment reads and mints under. */
@@ -425,11 +496,12 @@ function declaresIiifType(document: unknown): boolean {
 
 function* mint(
   work: Quad_Subject,
-  fact: ImageService,
+  fact: RepresentativeImage,
   aliases: Aliases,
 ): Generator<Quad> {
   const image = factory.blankNode();
   yield triple(work, aliases.representativeImage, image);
+  yield triple(image, aliases.image.url, factory.namedNode(fact.url));
   yield triple(image, aliases.image.width, integer(fact.width));
   yield triple(image, aliases.image.height, integer(fact.height));
   for (const size of fact.sizes) {
@@ -439,9 +511,11 @@ function* mint(
     yield triple(node, aliases.size.height, integer(size.height));
     yield triple(node, aliases.size.url, factory.namedNode(size.url));
   }
-  const service = factory.blankNode();
-  yield triple(image, aliases.image.service, service);
-  yield triple(service, aliases.service.url, factory.namedNode(fact.url));
+  if (fact.service !== undefined) {
+    const service = factory.blankNode();
+    yield triple(image, aliases.image.service, service);
+    yield triple(service, aliases.service.url, factory.namedNode(fact.service));
+  }
 }
 
 function triple(

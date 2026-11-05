@@ -93,8 +93,8 @@ importers:
   packages/iiif-images:
     dependencies:
       '@lde/iiif-image':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.2.0
+        version: 0.2.0
       '@lde/public-fetch':
         specifier: ^0.1.0
         version: 0.1.0
@@ -1825,8 +1825,8 @@ packages:
     resolution: {integrity: sha512-ja5TnOO7GBYDp3CEPXx+pYg+VjXZen+5w0WFdLHCKKea+jHc5ytxm6URqOyPoYBLECKMBs8vrKqM2SmjYu7bMw==}
     engines: {node: '>=24'}
 
-  '@lde/iiif-image@0.1.0':
-    resolution: {integrity: sha512-ZuUxa4ocC0dM/bfRdSF/8ztwHcPIz4sNBpOOvWjD4K6xBDqAZz3ZrzjaDndM8YYpYDHwWDxQku/2QmA+lqM4iw==}
+  '@lde/iiif-image@0.2.0':
+    resolution: {integrity: sha512-BNyrN07s2CkDxRBPPm5gfkRbtbJUyiBMu50SWLNRRUBlQQGUVjkB0sDE8zBLYyA7PrzE5LbYlm/ubKzs8/8aUw==}
     engines: {node: '>=24'}
 
   '@lde/pipeline-console-reporter@0.31.1':
@@ -9389,7 +9389,7 @@ snapshots:
     dependencies:
       tslib: 2.9.1
 
-  '@lde/iiif-image@0.1.0':
+  '@lde/iiif-image@0.2.0':
     dependencies:
       '@iiif/parser': 4.0.6
       tslib: 2.9.1

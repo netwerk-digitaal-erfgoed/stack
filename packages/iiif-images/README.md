@@ -5,8 +5,9 @@ represents them, so a frontend can reserve the right aspect ratio and pick a siz
 before the image loads.
 
 It is a quad transform for `@lde/search-indexer`. For each work with a IIIF
-Presentation manifest in `associatedMedia`, it reads the manifest, selects an image
-service, reads that service’s `info.json` and mints a nested `representativeImage`.
+Presentation manifest in `associatedMedia`, it reads the manifest, selects an image,
+reads its image service’s `info.json` if it has one and mints a nested
+`representativeImage`.
 
 ## Usage
 
@@ -62,6 +63,7 @@ again.
 ```json
 {
   "representativeImage": {
+    "url": "https://example.org/iiif/image/full/max/0/default.jpg",
     "width": 1335,
     "height": 2750,
     "sizes": [
@@ -82,14 +84,22 @@ again.
   sizes the server lists or its tiles precompute, so they are served fastest. Do not
   rely on the array’s order.
 - Use `service` only for deep zoom or region crops.
+- `url` is the image as the manifest paints it, at full size.
+- A static image, one without an image service, has only `url`, `width` and
+  `height`: no `sizes` and no `service`, because it is the only version there is
+  and cannot be resized.
 - Without `representativeImage`, use `associatedMedia[].thumbnailUrl`, with no
-  dimensions. That is the case for a work with no manifest, no image service in its
-  manifest, or a fetch that has not succeeded yet.
+  dimensions. That is the case for a work with no manifest, no image in its manifest
+  with an image service or a stated size, or a fetch that has not succeeded yet.
 
 ## Behaviour
 
-- **Selection:** the first painted image in the manifest that has an image service,
-  found by [@lde/iiif-image](https://ldelements.org/reference/iiif-image).
+- **Selection:** the first painted image in the manifest that has an image service
+  or whose width and height the manifest states, found by
+  [@lde/iiif-image](https://ldelements.org/reference/iiif-image). A static image’s
+  size comes from the manifest; an image service’s from its `info.json`. Where that
+  `info.json` is gone, the image counts as static, if the manifest states its size.
+  An image whose `id` is not an absolute `http(s)` URL is passed over.
 - **Freshness:** manifest facts are refetched after 30 days, because which image
   represents a work can change. `info.json` facts are refetched after 180 days: an
   image’s dimensions do not change, but its server’s size URLs can.

@@ -39,12 +39,20 @@ export const iiifImageService = {
 } as const satisfies SearchType;
 
 /**
- * The image that represents a work: the full dimensions, and the renditions a
- * consumer can pick from without knowing Image API compliance levels.
+ * The image that represents a work: the image the manifest paints, its full
+ * dimensions, and the renditions a consumer can pick from without knowing Image
+ * API compliance levels.
  */
 export const iiifImage = {
   name: 'IiifImage',
   fields: [
+    {
+      name: 'url',
+      kind: 'reference',
+      output: true,
+      path: `<${SCHEMA}contentUrl>`,
+      ref: { strategy: 'idOnly' },
+    },
     { name: 'width', kind: 'integer', output: true, path: `<${SCHEMA}width>` },
     {
       name: 'height',
