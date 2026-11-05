@@ -2,6 +2,10 @@
   "name": "@ndes/linked-art-to-schema-ap",
   "version": "0.0.1",
   "description": "Projects Linked Art (CIDOC-CRM) collections into the SCHEMA-AP-NDE pivot, built on @lde/pipeline.",
+  "repository": {
+    "url": "git+https://github.com/netwerk-digitaal-erfgoed/stack.git",
+    "directory": "packages/linked-art-to-schema-ap"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
