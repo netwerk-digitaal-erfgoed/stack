@@ -18,11 +18,21 @@ jobs:
     if: ${{ !startsWith(github.event.head_commit.message, 'chore(release)') }}
     runs-on: ubuntu-latest
     steps:
+      # The NDE Spookje app’s token instead of the default GITHUB_TOKEN, because
+      # the `main` ruleset lets only that app push the release commit and tags.
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@v6
         with:
           # Need full git history for nx release to work properly
           fetch-depth: 0
           filter: tree:0
+          token: ${{ steps.app-token.outputs.token }}
 
       - uses: pnpm/action-setup@v6
 
@@ -44,7 +54,7 @@ jobs:
 
       - run: pnpm exec nx release --skip-publish
         env:
-          GITHUB_TOKEN: ${{ github.token }} # Needed for pushing release commits and creating releases.
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }} # Needed for pushing release commits and creating releases.
 
       # Authenticates to npm over OIDC through npm trusted publishing, so no
       # long-lived token is needed.
