@@ -1,3 +1,9 @@
+## 0.1.1 (2026-11-05)
+
+### 🩹 Fixes
+
+- **iiif-images:** accept any @lde/search from 0.36 ([#74](https://github.com/netwerk-digitaal-erfgoed/stack/pull/74))
+
 ## 0.1.0 (2026-11-05)
 
 ### 🚀 Features
