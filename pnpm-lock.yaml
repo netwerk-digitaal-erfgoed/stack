@@ -92,9 +92,12 @@ importers:
 
   packages/iiif-images:
     dependencies:
-      '@iiif/parser':
-        specifier: ^4.0.5
-        version: 4.0.6
+      '@lde/iiif-image':
+        specifier: ^0.1.0
+        version: 0.1.0
+      '@lde/public-fetch':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@lde/resolver':
         specifier: ^0.2.1
         version: 0.2.1
@@ -1811,6 +1814,10 @@ packages:
     resolution: {integrity: sha512-ja5TnOO7GBYDp3CEPXx+pYg+VjXZen+5w0WFdLHCKKea+jHc5ytxm6URqOyPoYBLECKMBs8vrKqM2SmjYu7bMw==}
     engines: {node: '>=24'}
 
+  '@lde/iiif-image@0.1.0':
+    resolution: {integrity: sha512-ZuUxa4ocC0dM/bfRdSF/8ztwHcPIz4sNBpOOvWjD4K6xBDqAZz3ZrzjaDndM8YYpYDHwWDxQku/2QmA+lqM4iw==}
+    engines: {node: '>=24'}
+
   '@lde/pipeline-console-reporter@0.31.1':
     resolution: {integrity: sha512-/NYDXDFVynFf/zIYzstZNWS1c25W8jIkxBHIt42RqPyl5bzmo3Rkw2gATjq4DPteZDjXZEQ5EhAMBxeikxrWuQ==}
     peerDependencies:
@@ -1828,6 +1835,10 @@ packages:
 
   '@lde/pipeline@0.40.1':
     resolution: {integrity: sha512-CA2TBMl33rZ6B+e+s9cZZ2lwTwqgQeR7NFnh8x3EJQGHNHxqwzbyEQ3imrh+9lJsoFWplLQiASAGo7F/7lYokw==}
+
+  '@lde/public-fetch@0.1.0':
+    resolution: {integrity: sha512-682wiP1q/a+Ra9uqH/DwCH1uZEaX/baUoNkZH497w+xkHltK24pT3OplUpiwN+L4G6NqGNSRZwvEJWqNjgiFGg==}
+    engines: {node: '>=24'}
 
   '@lde/resolver@0.2.1':
     resolution: {integrity: sha512-UkhLoZ+sSoKzBO28hJ319OjfWgwmj7qoyPdfwV9D6C1PApHvNPBjxOn2hOxQZV26M+iGs7HMq/YGEoIGcAmxHQ==}
@@ -9504,6 +9515,11 @@ snapshots:
     dependencies:
       tslib: 2.9.1
 
+  '@lde/iiif-image@0.1.0':
+    dependencies:
+      '@iiif/parser': 4.0.6
+      tslib: 2.9.1
+
   '@lde/pipeline-console-reporter@0.31.1(@lde/dataset@0.9.0)(@lde/pipeline@0.40.1)':
     dependencies:
       '@lde/dataset': 0.9.0
@@ -9573,6 +9589,10 @@ snapshots:
       tslib: 2.9.1
     transitivePeerDependencies:
       - encoding
+
+  '@lde/public-fetch@0.1.0':
+    dependencies:
+      tslib: 2.9.1
 
   '@lde/resolver@0.2.1':
     dependencies:

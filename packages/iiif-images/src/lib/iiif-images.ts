@@ -1,4 +1,14 @@
 import {
+  imageServices,
+  readImageService,
+  type ImageService,
+} from '@lde/iiif-image';
+import {
+  fetchPublic,
+  RefusedUrlError,
+  ResponseTooLargeError,
+} from '@lde/public-fetch';
+import {
   createResolver,
   sqliteFactStore,
   urlHost,
@@ -20,9 +30,6 @@ import {
   iiifImageSize,
   representativeImageField,
 } from '../schema.js';
-import { imageFactFrom, type ImageFact } from './image-service.js';
-import { listsCanvases, selectImageService } from './manifest.js';
-import { isPublicWebUrl } from './public-url.js';
 
 export interface IiifImagesOptions {
   /**
@@ -98,13 +105,20 @@ export function iiifImages(
       fetchFacts(
         references.map(({ url }) => url),
         (url) => url,
-        (document, url) => {
-          // A manifest must have a canvas, so one without is a server misbehaving,
-          // not a manifest with no image: an absence would overwrite the stored fact.
-          if (!listsCanvases(document)) {
-            throw new Error(`${url} is not a manifest with canvases`);
+        (document) => {
+          try {
+            const [service] = imageServices(document);
+            return service;
+          } catch (error) {
+            // A document that says it is a collection, or a manifest too broken
+            // to read, has no image to offer: a fact about that document. Anything
+            // else – an error page served as JSON – is a server misbehaving, so
+            // no absence may overwrite the stored fact.
+            if (error instanceof TypeError && declaresIiifType(document)) {
+              return undefined;
+            }
+            throw error;
           }
-          return selectImageService(document);
         },
         signal,
         report,
@@ -116,7 +130,7 @@ export function iiifImages(
     limits: { ...limits, ttlMs: MANIFEST_TTL_MS },
     report,
   });
-  const images: Resolver<string, ImageFact> = createResolver({
+  const images: Resolver<string, ImageService> = createResolver({
     key: (service) => service,
     host: urlHost,
     fetch: (services, { signal }) =>
@@ -125,7 +139,7 @@ export function iiifImages(
         (service) => `${service}/info.json`,
         (info, service) => {
           // Same reasoning, with more at stake: these facts are otherwise permanent.
-          const fact = imageFactFrom(service, info);
+          const fact = readImageService(service, info);
           if (fact === undefined) {
             throw new Error(`${service}/info.json states no dimensions`);
           }
@@ -134,7 +148,7 @@ export function iiifImages(
         signal,
         report,
       ),
-    store: sqliteFactStore<ImageFact>({
+    store: sqliteFactStore<ImageService>({
       path: options.storePath,
       table: 'images',
     }),
@@ -195,10 +209,16 @@ const IIIF_PRESENTATION_CONTEXT = 'iiif.io/api/presentation';
 const MANIFEST_TTL_MS = 30 * 24 * 3_600_000;
 /**
  * An image’s dimensions do not change, but what its server offers does: an upgrade
- * can change the size URLs, type and profile stored with them. So these facts are
- * reconsidered too, only rarely.
+ * can change the size URLs stored with them. So these facts are reconsidered too,
+ * only rarely.
  */
 const IMAGE_TTL_MS = 180 * 24 * 3_600_000;
+const IIIF_TYPES = new Set([
+  'Manifest',
+  'Collection',
+  'sc:Manifest',
+  'sc:Collection',
+]);
 /** Answers meaning this document is not ours to have, now or on a retry. */
 const ABSENT_STATUSES = new Set([401, 403, 404, 410]);
 
@@ -299,7 +319,8 @@ function aliasOf(searchType: SearchType, name: string): string | undefined {
  * Each work’s manifest: its `associatedMedia` entry that is a named node and names
  * the IIIF Presentation context in its `encodingFormat`. The profile allows one;
  * where a publisher states more, the first by IRI, because quad order can change
- * between runs and the representative image should not change with it.
+ * between runs and the representative image should not change with it. Only works
+ * named by an IRI, because the image is minted onto the work by its name.
  */
 function manifestsIn(
   batch: readonly Quad[],
@@ -319,6 +340,7 @@ function manifestsIn(
   for (const quad of batch) {
     if (
       quad.predicate.value !== aliases.associatedMedia ||
+      quad.subject.termType !== 'NamedNode' ||
       !manifestEntries.has(quad.object.value)
     ) {
       continue;
@@ -336,7 +358,9 @@ function manifestsIn(
  * answer, or a document `derive` finds no fact in, is an absence and left out;
  * anything else throws, so the resolver retries it and a stored fact survives a
  * passing outage. Restricted images are absences so that they cannot write off a
- * host whose public images are fine.
+ * host whose public images are fine. So, reported, is a URL that is not a public
+ * web address – publisher data decides these URLs, and this runs inside the
+ * cluster – and a document too large to read, which a retry would not shrink.
  */
 async function fetchFacts<Fact>(
   keys: readonly string[],
@@ -347,30 +371,20 @@ async function fetchFacts<Fact>(
 ): Promise<Array<readonly [string, Fact]>> {
   const facts: Array<readonly [string, Fact]> = [];
   for (const key of keys) {
-    // Publisher data decides these URLs, and this runs inside the cluster.
-    if (!isPublicWebUrl(urlOf(key))) {
-      report({
-        key,
-        reason: 'refused to fetch a URL that is not a public web address',
-        degradedToStore: false,
-      });
+    let document: unknown;
+    try {
+      document = await fetchDocument(urlOf(key), signal);
+    } catch (error) {
+      if (
+        !(error instanceof RefusedUrlError) &&
+        !(error instanceof ResponseTooLargeError)
+      ) {
+        throw error;
+      }
+      report({ key, reason: error.message, degradedToStore: false });
       continue;
     }
-    // Only `*/*`: LDmaX answers 404 to any JSON media type in `Accept`, IIIF’s own
-    // included, even with `*/*` as a fallback beside it.
-    const response = await fetch(urlOf(key), {
-      signal,
-      headers: { Accept: '*/*' },
-    });
-    if (!response.ok) {
-      // An unread body keeps its connection until garbage collection.
-      await response.body?.cancel();
-      if (ABSENT_STATUSES.has(response.status)) {
-        continue;
-      }
-      throw new Error(`${urlOf(key)} answered ${response.status}`);
-    }
-    const fact = derive(await response.json(), key);
+    const fact = document === undefined ? undefined : derive(document, key);
     if (fact !== undefined) {
       facts.push([key, fact]);
     }
@@ -378,9 +392,40 @@ async function fetchFacts<Fact>(
   return facts;
 }
 
+/** The JSON document at `url`, or `undefined` for an {@link ABSENT_STATUSES} answer. */
+async function fetchDocument(
+  url: string,
+  signal: AbortSignal,
+): Promise<unknown> {
+  // Only `*/*`: LDmaX answers 404 to any JSON media type in `Accept`, IIIF’s own
+  // included, even with `*/*` as a fallback beside it.
+  const response = await fetchPublic(url, {
+    signal,
+    headers: { Accept: '*/*' },
+  });
+  if (!response.ok) {
+    // An unread body keeps its connection until garbage collection.
+    await response.body?.cancel();
+    if (ABSENT_STATUSES.has(response.status)) {
+      return undefined;
+    }
+    throw new Error(`${url} answered ${response.status}`);
+  }
+  return response.json();
+}
+
+/** Whether a document says it is a IIIF manifest or collection, in Presentation 3 or 2. */
+function declaresIiifType(document: unknown): boolean {
+  if (typeof document !== 'object' || document === null) {
+    return false;
+  }
+  const { type, '@type': legacyType } = document as Record<string, unknown>;
+  return IIIF_TYPES.has(String(type ?? legacyType));
+}
+
 function* mint(
   work: Quad_Subject,
-  fact: ImageFact,
+  fact: ImageService,
   aliases: Aliases,
 ): Generator<Quad> {
   const image = factory.blankNode();
@@ -396,21 +441,7 @@ function* mint(
   }
   const service = factory.blankNode();
   yield triple(image, aliases.image.service, service);
-  yield triple(
-    service,
-    aliases.service.url,
-    factory.namedNode(fact.service.url),
-  );
-  yield triple(
-    service,
-    aliases.service.type,
-    factory.literal(fact.service.type),
-  );
-  yield triple(
-    service,
-    aliases.service.profile,
-    factory.literal(fact.service.profile),
-  );
+  yield triple(service, aliases.service.url, factory.namedNode(fact.url));
 }
 
 function triple(

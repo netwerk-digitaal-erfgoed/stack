@@ -72,9 +72,7 @@ again.
       }
     ],
     "service": {
-      "url": "https://example.org/iiif/image",
-      "type": "ImageService3",
-      "profile": "level2"
+      "url": "https://example.org/iiif/image"
     }
   }
 }
@@ -90,19 +88,24 @@ again.
 
 ## Behaviour
 
-- **Selection:** the first painted image in the manifest that has an image service.
+- **Selection:** the first painted image in the manifest that has an image service,
+  found by [@lde/iiif-image](https://ldelements.org/reference/iiif-image).
 - **Freshness:** manifest facts are refetched after 30 days, because which image
   represents a work can change. `info.json` facts are refetched after 180 days: an
-  image’s dimensions do not change, but its server’s size URLs and profile can.
-- **Safety:** a manifest or service URL that is not `http(s)`, or that names a private
-  address or cluster-internal host, is reported and not fetched. This looks at the URL
-  only, so it does not catch redirects or DNS pointing inwards. Run the indexer under
-  an egress policy as well.
+  image’s dimensions do not change, but its server’s size URLs can.
+- **Safety:** fetches go through
+  [@lde/public-fetch](https://ldelements.org/reference/public-fetch), which refuses a
+  URL, or a redirect target, that is not `http(s)` or names a private address or
+  cluster-internal host, and caps a body at 20 MiB. A refused URL or a larger body is
+  reported and counts as having no such document. It looks at URLs only, so it does not catch DNS
+  pointing inwards. Run the indexer under an egress policy as well.
 - **Failures:** a failed fetch is reported and retried on a later run, and the work
   is indexed without an image. A 401, 403, 404 or 410 counts as having no such
   document and is rechecked after a week, so a brief 401 or 403 can replace a stored
-  fact for that long. A 200 that is not a usable document counts as a failure, so it
-  is retried every run and five in a row stop that dataset’s manifests for the run.
+  fact for that long. So does a collection, which has no image of its own, and a
+  manifest too broken to read. A 200 that is no IIIF document at all, such as an error
+  page served as JSON, counts as a failure, so it is retried every run and five in a
+  row stop that dataset’s manifests for the run.
 - **Budget:** `fetchesPerRun` covers all datasets together. What it defers is not
   reported, and those works are indexed without an image until a later run.
 - **Later runs:** retries, deferred works and refreshes all need the dataset to be

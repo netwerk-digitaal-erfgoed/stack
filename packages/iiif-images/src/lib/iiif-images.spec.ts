@@ -114,13 +114,16 @@ const ENRICHED_IMAGE = {
   sizes: [
     { width: 83, height: 172, url: `${SERVICE}/full/83,172/0/default.jpg` },
   ],
-  service: { url: SERVICE, type: 'ImageService3', profile: 'level2' },
+  service: { url: SERVICE },
 };
 
-/** Answer each URL from `documents`, as a JSON body or a bare status. */
+/** Answer each URL from `documents`, as a JSON body, a bare status or a response. */
 function serve(documents: Record<string, unknown>) {
   const fetchMock = vi.fn(async (input: string | URL | Request) => {
     const answer = documents[String(input)];
+    if (answer instanceof Response) {
+      return answer;
+    }
     return typeof answer === 'number'
       ? new Response(null, { status: answer })
       : answer === undefined
@@ -290,6 +293,113 @@ describe('iiifImages', () => {
     const fetchMock = serve({});
 
     await run(enrichment(), workWithManifest(WORK, internal));
+
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('stores a refused URL as an absence, so a later run does not report it again', async () => {
+    const internal = 'http://search-api.default.svc/manifest';
+    serve({});
+    const report = vi.fn();
+    const enrich = enrichment({ report });
+
+    await run(enrich, workWithManifest(WORK, internal));
+    report.mockClear();
+    await run(enrich, workWithManifest(WORK, internal));
+
+    expect(report).not.toHaveBeenCalled();
+  });
+
+  it('refuses a redirect to a private address', async () => {
+    const fetchMock = serve({
+      [MANIFEST]: new Response(null, {
+        status: 302,
+        headers: { location: 'http://10.0.0.1/manifest' },
+      }),
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('stores a collection as an absence rather than reporting it', async () => {
+    serve({
+      [MANIFEST]: {
+        type: 'Collection',
+        items: [{ id: 'https://example.org/m', type: 'Manifest' }],
+      },
+    });
+    const report = vi.fn();
+
+    const [document] = await run(enrichment({ report }), workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    expect(report).not.toHaveBeenCalled();
+  });
+
+  it('stores a manifest too broken to read as an absence rather than reporting it', async () => {
+    serve({
+      [MANIFEST]: {
+        '@context': 'http://iiif.io/api/presentation/2/context.json',
+        '@id': MANIFEST,
+        '@type': 'sc:Manifest',
+        sequences: [
+          {
+            '@type': 'sc:Sequence',
+            canvases: [
+              {
+                '@id': 'https://example.org/canvas',
+                '@type': 'sc:Canvas',
+                images: [null],
+              },
+            ],
+          },
+        ],
+      },
+    });
+    const report = vi.fn();
+
+    const [document] = await run(enrichment({ report }), workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    expect(report).not.toHaveBeenCalled();
+  });
+
+  it('reports a document too large to read, and stores it as an absence', async () => {
+    const fetchMock = serve({
+      [MANIFEST]: new Response('{}', {
+        headers: { 'content-length': String(21 * 1024 * 1024) },
+      }),
+    });
+    const report = vi.fn();
+    const enrich = enrichment({ report });
+
+    await run(enrich, workWithManifest());
+    await run(enrich, workWithManifest());
+
+    expect(report).toHaveBeenCalledTimes(1);
+    expect(report).toHaveBeenCalledWith(
+      expect.objectContaining({ key: MANIFEST }),
+    );
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('leaves a work named by a blank node alone', async () => {
+    const fetchMock = serve(servedBoth);
+    const work = factory.blankNode();
+    const [, manifestEntry] = workWithManifest();
+    const quads = [
+      factory.quad(
+        work,
+        alias(creativeWork, 'associatedMedia'),
+        factory.namedNode(MANIFEST),
+      ),
+      manifestEntry,
+    ];
+
+    await run(enrichment(), quads, []);
 
     expect(fetchMock).not.toHaveBeenCalled();
   });

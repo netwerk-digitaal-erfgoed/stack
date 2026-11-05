@@ -30,8 +30,6 @@ export const iiifImageService = {
       path: `${SCHEMA}url`,
       ref: { strategy: 'idOnly' },
     },
-    { name: 'type', kind: 'keyword', output: true, path: `${IIIF}serviceType` },
-    { name: 'profile', kind: 'keyword', output: true, path: `${IIIF}profile` },
   ],
 } as const satisfies SearchType;
 
