@@ -1,6 +1,6 @@
 {
   "name": "@ndes/linked-art-to-schema-ap",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Projects Linked Art (CIDOC-CRM) collections into the SCHEMA-AP-NDE pivot, built on @lde/pipeline.",
   "license": "MIT",
   "type": "module",

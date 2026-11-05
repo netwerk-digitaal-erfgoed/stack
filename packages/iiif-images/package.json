@@ -1,6 +1,6 @@
 {
   "name": "@ndes/iiif-images",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Enriches SCHEMA-AP-NDE works with the dimensions and sizes of their representative IIIF image, as a quad transform for the search indexer.",
   "license": "MIT",
   "type": "module",
