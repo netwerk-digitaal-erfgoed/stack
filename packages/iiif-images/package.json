@@ -27,7 +27,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@lde/iiif-image": "^0.1.0",
+    "@lde/iiif-image": "^0.2.0",
     "@lde/public-fetch": "^0.1.0",
     "@lde/resolver": "^0.2.1",
     "@rdfjs/types": "^2.0.1",
