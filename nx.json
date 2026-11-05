@@ -51,6 +51,7 @@
     }
   },
   "release": {
+    "projects": ["packages/*", "!linked-art-to-schema-ap"],
     "projectsRelationship": "independent",
     "conventionalCommits": {
       "useCommitScope": false
