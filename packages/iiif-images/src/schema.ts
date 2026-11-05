@@ -7,13 +7,18 @@ const IIIF = 'https://def.nde.nl/iiif#';
 export const iiifImageSize = {
   name: 'IiifImageSize',
   fields: [
-    { name: 'width', kind: 'integer', output: true, path: `${SCHEMA}width` },
-    { name: 'height', kind: 'integer', output: true, path: `${SCHEMA}height` },
+    { name: 'width', kind: 'integer', output: true, path: `<${SCHEMA}width>` },
+    {
+      name: 'height',
+      kind: 'integer',
+      output: true,
+      path: `<${SCHEMA}height>`,
+    },
     {
       name: 'url',
       kind: 'reference',
       output: true,
-      path: `${SCHEMA}contentUrl`,
+      path: `<${SCHEMA}contentUrl>`,
       ref: { strategy: 'idOnly' },
     },
   ],
@@ -27,7 +32,7 @@ export const iiifImageService = {
       name: 'url',
       kind: 'reference',
       output: true,
-      path: `${SCHEMA}url`,
+      path: `<${SCHEMA}url>`,
       ref: { strategy: 'idOnly' },
     },
   ],
@@ -40,21 +45,26 @@ export const iiifImageService = {
 export const iiifImage = {
   name: 'IiifImage',
   fields: [
-    { name: 'width', kind: 'integer', output: true, path: `${SCHEMA}width` },
-    { name: 'height', kind: 'integer', output: true, path: `${SCHEMA}height` },
+    { name: 'width', kind: 'integer', output: true, path: `<${SCHEMA}width>` },
+    {
+      name: 'height',
+      kind: 'integer',
+      output: true,
+      path: `<${SCHEMA}height>`,
+    },
     {
       name: 'sizes',
       kind: 'reference',
       array: true,
       output: true,
-      path: `${IIIF}size`,
+      path: `<${IIIF}size>`,
       ref: { typeName: iiifImageSize.name, strategy: 'inline' },
     },
     {
       name: 'service',
       kind: 'reference',
       output: true,
-      path: `${IIIF}service`,
+      path: `<${IIIF}service>`,
       ref: { typeName: iiifImageService.name, strategy: 'inline' },
     },
   ],
@@ -69,6 +79,6 @@ export const representativeImageField = {
   name: 'representativeImage',
   kind: 'reference',
   output: true,
-  path: `${IIIF}representativeImage`,
+  path: `<${IIIF}representativeImage>`,
   ref: { typeName: iiifImage.name, strategy: 'inline' },
 } as const satisfies SearchField;
