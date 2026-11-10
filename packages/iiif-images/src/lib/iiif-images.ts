@@ -16,6 +16,7 @@ import {
   type Resolution,
   type ResolutionFailure,
   type Resolver,
+  type ResolveOptions,
 } from '@lde/resolver';
 import type {
   RootType,
@@ -43,8 +44,9 @@ export interface IiifImagesOptions {
    * Manifests, and separately `info.json` documents, this object may fetch across
    * all datasets, so construct one per run. Defaults to the resolver’s 500.
    *
-   * What the budget defers is not reported, and those works are indexed without an
-   * image. A cold store then warms only as datasets are reprocessed, so where
+   * What the budget defers is counted, as `manifests deferred` or
+   * `image services deferred`, but not reported, and those works are indexed
+   * without an image. A cold store then warms only as datasets are reprocessed, so where
    * unchanged datasets are skipped, set this high enough to cover them in one run.
    */
   readonly fetchesPerRun?: number;
@@ -55,6 +57,12 @@ export interface IiifImagesOptions {
 /** What the transform reads from the reader it is attached to. */
 export interface IiifImagesContext {
   readonly dataset: { readonly iri: URL };
+  /**
+   * Told what became of each manifest and image service, such as
+   * `manifests fetched` or `image services from store`, so the stage can add
+   * up the run. An `@lde/pipeline` reader passes its own.
+   */
+  readonly count?: (name: string) => void;
 }
 
 /** A transform attachable to a reader as an `@lde/pipeline` `QuadTransform`. */
@@ -178,6 +186,7 @@ export function iiifImages(
             const dataset = context.dataset.iri.toString();
             const selected = await manifests.resolveAll(
               [...manifestOfWork.values()].map((url) => ({ url, dataset })),
+              countedAs('manifests', context),
             );
             const imageOfWork = new Map<string, PaintedImage>();
             for (const [work, manifest] of manifestOfWork) {
@@ -190,6 +199,7 @@ export function iiifImages(
               [...imageOfWork.values()].flatMap(({ service }) =>
                 service === undefined ? [] : [service],
               ),
+              countedAs('image services', context),
             );
             for (const [work, image] of imageOfWork) {
               const representative = representativeOf(image, resolved);
@@ -207,6 +217,14 @@ export function iiifImages(
 }
 
 const factory = new DataFactory();
+
+/** Pass the resolver’s counts on to the context, prefixed with what is resolved. */
+function countedAs(
+  prefix: string,
+  { count }: IiifImagesContext,
+): ResolveOptions {
+  return { count: (name) => count?.(`${prefix} ${name}`) };
+}
 
 const INTEGER = factory.namedNode('http://www.w3.org/2001/XMLSchema#integer');
 /** What the profile’s `encodingFormat` for a manifest entry contains. */

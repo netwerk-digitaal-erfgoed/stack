@@ -33,13 +33,13 @@
   "dependencies": {
     "@lde/iiif-image": "^0.2.0",
     "@lde/public-fetch": "^0.1.0",
-    "@lde/resolver": "^0.2.1",
+    "@lde/resolver": "^0.4.0",
     "@rdfjs/types": "^2.0.1",
     "rdf-data-factory": "^2.1.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@lde/pipeline": "^0.36.7",
+    "@lde/pipeline": "^0.45.0",
     "@lde/search": "^0.36.3"
   },
   "peerDependencies": {
