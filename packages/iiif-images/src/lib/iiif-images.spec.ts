@@ -168,12 +168,13 @@ async function run(
   enrich: ReturnType<typeof enrichment>,
   quads: readonly Quad[],
   works: readonly string[] = [WORK],
+  context: IiifImagesContext = CONTEXT,
 ): Promise<SearchDocument[]> {
   const transformed: Quad[] = [];
   async function* source() {
     yield* quads;
   }
-  for await (const quad of enrich(source(), CONTEXT)) {
+  for await (const quad of enrich(source(), context)) {
     transformed.push(quad);
   }
   const documents: SearchDocument[] = [];
@@ -347,6 +348,18 @@ describe('iiifImages', () => {
     await run(enrichment(), quads);
 
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('counts what became of each manifest and image service', async () => {
+    serve(servedBoth);
+    const count = vi.fn();
+
+    await run(enrichment(), workWithManifest(), [WORK], { ...CONTEXT, count });
+
+    expect(count.mock.calls).toEqual([
+      ['manifests fetched'],
+      ['image services fetched'],
+    ]);
   });
 
   it('indexes the work without an image when the manifest is gone', async () => {
