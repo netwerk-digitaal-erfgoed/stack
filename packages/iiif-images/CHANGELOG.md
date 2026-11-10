@@ -1,3 +1,9 @@
+## 0.1.2 (2026-11-10)
+
+### 🚀 Features
+
+- **iiif-images:** count what became of each manifest and image service ([#78](https://github.com/netwerk-digitaal-erfgoed/stack/pull/78))
+
 ## 0.1.1 (2026-11-05)
 
 ### 🩹 Fixes
