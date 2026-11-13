@@ -99,8 +99,8 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       '@lde/resolver':
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.7.0
+        version: 0.7.0
       '@rdfjs/types':
         specifier: ^2.0.1
         version: 2.0.1
@@ -1727,6 +1727,10 @@ packages:
     resolution: {integrity: sha512-ja5TnOO7GBYDp3CEPXx+pYg+VjXZen+5w0WFdLHCKKea+jHc5ytxm6URqOyPoYBLECKMBs8vrKqM2SmjYu7bMw==}
     engines: {node: '>=24'}
 
+  '@lde/host-limiter@0.4.0':
+    resolution: {integrity: sha512-PVILq3uFuS0+gO1YYyI8jMgHiadi9oBjisZFWoVCXr0Q2U8eS8J90xpETnym+j4F3DW6vDMKW/fxw1AZHSb+dQ==}
+    engines: {node: '>=24'}
+
   '@lde/iiif-image@0.2.0':
     resolution: {integrity: sha512-BNyrN07s2CkDxRBPPm5gfkRbtbJUyiBMu50SWLNRRUBlQQGUVjkB0sDE8zBLYyA7PrzE5LbYlm/ubKzs8/8aUw==}
     engines: {node: '>=24'}
@@ -1750,8 +1754,8 @@ packages:
     resolution: {integrity: sha512-682wiP1q/a+Ra9uqH/DwCH1uZEaX/baUoNkZH497w+xkHltK24pT3OplUpiwN+L4G6NqGNSRZwvEJWqNjgiFGg==}
     engines: {node: '>=24'}
 
-  '@lde/resolver@0.4.0':
-    resolution: {integrity: sha512-OXJr35t4JZaNb88n2tiFC64LlIrFq223/LMwTqUVuFZbzB/Y/4xEav4MT6+nqwiqG0DyOjMrEFzobdbgXVbhdw==}
+  '@lde/resolver@0.7.0':
+    resolution: {integrity: sha512-HGaFftIvQml919cAfUTp7PVDy9P1tn6eU11iE2yVFlhcLyGD/LoohtbDD27hY/LMm/0jkPpNGo1ud8JGFd1J9w==}
     engines: {node: '>=24'}
 
   '@lde/search@0.36.3':
@@ -9239,6 +9243,10 @@ snapshots:
     dependencies:
       tslib: 2.9.1
 
+  '@lde/host-limiter@0.4.0':
+    dependencies:
+      tslib: 2.9.1
+
   '@lde/iiif-image@0.2.0':
     dependencies:
       '@iiif/parser': 4.0.6
@@ -9294,9 +9302,9 @@ snapshots:
     dependencies:
       tslib: 2.9.1
 
-  '@lde/resolver@0.4.0':
+  '@lde/resolver@0.7.0':
     dependencies:
-      '@lde/host-limiter': 0.2.1
+      '@lde/host-limiter': 0.4.0
       tslib: 2.9.1
 
   '@lde/search@0.36.3(vitest@5.1.0)':

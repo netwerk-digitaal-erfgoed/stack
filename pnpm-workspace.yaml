@@ -12,5 +12,5 @@ minimumReleaseAgeExclude:
   - '@lde/public-fetch@0.1.0'
   - '@lde/search@0.36.3'
   - '@lde/text-normalization@0.3.0'
-  - '@lde/resolver@0.4.0'
   - '@lde/pipeline@0.45.0'
+  - '@lde/resolver@0.7.0'

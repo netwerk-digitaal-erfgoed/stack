@@ -41,15 +41,15 @@ export interface IiifImagesOptions {
    */
   readonly storePath: string;
   /**
-   * Manifests, and separately `info.json` documents, this object may fetch across
-   * all datasets, so construct one per run. Defaults to the resolver’s 500.
+   * How long after this object’s construction it may still start fetching, in
+   * milliseconds, across all datasets, so construct one per run. Unset, there is
+   * no limit: everything is fetched as fast as the publishers allow.
    *
-   * What the budget defers is counted, as `manifests deferred` or
+   * What the window defers is counted, as `manifests deferred` or
    * `image services deferred`, but not reported, and those works are indexed
-   * without an image. A cold store then warms only as datasets are reprocessed, so where
-   * unchanged datasets are skipped, set this high enough to cover them in one run.
+   * without an image until a later run fetches it.
    */
-  readonly fetchesPerRun?: number;
+  readonly fetchWindowMs?: number;
   /** Told about each reference that failed. Defaults to a console warning. */
   readonly report?: (failure: ResolutionFailure) => void;
 }
@@ -98,9 +98,9 @@ export function iiifImages(
   options: IiifImagesOptions,
 ): IiifImages {
   const limits =
-    options.fetchesPerRun === undefined
+    options.fetchWindowMs === undefined
       ? {}
-      : { fetchesPerResolver: options.fetchesPerRun };
+      : { fetchWindowMs: options.fetchWindowMs };
   const report =
     options.report ??
     ((failure) => console.warn(`${failure.key}: ${failure.reason}`));
