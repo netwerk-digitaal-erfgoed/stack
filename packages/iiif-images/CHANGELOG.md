@@ -1,3 +1,9 @@
+## 0.2.1 (2026-11-13)
+
+### 🚀 Features
+
+- **iiif-images:** fall back to the next image when an image’s service is gone ([#84](https://github.com/netwerk-digitaal-erfgoed/stack/pull/84))
+
 ## 0.2.0 (2026-11-13)
 
 ### 🚀 Features
