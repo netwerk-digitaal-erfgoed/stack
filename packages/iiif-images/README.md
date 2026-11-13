@@ -98,8 +98,12 @@ again.
   or whose width and height the manifest states, found by
   [@lde/iiif-image](https://ldelements.org/reference/iiif-image). A static image’s
   size comes from the manifest; an image service’s from its `info.json`. Where that
-  `info.json` is gone, the image counts as static, if the manifest states its size.
-  An image whose `id` is not an absolute `http(s)` URL is passed over.
+  `info.json` is gone or restricted (see Failures), the image counts as static, if
+  the manifest states its size; if it doesn’t, the manifest’s next image with a
+  service or a stated size is tried, up to the tenth. An `info.json` that failed
+  rather than being gone holds its place, so an outage doesn’t change which image
+  represents a work. An image whose `id` is not an absolute `http(s)` URL is passed
+  over.
 - **Freshness:** manifest facts are refetched after 30 days, because which image
   represents a work can change. `info.json` facts are refetched after 180 days: an
   image’s dimensions do not change, but its server’s size URLs can.

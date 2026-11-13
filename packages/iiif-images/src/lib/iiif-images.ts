@@ -105,7 +105,7 @@ export function iiifImages(
     options.report ??
     ((failure) => console.warn(`${failure.key}: ${failure.reason}`));
 
-  const manifests: Resolver<ManifestReference, PaintedImage> = createResolver({
+  const manifests: Resolver<ManifestReference, ManifestFact> = createResolver({
     key: (reference) => reference.url,
     // Not the manifest’s own host: many are on n2t.net, which only redirects, so
     // its limits and failure cut-off would land on the wrong server and lump
@@ -118,7 +118,7 @@ export function iiifImages(
         (url) => url,
         (document) => {
           try {
-            return firstUsable(images(document));
+            return usable(images(document));
           } catch (error) {
             // A document that says it is a collection, or a manifest too broken
             // to read, has no image to offer: a fact about that document. Anything
@@ -133,11 +133,13 @@ export function iiifImages(
         signal,
         report,
       ),
-    store: sqliteFactStore<PaintedImage>({
+    store: sqliteFactStore<ManifestFact>({
       path: options.storePath,
       table: 'manifests',
     }),
     // 2: the selected image rather than its service’s URL, and static images too.
+    // Facts now hold a list of images; one stored as a single image still reads,
+    // as a list of one, so the store isn’t refetched all at once.
     version: '2',
     limits: { ...limits, ttlMs: MANIFEST_TTL_MS },
     report,
@@ -188,24 +190,20 @@ export function iiifImages(
               [...manifestOfWork.values()].map((url) => ({ url, dataset })),
               countedAs('manifests', context),
             );
-            const imageOfWork = new Map<string, PaintedImage>();
+            const imagesOfWork = new Map<string, readonly PaintedImage[]>();
             for (const [work, manifest] of manifestOfWork) {
               const resolution = selected.get(manifest);
               if (resolution?.outcome === 'resolved') {
-                imageOfWork.set(work, resolution.fact);
+                imagesOfWork.set(work, [resolution.fact].flat());
               }
             }
-            const resolved = await services.resolveAll(
-              [...imageOfWork.values()].flatMap(({ service }) =>
-                service === undefined ? [] : [service],
-              ),
+            const representatives = await representativesOf(
+              imagesOfWork,
+              services,
               countedAs('image services', context),
             );
-            for (const [work, image] of imageOfWork) {
-              const representative = representativeOf(image, resolved);
-              if (representative !== undefined) {
-                yield* mint(factory.namedNode(work), representative, aliases);
-              }
+            for (const [work, representative] of representatives) {
+              yield* mint(factory.namedNode(work), representative, aliases);
             }
           };
     },
@@ -245,11 +243,23 @@ const IIIF_TYPES = new Set([
 ]);
 /** Answers meaning this document is not ours to have, now or on a retry. */
 const ABSENT_STATUSES = new Set([401, 403, 404, 410]);
+/**
+ * How many of a manifest’s usable images are kept, in case the first is gone. A
+ * digitised book can paint hundreds; a work whose first ten are all gone has a
+ * problem a fallback should not hide.
+ */
+const CANDIDATES = 10;
 
 interface ManifestReference {
   readonly url: string;
   readonly dataset: string;
 }
+
+/**
+ * A manifest’s usable images, in order. A single image is a fact stored before
+ * the list was kept, until its TTL has it refetched.
+ */
+type ManifestFact = PaintedImage | readonly PaintedImage[];
 
 /** What is minted for a work. A static image has no sizes and no service. */
 interface RepresentativeImage {
@@ -261,25 +271,79 @@ interface RepresentativeImage {
 }
 
 /**
- * The first image that can represent the work: one with an image service, whose
- * `info.json` states its dimensions, or a static image whose manifest states
+ * The first {@link CANDIDATES} distinct images that can represent the work, in
+ * manifest order, or `undefined` for none: images with an image service, whose
+ * `info.json` states their dimensions, or static images whose manifest states
  * them. Without a size to state, a static image adds nothing to the
  * `thumbnailUrl` consumers already have. Its URL is minted as an IRI, so an image
- * whose `id` is not an absolute web address is passed over.
+ * whose `id` is not an absolute web address is passed over. An image painted
+ * again, by its service or else its URL, is passed over too: it would be gone
+ * again.
  */
-function firstUsable(
+function usable(
   painted: Iterable<PaintedImage>,
-): PaintedImage | undefined {
+): readonly PaintedImage[] | undefined {
+  const candidates: PaintedImage[] = [];
+  const seen = new Set<string>();
   for (const image of painted) {
     const url = webAddress(image.url);
     if (
-      url !== undefined &&
-      (image.service !== undefined || staticOf(image) !== undefined)
+      url === undefined ||
+      (image.service === undefined && staticOf(image) === undefined) ||
+      seen.has(image.service ?? url)
     ) {
-      return { ...image, url };
+      continue;
+    }
+    seen.add(image.service ?? url);
+    candidates.push({ ...image, url });
+    if (candidates.length === CANDIDATES) {
+      break;
     }
   }
-  return undefined;
+  return candidates.length === 0 ? undefined : candidates;
+}
+
+/**
+ * Each work’s representative image: the first of its candidates that can stand
+ * for it. A candidate whose image service is gone, with no size in the manifest
+ * to fall back on, gives way to the next, whose service is only then resolved.
+ * One whose service is unresolved holds its place, so a passing outage does not
+ * swap a work’s image and swap it back on the next run.
+ */
+async function representativesOf(
+  imagesOfWork: ReadonlyMap<string, readonly PaintedImage[]>,
+  services: Resolver<string, ImageService>,
+  options: ResolveOptions,
+): Promise<Map<string, RepresentativeImage>> {
+  const representatives = new Map<string, RepresentativeImage>();
+  const resolved = new Map<string, Resolution<ImageService>>();
+  let pending = [...imagesOfWork];
+  while (pending.length > 0) {
+    // A service resolved in an earlier round is not asked for, or counted, again.
+    const due = pending.flatMap(([, [{ service }]]) =>
+      service === undefined || resolved.has(service) ? [] : [service],
+    );
+    if (due.length > 0) {
+      for (const entry of await services.resolveAll(due, options)) {
+        resolved.set(...entry);
+      }
+    }
+    const next: typeof pending = [];
+    for (const [work, [image, ...rest]] of pending) {
+      const representative = representativeOf(image, resolved);
+      if (representative !== undefined) {
+        representatives.set(work, representative);
+      } else if (
+        rest.length > 0 &&
+        image.service !== undefined &&
+        resolved.get(image.service)?.outcome === 'absent'
+      ) {
+        next.push([work, rest]);
+      }
+    }
+    pending = next;
+  }
+  return representatives;
 }
 
 /**
