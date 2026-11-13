@@ -564,6 +564,30 @@ describe('iiifImages', () => {
     expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
   });
 
+  it('waits out a 503’s Retry-After and tries the manifest again', async () => {
+    const started = Date.now();
+    let answered = false;
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: string | URL | Request) => {
+        if (String(input) === MANIFEST && !answered) {
+          answered = true;
+          return new Response(null, {
+            status: 503,
+            headers: { 'Retry-After': '1' },
+          });
+        }
+        const document = servedBoth[String(input) as keyof typeof servedBoth];
+        return Response.json(document);
+      }),
+    );
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+    expect(Date.now() - started).toBeGreaterThanOrEqual(1_000);
+  });
+
   it('indexes the work without an image when the manifest is gone', async () => {
     serve({ [MANIFEST]: 404 });
 

@@ -92,6 +92,9 @@ importers:
 
   packages/iiif-images:
     dependencies:
+      '@lde/host-limiter':
+        specifier: ^0.5.0
+        version: 0.5.0
       '@lde/iiif-image':
         specifier: ^0.2.0
         version: 0.2.0

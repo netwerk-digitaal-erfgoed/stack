@@ -120,7 +120,8 @@ again.
   manifest too broken to read. A 200 that is no IIIF document at all, such as an error
   page served as JSON, counts as a failure, so it is retried every run and five in a
   row stop that server’s manifests for the run. A 429, or a 503 with `Retry-After`,
-  is tried again in the run, after the wait the server asks for.
+  is tried again in the run, after the wait the server asks for, as long as that
+  wait fits in the resolver’s 10-second timeout; a longer one fails until the next run.
 - **Window:** without `fetchWindowMs`, a cold store is fetched in one run, as fast
   as each publisher keeps up. With it, a fetch that has not started once the window
   has passed waits for a later run; one already under way finishes. The window covers
@@ -130,7 +131,7 @@ again.
   reprocessed. With `PROVENANCE_FILE`, an unchanged dataset waits until it changes
   or `PIPELINE_VERSION` is bumped, so leave `fetchWindowMs` long enough to cover it
   in one run.
-- **Limits:** manifest and `info.json` requests are grouped per host, so all of a
-  publisher’s manifests share one limit across datasets. An ARK on `n2t.net` is
+- **Limits:** manifest and `info.json` requests are grouped per host, with one limit
+  per host for both, shared across datasets. An ARK on `n2t.net` is
   grouped by its NAAN instead (`n2t.net/ark:/<NAAN>`), because that host only
   redirects: the NAAN belongs to one organisation and stands in for its server.

@@ -4,6 +4,7 @@ import {
   type ImageService,
   type PaintedImage,
 } from '@lde/iiif-image';
+import { createHostLimiter } from '@lde/host-limiter';
 import {
   fetchPublic,
   RefusedUrlError,
@@ -106,9 +107,13 @@ export function iiifImages(
     options.report ??
     ((failure) => console.warn(`${failure.key}: ${failure.reason}`));
 
+  // One limiter for both, so a host serving manifests and image services alike
+  // gets one limit: 4 batches against a host, as each resolver had on its own.
+  const limiter = createHostLimiter(8, 4);
   const manifests: Resolver<string, ManifestFact> = createResolver({
     key: (manifest) => manifest,
     host: manifestHost,
+    limiter,
     fetch: (manifests, { signal }) =>
       fetchFacts(
         manifests,
@@ -144,6 +149,7 @@ export function iiifImages(
   const services: Resolver<string, ImageService> = createResolver({
     key: (service) => service,
     host: urlHost,
+    limiter,
     fetch: (services, { signal }) =>
       fetchFacts(
         services,
@@ -254,11 +260,13 @@ const CANDIDATES = 10;
  * together.
  */
 function manifestHost(manifest: string): string {
-  const host = urlHost(manifest);
-  if (host !== 'n2t.net') {
-    return host;
+  if (!URL.canParse(manifest)) {
+    return manifest;
   }
-  const naan = /^\/ark:\/?([^/]+)/.exec(new URL(manifest).pathname)?.[1];
+  const { host, pathname } = new URL(manifest);
+  // The `ark:` label is case-insensitive.
+  const naan =
+    host === 'n2t.net' ? /^\/ark:\/?([^/]+)/i.exec(pathname)?.[1] : undefined;
   return naan === undefined ? host : `${host}/ark:/${naan}`;
 }
 

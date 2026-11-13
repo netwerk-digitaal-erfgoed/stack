@@ -31,6 +31,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
+    "@lde/host-limiter": "^0.5.0",
     "@lde/iiif-image": "^0.2.0",
     "@lde/public-fetch": "^0.1.0",
     "@lde/resolver": "^0.8.0",
