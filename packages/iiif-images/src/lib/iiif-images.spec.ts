@@ -1,4 +1,8 @@
 import type { QuadTransform, ReaderContext } from '@lde/pipeline';
+import { sqliteFactStore } from '@lde/resolver';
+import { mkdtemp } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import {
   projectRoots,
   searchSchema,
@@ -19,6 +23,7 @@ const WORK = 'https://example.org/work/1';
 const MANIFEST = 'https://n2t.net/ark:/1/manifest.json';
 const SERVICE = 'https://images.example.org/iiif/3/image';
 const IMAGE = `${SERVICE}/full/max/0/default.jpg`;
+const GONE_SERVICE = 'https://images.example.org/iiif/3/gone';
 const MANIFEST_FORMAT =
   'application/ld+json;profile="http://iiif.io/api/presentation/3/context.json"';
 const CONTEXT: IiifImagesContext = {
@@ -82,10 +87,18 @@ function manifestPainting(service = SERVICE) {
 
 function imageWithService(service = SERVICE) {
   return {
-    id: IMAGE,
+    id: `${service}/full/max/0/default.jpg`,
     type: 'Image',
     service: [{ id: service, type: 'ImageService3' }],
   };
+}
+
+/** That many distinct image services that are gone. */
+function goneServices(count: number): string[] {
+  return Array.from(
+    { length: count },
+    (_, index) => `${GONE_SERVICE}-${index}`,
+  );
 }
 
 /** A manifest painting one canvas per body. */
@@ -254,6 +267,143 @@ describe('iiifImages', () => {
       width: 1335,
       height: 2750,
     });
+  });
+
+  it('falls back on the next image when an image service is gone and the manifest states no size', async () => {
+    serve({
+      [MANIFEST]: manifestOf(
+        imageWithService(GONE_SERVICE),
+        imageWithService(SERVICE),
+      ),
+      [`${GONE_SERVICE}/info.json`]: 404,
+      [`${SERVICE}/info.json`]: INFO,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+  });
+
+  it('fetches a later image’s service only once the image before it is gone', async () => {
+    const fetchMock = serve({
+      [MANIFEST]: manifestOf(
+        imageWithService(SERVICE),
+        imageWithService(GONE_SERVICE),
+      ),
+      [`${SERVICE}/info.json`]: INFO,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+    expect(fetchMock).not.toHaveBeenCalledWith(
+      `${GONE_SERVICE}/info.json`,
+      expect.anything(),
+    );
+  });
+
+  it('keeps waiting on an image whose service failed, rather than falling back', async () => {
+    const fetchMock = serve({
+      [MANIFEST]: manifestOf(
+        imageWithService(GONE_SERVICE),
+        imageWithService(SERVICE),
+      ),
+      [`${GONE_SERVICE}/info.json`]: 500,
+      [`${SERVICE}/info.json`]: INFO,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    expect(fetchMock).not.toHaveBeenCalledWith(
+      `${SERVICE}/info.json`,
+      expect.anything(),
+    );
+  });
+
+  it('serves the fallback from the store on a later run', async () => {
+    const fetchMock = serve({
+      [MANIFEST]: manifestOf(
+        imageWithService(GONE_SERVICE),
+        imageWithService(SERVICE),
+      ),
+      [`${GONE_SERVICE}/info.json`]: 404,
+      [`${SERVICE}/info.json`]: INFO,
+    });
+    const enrich = enrichment();
+    await run(enrich, workWithManifest());
+    fetchMock.mockClear();
+
+    const [document] = await run(enrich, workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('considers only the first ten usable images', async () => {
+    const gone = goneServices(10);
+    const fetchMock = serve({
+      [MANIFEST]: manifestOf(
+        ...gone.map((service) => imageWithService(service)),
+        imageWithService(SERVICE),
+      ),
+      [`${SERVICE}/info.json`]: INFO,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toBeUndefined();
+    for (const service of gone) {
+      expect(fetchMock).toHaveBeenCalledWith(
+        `${service}/info.json`,
+        expect.anything(),
+      );
+    }
+    expect(fetchMock).not.toHaveBeenCalledWith(
+      `${SERVICE}/info.json`,
+      expect.anything(),
+    );
+  });
+
+  it('does not count an image painted again as a further candidate', async () => {
+    const gone = goneServices(9);
+    serve({
+      [MANIFEST]: manifestOf(
+        ...gone.map((service) => imageWithService(service)),
+        imageWithService(gone[0]),
+        imageWithService(SERVICE),
+      ),
+      [`${SERVICE}/info.json`]: INFO,
+    });
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+  });
+
+  it('reads a manifest fact stored as a single image, without refetching it', async () => {
+    const storePath = join(
+      await mkdtemp(join(tmpdir(), 'iiif-images-')),
+      'store.sqlite',
+    );
+    const store = sqliteFactStore({ path: storePath, table: 'manifests' });
+    await store.set(
+      new Map([
+        [
+          MANIFEST,
+          { status: 'present', fact: { url: IMAGE, service: SERVICE } },
+        ],
+      ]),
+      new Date().toISOString(),
+      '2',
+    );
+    await store.close?.();
+    const fetchMock = serve({ [`${SERVICE}/info.json`]: INFO });
+
+    const [document] = await run(enrichment({ storePath }), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
+    expect(fetchMock).not.toHaveBeenCalledWith(MANIFEST, expect.anything());
   });
 
   it('passes over an image whose id is not an absolute web address', async () => {
