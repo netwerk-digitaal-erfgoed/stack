@@ -26,9 +26,7 @@ const IMAGE = `${SERVICE}/full/max/0/default.jpg`;
 const GONE_SERVICE = 'https://images.example.org/iiif/3/gone';
 const MANIFEST_FORMAT =
   'application/ld+json;profile="http://iiif.io/api/presentation/3/context.json"';
-const CONTEXT: IiifImagesContext = {
-  dataset: { iri: new URL('https://example.org/dataset') },
-};
+const CONTEXT: IiifImagesContext = {};
 
 const mediaObject: SearchType = {
   name: 'MediaObject',
@@ -510,6 +508,60 @@ describe('iiifImages', () => {
       ['manifests fetched'],
       ['image services fetched'],
     ]);
+  });
+
+  it('writes off one organisation’s ARKs on n2t.net without the others', async () => {
+    const failing = (n: number) => `https://n2t.net/ark:/11111/manifest-${n}`;
+    const healthy = 'https://n2t.net/ark:/22222/manifest';
+    serve({
+      ...Object.fromEntries(
+        Array.from({ length: 6 }, (_, n) => [failing(n), 500]),
+      ),
+      [healthy]: manifestPainting(),
+      [`${SERVICE}/info.json`]: INFO,
+    });
+    const enrich = enrichment();
+    for (let n = 0; n < 5; n++) {
+      await run(enrich, workWithManifest(WORK, failing(n)));
+    }
+    const count = vi.fn();
+    const otherWork = 'https://example.org/work/2';
+
+    const documents = await run(
+      enrich,
+      [
+        ...workWithManifest(WORK, failing(5)),
+        ...workWithManifest(otherWork, healthy),
+      ],
+      [WORK, otherWork],
+      { ...CONTEXT, count },
+    );
+
+    expect(count).toHaveBeenCalledWith('manifests written off');
+    expect(count).toHaveBeenCalledWith('manifests fetched');
+    expect(documents[1].representativeImage).toEqual(ENRICHED_IMAGE);
+  });
+
+  it('tries a manifest again within the run when its server answers 429', async () => {
+    let answered = false;
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: string | URL | Request) => {
+        if (String(input) === MANIFEST && !answered) {
+          answered = true;
+          return new Response(null, {
+            status: 429,
+            headers: { 'Retry-After': '0' },
+          });
+        }
+        const document = servedBoth[String(input) as keyof typeof servedBoth];
+        return Response.json(document);
+      }),
+    );
+
+    const [document] = await run(enrichment(), workWithManifest());
+
+    expect(document.representativeImage).toEqual(ENRICHED_IMAGE);
   });
 
   it('indexes the work without an image when the manifest is gone', async () => {

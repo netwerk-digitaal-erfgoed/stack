@@ -11,6 +11,8 @@ import {
 } from '@lde/public-fetch';
 import {
   createResolver,
+  parseRetryAfter,
+  RetryableError,
   sqliteFactStore,
   urlHost,
   type Resolution,
@@ -56,7 +58,6 @@ export interface IiifImagesOptions {
 
 /** What the transform reads from the reader it is attached to. */
 export interface IiifImagesContext {
-  readonly dataset: { readonly iri: URL };
   /**
    * Told what became of each manifest and image service, such as
    * `manifests fetched` or `image services from store`, so the stage can add
@@ -105,16 +106,12 @@ export function iiifImages(
     options.report ??
     ((failure) => console.warn(`${failure.key}: ${failure.reason}`));
 
-  const manifests: Resolver<ManifestReference, ManifestFact> = createResolver({
-    key: (reference) => reference.url,
-    // Not the manifest’s own host: many are on n2t.net, which only redirects, so
-    // its limits and failure cut-off would land on the wrong server and lump
-    // publishers together. A dataset is the closest known stand-in for the server
-    // at the end of those redirects.
-    host: (reference) => reference.dataset,
-    fetch: (references, { signal }) =>
+  const manifests: Resolver<string, ManifestFact> = createResolver({
+    key: (manifest) => manifest,
+    host: manifestHost,
+    fetch: (manifests, { signal }) =>
       fetchFacts(
-        references.map(({ url }) => url),
+        manifests,
         (url) => url,
         (document) => {
           try {
@@ -185,9 +182,8 @@ export function iiifImages(
               yield quad;
             }
             const manifestOfWork = manifestsIn(batch, aliases);
-            const dataset = context.dataset.iri.toString();
             const selected = await manifests.resolveAll(
-              [...manifestOfWork.values()].map((url) => ({ url, dataset })),
+              [...manifestOfWork.values()],
               countedAs('manifests', context),
             );
             const imagesOfWork = new Map<string, readonly PaintedImage[]>();
@@ -250,9 +246,20 @@ const ABSENT_STATUSES = new Set([401, 403, 404, 410]);
  */
 const CANDIDATES = 10;
 
-interface ManifestReference {
-  readonly url: string;
-  readonly dataset: string;
+/**
+ * The server a manifest is fetched from, which its limit and failure cut-off are
+ * kept for: the URL’s host. An ARK on `n2t.net` is the exception, because that
+ * host only redirects; its NAAN, which belongs to one organisation, stands in for
+ * the server at the end of the redirects, so organisations are not lumped
+ * together.
+ */
+function manifestHost(manifest: string): string {
+  const host = urlHost(manifest);
+  if (host !== 'n2t.net') {
+    return host;
+  }
+  const naan = /^\/ark:\/?([^/]+)/.exec(new URL(manifest).pathname)?.[1];
+  return naan === undefined ? host : `${host}/ark:/${naan}`;
 }
 
 /**
@@ -561,6 +568,17 @@ async function fetchDocument(
     await response.body?.cancel();
     if (ABSENT_STATUSES.has(response.status)) {
       return undefined;
+    }
+    const retryAfter = response.headers.get('retry-after');
+    // The server asked to come back later, so the resolver tries again this run
+    // and pauses the host for as long as it said.
+    if (
+      response.status === 429 ||
+      (response.status === 503 && retryAfter !== null)
+    ) {
+      throw new RetryableError(`${url} answered ${response.status}`, {
+        retryAfterMs: parseRetryAfter(retryAfter),
+      });
     }
     throw new Error(`${url} answered ${response.status}`);
   }
