@@ -1,3 +1,9 @@
+## 0.2.2 (2026-11-13)
+
+### 🚀 Features
+
+- **iiif-images:** key manifests on their server rather than the dataset ([#85](https://github.com/netwerk-digitaal-erfgoed/stack/pull/85))
+
 ## 0.2.1 (2026-11-13)
 
 ### 🚀 Features
