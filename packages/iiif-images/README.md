@@ -48,11 +48,11 @@ const pipeline = await createSearchIndexer(config, {
 `representativeImage` and `associatedMedia`, so a deployment on an older schema loses
 the enrichment rather than the run.
 
-| Option          | Default         | Purpose                                                  |
-| --------------- | --------------- | -------------------------------------------------------- |
-| `storePath`     | required        | SQLite file holding resolved facts between runs          |
-| `fetchesPerRun` | 500             | Manifests, and separately `info.json` documents, per run |
-| `report`        | console warning | Called for each reference whose fetch failed             |
+| Option          | Default         | Purpose                                                    |
+| --------------- | --------------- | ---------------------------------------------------------- |
+| `storePath`     | required        | SQLite file holding resolved facts between runs            |
+| `fetchWindowMs` | no limit        | How long after construction a fetch may still start, in ms |
+| `report`        | console warning | Called for each reference whose fetch failed               |
 
 `storePath` has to be on a durable volume. The store is the only place these facts
 live between runs, and with an empty one every image is fetched from the publisher
@@ -116,12 +116,15 @@ again.
   manifest too broken to read. A 200 that is no IIIF document at all, such as an error
   page served as JSON, counts as a failure, so it is retried every run and five in a
   row stop that dataset’s manifests for the run.
-- **Budget:** `fetchesPerRun` covers all datasets together. What it defers is not
-  reported, and those works are indexed without an image until a later run.
+- **Window:** without `fetchWindowMs`, a cold store is fetched in one run, as fast
+  as each publisher keeps up. With it, a fetch that has not started once the window
+  has passed waits for a later run; one already under way finishes. The window covers
+  all datasets together, and what it defers is not reported: those works are indexed
+  without an image until a later run.
 - **Later runs:** retries, deferred works and refreshes all need the dataset to be
   reprocessed. With `PROVENANCE_FILE`, an unchanged dataset waits until it changes
-  or `PIPELINE_VERSION` is bumped, so set `fetchesPerRun` high enough to cover it in
-  one run.
+  or `PIPELINE_VERSION` is bumped, so leave `fetchWindowMs` long enough to cover it
+  in one run.
 - **Limits:** manifest requests are grouped per dataset, because manifest URLs often
   sit on a redirector such as `n2t.net`, and `info.json` requests per host. Datasets
   on one server are limited separately, with only the overall limit across them.

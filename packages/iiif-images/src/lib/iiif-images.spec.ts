@@ -608,26 +608,19 @@ describe('iiifImages', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it('stops fetching at the per-run budget and leaves the rest for later', async () => {
-    const otherManifest = 'https://n2t.net/ark:/1/other.json';
-    const fetchMock = serve({
-      ...servedBoth,
-      [otherManifest]: manifestPainting(),
+  it('starts no fetch once the fetch window has passed', async () => {
+    vi.useFakeTimers({
+      toFake: ['setTimeout', 'Date'],
+      shouldAdvanceTime: true,
     });
-    const otherWork = 'https://example.org/work/2';
+    const fetchMock = serve(servedBoth);
+    const enrich = enrichment({ fetchWindowMs: 1_000 });
+    vi.setSystemTime(Date.now() + 1_001);
 
-    const documents = await run(
-      enrichment({ fetchesPerRun: 1 }),
-      [...workWithManifest(), ...workWithManifest(otherWork, otherManifest)],
-      [WORK, otherWork],
-    );
+    const [document] = await run(enrich, workWithManifest());
 
-    expect(
-      documents.filter(
-        (document) => document.representativeImage !== undefined,
-      ),
-    ).toHaveLength(1);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(document.representativeImage).toBeUndefined();
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it('offers no transform to a type that has not declared the field', () => {

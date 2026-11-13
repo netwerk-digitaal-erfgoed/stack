@@ -33,7 +33,7 @@
   "dependencies": {
     "@lde/iiif-image": "^0.2.0",
     "@lde/public-fetch": "^0.1.0",
-    "@lde/resolver": "^0.4.0",
+    "@lde/resolver": "^0.7.0",
     "@rdfjs/types": "^2.0.1",
     "rdf-data-factory": "^2.1.0",
     "tslib": "^2.3.0"
