@@ -1,3 +1,21 @@
+## 0.2.0 (2026-11-13)
+
+### 🚀 Features
+
+- ⚠️ **iiif-images:** bound a run by a fetch window rather than a fetch count ([#82](https://github.com/netwerk-digitaal-erfgoed/stack/pull/82))
+
+### ⚠️ Breaking Changes
+
+- **iiif-images:** bound a run by a fetch window rather than a fetch count ([#82](https://github.com/netwerk-digitaal-erfgoed/stack/pull/82))
+  fetchesPerRun is removed, and with it the default of 500 fetches per run;
+  a cold store is now fetched in one run. Pass fetchWindowMs to bound how long that takes."
+  M packages/iiif-images/README.md
+  M packages/iiif-images/package.json
+  M packages/iiif-images/src/lib/iiif-images.spec.ts
+  M packages/iiif-images/src/lib/iiif-images.ts
+  M pnpm-lock.yaml
+  M pnpm-workspace.yaml
+
 ## 0.1.2 (2026-11-10)
 
 ### 🚀 Features
