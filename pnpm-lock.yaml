@@ -115,11 +115,11 @@ importers:
         version: 2.9.1
     devDependencies:
       '@lde/pipeline':
-        specifier: ^0.50.2
-        version: 0.50.2
+        specifier: ^0.51.1
+        version: 0.51.1
       '@lde/search':
-        specifier: ^0.42.0
-        version: 0.42.0(vitest@5.1.0)
+        specifier: ^0.50.1
+        version: 0.50.1(vitest@5.1.0)
 
   packages/linked-art-to-schema-ap:
     dependencies:
@@ -127,17 +127,17 @@ importers:
         specifier: ^0.12.0
         version: 0.12.1
       '@lde/pipeline':
-        specifier: ^0.50.2
-        version: 0.50.2
+        specifier: ^0.51.1
+        version: 0.51.1
       '@lde/pipeline-console-reporter':
-        specifier: ^0.41.2
-        version: 0.41.2(@lde/pipeline@0.50.2)
+        specifier: ^0.42.1
+        version: 0.42.1(@lde/pipeline@0.51.1)
       '@lde/pipeline-shacl-validator':
-        specifier: ^0.33.2
-        version: 0.33.2(@lde/dataset@0.10.1)(@lde/pipeline@0.50.2)
+        specifier: ^0.34.1
+        version: 0.34.1(@lde/dataset@0.10.1)(@lde/pipeline@0.51.1)
       '@lde/sparql-qlever':
-        specifier: ^0.22.0
-        version: 0.22.0
+        specifier: ^0.23.0
+        version: 0.23.0
       tslib:
         specifier: ^2.9.1
         version: 2.9.1
@@ -1747,19 +1747,19 @@ packages:
     resolution: {integrity: sha512-BNyrN07s2CkDxRBPPm5gfkRbtbJUyiBMu50SWLNRRUBlQQGUVjkB0sDE8zBLYyA7PrzE5LbYlm/ubKzs8/8aUw==}
     engines: {node: '>=24'}
 
-  '@lde/pipeline-console-reporter@0.41.2':
-    resolution: {integrity: sha512-tFHdHAG7Dk8JXC0m7hAFNA6v3rnXPFRumdNVca7JoTNGIhvxH42MFbs+PbiLQxHhjVK4gPYpAc8WpfzIe+440Q==}
+  '@lde/pipeline-console-reporter@0.42.1':
+    resolution: {integrity: sha512-kbDSs8QT2ucctYrCFEBhOhHD2yHeIPP+W6TSh3ywtCx1Gx+KV6yPwIT0CX+E1uzyHKioEmUZJ0shRh604dSqcA==}
     peerDependencies:
-      '@lde/pipeline': ^0.50.2
+      '@lde/pipeline': ^0.51.1
 
-  '@lde/pipeline-shacl-validator@0.33.2':
-    resolution: {integrity: sha512-kfSb/c+aSSfwPDIDCb3jpnvy6tA7usAl+HnkjsYvhTszDFODAAB5c0tTo1/G6BXTaSzWoKAIVmUdcnvM+PnquQ==}
+  '@lde/pipeline-shacl-validator@0.34.1':
+    resolution: {integrity: sha512-uLhs1wSrtXeN2XKbIaQsrx0WTUM7QfBr/NMCyaAs5JPQj3pfEnZ8qyDk5EJ3ppDcjuetQKaFFZYCcIWlOPJn0g==}
     peerDependencies:
       '@lde/dataset': ^0.10.1
-      '@lde/pipeline': ^0.50.2
+      '@lde/pipeline': ^0.51.1
 
-  '@lde/pipeline@0.50.2':
-    resolution: {integrity: sha512-Lnu0CpljViNzE8VPr8zm4lXP+Mz5koIFqx10JdPT/WgaOZ7UGo0mvNGbwpVJDpoNuXMXCmvy8p512xbzTWDCCw==}
+  '@lde/pipeline@0.51.1':
+    resolution: {integrity: sha512-wuYvZoYMGDcueoTwB5cLO8g5uRx5xjWAJ0dPVxUy5LIAe898w7o/HGj9uEY3/GatkeziUF2fippFQVB+kM/9Kg==}
 
   '@lde/public-fetch@0.1.0':
     resolution: {integrity: sha512-682wiP1q/a+Ra9uqH/DwCH1uZEaX/baUoNkZH497w+xkHltK24pT3OplUpiwN+L4G6NqGNSRZwvEJWqNjgiFGg==}
@@ -1769,8 +1769,8 @@ packages:
     resolution: {integrity: sha512-u6w/xh16z9BmmDkl9G4VjyHV9AdBi+8Ktxba79kGNH+ovNlEBPksKXkGDRfuT2+1n7IEW1KqLR3G5pPQJqnjGQ==}
     engines: {node: '>=24'}
 
-  '@lde/search@0.42.0':
-    resolution: {integrity: sha512-oM04BAMimlQgZGeqmB5OEUyvUjVT2KbN+yDXlb61EmjrHg+IBohpVYucGCKXlIA2Ak6Nk3BVTpKDIXJwIkcBeA==}
+  '@lde/search@0.50.1':
+    resolution: {integrity: sha512-qLc0Y/7RNaL0L0JoLJRUEY/BTxNsDYDh65Fr4P+RlQSTMq8J8osrVtLn8RQNldhsKFp/Ua02dCMcJGT5E4XrGA==}
     peerDependencies:
       vitest: '>=4.0.0'
     peerDependenciesMeta:
@@ -1780,8 +1780,8 @@ packages:
   '@lde/sparql-importer@0.11.1':
     resolution: {integrity: sha512-fYDnC19ItcHe12HAiWz5bKa6NJdco7pqTgXgcwQUUg/dV91Z1zgZNjpblUOxZBfHiO7H9u48a13S7SWE1xMBag==}
 
-  '@lde/sparql-qlever@0.22.0':
-    resolution: {integrity: sha512-1VBqypsFQm5z6cTlQkcP2zRC8j7Y1d9vHksXE02til8S9B7jPBO59CBFtu4x75bbdIzOeCR22QcDKPC0BpNTtQ==}
+  '@lde/sparql-qlever@0.23.0':
+    resolution: {integrity: sha512-wBKTAq/3Fzu6NNDamMIl5e6yQlPkeQTze3kmg6ttUdAbuE1npedQvTzKoJoiDvx0KTLFcw6XC0p+LLwbD1R+TQ==}
 
   '@lde/sparql-server@0.6.0':
     resolution: {integrity: sha512-9Er5G/IxKi5VvHjLmfzMrY3gaOZr5f1R3C+6cJTetOe8kK+08r2KDhy3Rj3K9YPGH/nuNLTm5aZvmnJNyUObPg==}
@@ -2557,8 +2557,8 @@ packages:
   '@tybys/wasm-util@0.10.2':
     resolution: {integrity: sha512-RoBvJ2X0wuKlWFIjrwffGw1IqZHKQqzIchKaadZZfnNpsAYp2mM0h36JtPCjNDAHGgYez/15uMBpfGwchhiMgg==}
 
-  '@tybys/wasm-util@0.10.4':
-    resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
+  '@tybys/wasm-util@0.10.5':
+    resolution: {integrity: sha512-dOGOPxlaNV+G046mZzN+9C0dAcQZeSKcXiVaM0TYy/LM4ttTmgSBDxYfovcYI8Em3+eAbiAYpvWLOv8+ZVRJKA==}
 
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
@@ -4606,6 +4606,10 @@ packages:
     resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
     engines: {node: '>= 0.4'}
 
+  object-inspect@1.14.0:
+    resolution: {integrity: sha512-IVgHNlp/jwQX271+Xzoq9LZNTWXxZK+cEOrGBOBxXNbn7fapnZ+Ts6TVMgNOuAezwG2wdtnMX97tTPK6VEnuOQ==}
+    engines: {node: '>= 0.4'}
+
   obug@3.0.0:
     resolution: {integrity: sha512-5vvB5+W7ePv+p3uqxi+RcW1XAzLW0/hxt3/4X4Lc4qHudzOhmBiBwOY6DRob4WnanAEGvNcLjF+KNOufrUoEQw==}
     engines: {node: '>=12.20.0'}
@@ -4936,8 +4940,8 @@ packages:
     resolution: {integrity: sha512-dLsljMd9sqwRkby8zhO1gSg3PnJIBFid8f4CQj/sXx+7cKx+E7u0PKhZ+U4wmhx7EfmtvnA318oVaIkAB1lRJw==}
     hasBin: true
 
-  relative-to-absolute-iri@1.0.8:
-    resolution: {integrity: sha512-U1TmhrhCmXKkDL9mI8gBbF5TN6TKcuv28k5+H3gMCAjoz0TyyHAICHlaGDZsTEBSu2Y3HhDKc8e6X9n33qeIqA==}
+  relative-to-absolute-iri@1.0.9:
+    resolution: {integrity: sha512-WMlUQum6IQvDd/q6tyg5Vzu+YFdCu83FjxIiKA+hrzP7gGNrydekE8CO9y8io9tXkeMilJKMhCuqU+jjSWkWrw==}
 
   relativize-url@0.1.1:
     resolution: {integrity: sha512-Z3uvG8fITjw8Xcz6ACzO6QZoI02D574Q6PBKvYUfkOxILtiDV9aOBSeSytIky1bBKX/JeK3/YNqCD9sM5FH+Bw==}
@@ -5112,9 +5116,9 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  source-map-js@1.2.2:
-    resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}
-    engines: {node: '>=0.10.0'}
+  source-map-js@1.2.4:
+    resolution: {integrity: sha512-J7ZjMvHd9O1fcT/5V09QWaaSl2BbWx3F6O08spde82Namf9UB0GxRVIPiNbVsdKkoizHiSpTodo3vp2bAy91MA==}
+    engines: {node: '>=6.0.0'}
 
   source-map-support@0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -5395,8 +5399,8 @@ packages:
     resolution: {integrity: sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==}
     engines: {node: '>=20.18.1'}
 
-  undici@8.12.4:
-    resolution: {integrity: sha512-8Mx+uNKKER2bA4AdtedkqRbwUCIJFr2nJckXRe5yrDqzePqwLP7VNcctN8/XdmDSbF7mS+jJKIszlL+vbam1VA==}
+  undici@8.13.1:
+    resolution: {integrity: sha512-Kt7EaPjh0s93lJH/PmW3d5rhkcpUa6fS3jqZ7+YGxNd9L7Xy/i827xe4C2uhhq+pJebM4tQOl5AgHmW11G5Skg==}
     engines: {node: '>=22.19.0'}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
@@ -6736,7 +6740,7 @@ snapshots:
       '@comunica/core': 5.4.0
       '@comunica/types': 5.4.0
       '@jeswr/stream-to-string': 2.0.0
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
     transitivePeerDependencies:
       - encoding
 
@@ -6978,7 +6982,7 @@ snapshots:
       '@comunica/bus-function-factory': 5.4.0
       '@comunica/context-entries': 5.4.0
       '@comunica/utils-expression-evaluator': 5.4.0
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
     transitivePeerDependencies:
       - encoding
 
@@ -7458,7 +7462,7 @@ snapshots:
       '@comunica/types': 5.4.0
       '@types/http-cache-semantics': 4.2.0
       http-cache-semantics: 4.3.0
-      undici: 8.12.4
+      undici: 8.13.1
     transitivePeerDependencies:
       - encoding
 
@@ -8420,7 +8424,7 @@ snapshots:
       '@comunica/types': 5.4.0
       '@rdfjs/types': 2.0.1
       readable-stream: 4.8.0
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
     transitivePeerDependencies:
       - encoding
 
@@ -8768,7 +8772,7 @@ snapshots:
   '@comunica/logger-pretty@5.4.0':
     dependencies:
       '@comunica/types': 5.4.0
-      object-inspect: 1.13.4
+      object-inspect: 1.14.0
       process: 0.11.10
 
   '@comunica/logger-void@5.4.0':
@@ -9343,19 +9347,19 @@ snapshots:
       '@iiif/parser': 4.0.6
       tslib: 2.9.1
 
-  '@lde/pipeline-console-reporter@0.41.2(@lde/pipeline@0.50.2)':
+  '@lde/pipeline-console-reporter@0.42.1(@lde/pipeline@0.51.1)':
     dependencies:
-      '@lde/pipeline': 0.50.2
+      '@lde/pipeline': 0.51.1
       chalk: 6.0.1
       log-symbols: 7.0.1
       ora: 9.4.1
       pretty-ms: 9.3.1
       tslib: 2.9.1
 
-  '@lde/pipeline-shacl-validator@0.33.2(@lde/dataset@0.10.1)(@lde/pipeline@0.50.2)':
+  '@lde/pipeline-shacl-validator@0.34.1(@lde/dataset@0.10.1)(@lde/pipeline@0.51.1)':
     dependencies:
       '@lde/dataset': 0.10.1
-      '@lde/pipeline': 0.50.2
+      '@lde/pipeline': 0.51.1
       '@rdfjs/types': 2.0.1
       rdf-dereference: 5.0.0
       rdf-ext: 2.6.0
@@ -9364,7 +9368,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@lde/pipeline@0.50.2':
+  '@lde/pipeline@0.51.1':
     dependencies:
       '@lde/dataset': 0.10.1
       '@lde/dataset-registry-client': 0.12.1
@@ -9397,7 +9401,7 @@ snapshots:
       '@lde/host-limiter': 0.5.0
       tslib: 2.9.1
 
-  '@lde/search@0.42.0(vitest@5.1.0)':
+  '@lde/search@0.50.1(vitest@5.1.0)':
     dependencies:
       '@lde/text-normalization': 0.3.0
       '@rdfjs/types': 2.0.1
@@ -9414,7 +9418,7 @@ snapshots:
       '@lde/task-runner': 0.4.0
       tslib: 2.9.1
 
-  '@lde/sparql-qlever@0.22.0':
+  '@lde/sparql-qlever@0.23.0':
     dependencies:
       '@lde/dataset': 0.10.1
       '@lde/distribution-downloader': 0.9.1
@@ -9487,7 +9491,7 @@ snapshots:
     dependencies:
       '@emnapi/core': 2.0.0-beta.2
       '@emnapi/runtime': 2.0.0-beta.2
-      '@tybys/wasm-util': 0.10.4
+      '@tybys/wasm-util': 0.10.5
     optional: true
 
   '@nodelib/fs.scandir@2.1.5':
@@ -10202,7 +10206,7 @@ snapshots:
       tslib: 2.9.1
     optional: true
 
-  '@tybys/wasm-util@0.10.4':
+  '@tybys/wasm-util@0.10.5':
     dependencies:
       tslib: 2.9.1
     optional: true
@@ -11921,7 +11925,7 @@ snapshots:
       '@types/node': 18.19.130
       cross-fetch: 3.2.0
       http-link-header: 1.1.4
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
     transitivePeerDependencies:
       - encoding
 
@@ -11930,7 +11934,7 @@ snapshots:
       '@types/http-link-header': 1.0.7
       '@types/node': 24.19.2
       http-link-header: 1.1.4
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
 
   jsonld-streaming-parser@5.0.2:
     dependencies:
@@ -12233,7 +12237,7 @@ snapshots:
       htmlparser2: 10.1.0
       rdf-data-factory: 2.1.0
       readable-stream: 4.8.0
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
 
   micromatch@4.0.8:
     dependencies:
@@ -12451,6 +12455,8 @@ snapshots:
 
   object-inspect@1.13.4: {}
 
+  object-inspect@1.14.0: {}
+
   obug@3.0.0: {}
 
   on-exit-leak-free@2.1.2: {}
@@ -12629,7 +12635,7 @@ snapshots:
     dependencies:
       nanoid: 3.3.20
       picocolors: 1.1.1
-      source-map-js: 1.2.2
+      source-map-js: 1.2.4
     optional: true
 
   prelude-ls@1.2.1: {}
@@ -12889,7 +12895,7 @@ snapshots:
       htmlparser2: 10.1.0
       rdf-data-factory: 2.1.0
       readable-stream: 4.8.0
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
 
   rdfxml-streaming-parser@3.3.0:
     dependencies:
@@ -12898,7 +12904,7 @@ snapshots:
       buffer: 6.0.3
       rdf-data-factory: 2.1.0
       readable-stream: 4.8.0
-      relative-to-absolute-iri: 1.0.8
+      relative-to-absolute-iri: 1.0.9
       validate-iri: 1.0.1
 
   readable-from-web@1.0.0:
@@ -12955,7 +12961,7 @@ snapshots:
     dependencies:
       jsesc: 3.1.0
 
-  relative-to-absolute-iri@1.0.8: {}
+  relative-to-absolute-iri@1.0.9: {}
 
   relativize-url@0.1.1: {}
 
@@ -13186,7 +13192,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  source-map-js@1.2.2:
+  source-map-js@1.2.4:
     optional: true
 
   source-map-support@0.5.21:
@@ -13496,7 +13502,7 @@ snapshots:
 
   undici@7.30.1: {}
 
-  undici@8.12.4: {}
+  undici@8.13.1: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
