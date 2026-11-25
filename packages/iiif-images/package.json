@@ -40,8 +40,8 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@lde/pipeline": "^0.50.2",
-    "@lde/search": "^0.42.0"
+    "@lde/pipeline": "^0.51.1",
+    "@lde/search": "^0.50.1"
   },
   "peerDependencies": {
     "@lde/search": ">=0.36.0"
